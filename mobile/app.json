@@ -1,0 +1,86 @@
+{
+  "expo": {
+    "name": "Game On",
+    "slug": "game-on",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "scheme": "gameon",
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "icon": "./assets/expo.icon",
+      "bundleIdentifier": "com.mobalabs.gameon",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "Allow Game On to use your precise location so we can show your current location."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/images/android-icon-foreground.png",
+        "backgroundImage": "./assets/images/android-icon-background.png",
+        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "package": "com.mobalabs.gameon"
+    },
+    "web": {
+      "output": "static",
+      "favicon": "./assets/images/favicon.png",
+      "bundler": "metro"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "@react-native-google-signin/google-signin",
+        {
+          "iosUrlScheme": "com.googleusercontent.apps.775139503787-if69a5oatuvt13p0fe8atp0e5hgpbt9q"
+        }
+      ],
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Allow Game On to access your photos so you can upload a profile picture.",
+          "cameraPermission": "Allow Game On to access your camera so you can take a profile picture."
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#880000",
+          "android": {
+            "image": "./assets/images/GameOn.png",
+            "imageWidth": 140
+          }
+        }
+      ],
+      [
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/static/RethinkSans-Regular.ttf",
+            "./assets/fonts/static/RethinkSans-Medium.ttf",
+            "./assets/fonts/static/RethinkSans-SemiBold.ttf",
+            "./assets/fonts/static/RethinkSans-Bold.ttf",
+            "./assets/fonts/static/RethinkSans-ExtraBold.ttf"
+          ]
+        }
+      ],
+      "expo-web-browser",
+      "@react-native-google-signin/google-signin",
+      "expo-secure-store",
+      "expo-font",
+      "@react-native-community/datetimepicker"
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "390bc921-c6c2-4bdf-b8c0-8522604adb38"
+      }
+    }
+  }
+}

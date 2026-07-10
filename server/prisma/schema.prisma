@@ -1,0 +1,52 @@
+generator client {
+  provider     = "prisma-client"
+  output       = "../src/generated/prisma"
+  moduleFormat = "cjs"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  email        String          @unique
+  id           String          @id @default(uuid())
+  firebaseUid  String          @unique
+  createdAt    DateTime        @default(now())
+  fullName     String?
+  dob          String?
+  gender       String?
+  biography    String?
+  interests    String?
+  image        String?
+  location     String?
+  notificationEnabled Boolean?       @default(false)
+  password     String?
+  updatedAt    DateTime        @updatedAt
+  refreshToken String?
+  gamesCreated Game[]          @relation("GameCreator")
+  participants Participation[]
+  provider     String
+  registrationComplete  Boolean?  @default(false)
+}
+
+model Game {
+  id           String          @id @default(uuid())
+  title        String
+  description  String?
+  sport        String
+  creatorId    String
+  createdAt    DateTime        @default(now())
+  creator      User            @relation("GameCreator", fields: [creatorId], references: [id])
+  participants Participation[]
+}
+
+model Participation {
+  id     String @id @default(uuid())
+  userId String
+  gameId String
+  game   Game   @relation(fields: [gameId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
+
+  @@unique([userId, gameId])
+}
