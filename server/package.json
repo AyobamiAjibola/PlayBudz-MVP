@@ -2,7 +2,10 @@
   "name": "server",
   "version": "0.0.1",
   "description": "",
-  "author": "",
+  "author": {
+    "name": "Moba Labs",
+    "url": "https://mobalabs.dev/"
+  },
   "private": true,
   "license": "UNLICENSED",
   "scripts": {

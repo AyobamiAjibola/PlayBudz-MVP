@@ -8,6 +8,7 @@ mobile/node_modules
 mobile/.env.development
 mobile/.env.preview
 mobile/.env.production
+
 # Logs
 logs
 *.log
