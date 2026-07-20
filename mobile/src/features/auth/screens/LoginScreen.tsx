@@ -3,7 +3,6 @@ import { useGoogleAuth } from "@/hooks/useGoogleAuth";
 import { loginWithEmail, signInWithApple } from "../services/auth.service";
 import { useState } from "react";
 import { useAuthStore } from "@/stores/auth.store";
-import { router } from "expo-router";
 import { Text } from "@/components/ui/text";
 import { Colors, Font, FontSize } from "@/constants/utils";
 import { StyleSheet } from "react-native";

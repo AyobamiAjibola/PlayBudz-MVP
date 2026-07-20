@@ -5,23 +5,26 @@ import { AnimatedSplashOverlay } from '@/components/animated-icon';
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { AuthProvider } from "@/providers/AuthProvider";
 import Toast from "react-native-toast-message";
+import { AppProvider } from "@/providers/AppProvider";
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
 
   return (
     <SafeAreaProvider>
-      <AuthProvider>
-        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-          <AnimatedSplashOverlay />
-          <Stack 
-            screenOptions={{ 
-              headerShown: false
-            }} 
-          />
-          <Toast />
-        </ThemeProvider>
-      </AuthProvider>
+      <AppProvider>
+        <AuthProvider>
+          <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+            <AnimatedSplashOverlay />
+            <Stack 
+              screenOptions={{ 
+                headerShown: false
+              }} 
+            />
+            <Toast />
+          </ThemeProvider>
+        </AuthProvider>
+      </AppProvider>
     </SafeAreaProvider>
   );
 }

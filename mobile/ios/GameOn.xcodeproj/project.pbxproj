@@ -8,40 +8,40 @@
 
 /* Begin PBXBuildFile section */
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		2D2AA629D3684BB593FB8070 /* RethinkSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68714A8DC00C4FB49215B000 /* RethinkSans-ExtraBold.ttf */; };
-		326705C052A54E41B39F6B10 /* RethinkSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2058D42BE23643009571A391 /* RethinkSans-SemiBold.ttf */; };
-		33DE0BDA32EB41E7BB29AD62 /* RethinkSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 446E3CF7887C425DA8B218A8 /* RethinkSans-Medium.ttf */; };
+		1D70E6AE42B14F5BA4C3381C /* RethinkSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6BD43DDAEB8A468B8933DAE6 /* RethinkSans-Bold.ttf */; };
+		2868A5661A42223E34162EE2 /* libPods-GameOn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F94793AEB9C1202C57533F9E /* libPods-GameOn.a */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		69C45E331AA6401DA5C09AE5 /* RethinkSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3D43B7B6B90E435C8840EF08 /* RethinkSans-Bold.ttf */; };
-		6B4E20ED8E5343B29A810162 /* RethinkSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F07E8C9926C416EAD96861B /* RethinkSans-Regular.ttf */; };
-		6BFCC7FA4500FE38BBDCDFCC /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = FEC8538C1EDEBE5934BBC322 /* PrivacyInfo.xcprivacy */; };
-		6CB2DE40730B99C82AE6BD37 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A66E940087BEB14A719512 /* ExpoModulesProvider.swift */; };
-		70784E1012BDCFECC797F865 /* libPods-GameOn.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCE6FCF898EC0F71BF31F91E /* libPods-GameOn.a */; };
+		588CBF25C54440979739DA27 /* RethinkSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CF629B54FF514DC3912B55B7 /* RethinkSans-Medium.ttf */; };
+		5CD8CDD0C9344EDA82D89DB1 /* RethinkSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C6E22FD803F9438CA28EC93D /* RethinkSans-Regular.ttf */; };
+		775F1C888C1944D092A29937 /* expo.icon in Resources */ = {isa = PBXBuildFile; fileRef = 7605D9C8478C4DC390CC015A /* expo.icon */; };
+		9FA0C33C1997D3E9E2FF1C13 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3AA74FEA0D2E41B82EA210 /* ExpoModulesProvider.swift */; };
+		B31BF0F589BB045CCAC6773F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 5107C8EB5938AA137F57B68D /* PrivacyInfo.xcprivacy */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		BF6642084E1C48DC895237E1 /* expo.icon in Resources */ = {isa = PBXBuildFile; fileRef = DE72DE30070547148E19093E /* expo.icon */; };
+		C28AD698E02F4A71AB659946 /* RethinkSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65702096517342F9AA3C1084 /* RethinkSans-SemiBold.ttf */; };
+		DFE4528C72A145549721D728 /* RethinkSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10FF4A7E96BA472083FFFCA6 /* RethinkSans-ExtraBold.ttf */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A3AA74FEA0D2E41B82EA210 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-GameOn/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		10FF4A7E96BA472083FFFCA6 /* RethinkSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-ExtraBold.ttf"; path = "../assets/fonts/static/RethinkSans-ExtraBold.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* GameOn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = GameOn/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = GameOn/Info.plist; sourceTree = "<group>"; };
-		2058D42BE23643009571A391 /* RethinkSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-SemiBold.ttf"; path = "../assets/fonts/static/RethinkSans-SemiBold.ttf"; sourceTree = "<group>"; };
-		3D43B7B6B90E435C8840EF08 /* RethinkSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-Bold.ttf"; path = "../assets/fonts/static/RethinkSans-Bold.ttf"; sourceTree = "<group>"; };
-		3F07E8C9926C416EAD96861B /* RethinkSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-Regular.ttf"; path = "../assets/fonts/static/RethinkSans-Regular.ttf"; sourceTree = "<group>"; };
-		446E3CF7887C425DA8B218A8 /* RethinkSans-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-Medium.ttf"; path = "../assets/fonts/static/RethinkSans-Medium.ttf"; sourceTree = "<group>"; };
-		61567E90522F0A5A429AB9DD /* Pods-GameOn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameOn.debug.xcconfig"; path = "Target Support Files/Pods-GameOn/Pods-GameOn.debug.xcconfig"; sourceTree = "<group>"; };
-		68714A8DC00C4FB49215B000 /* RethinkSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-ExtraBold.ttf"; path = "../assets/fonts/static/RethinkSans-ExtraBold.ttf"; sourceTree = "<group>"; };
-		88A66E940087BEB14A719512 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-GameOn/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		1EDC7896D8464DCA06F44242 /* Pods-GameOn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameOn.release.xcconfig"; path = "Target Support Files/Pods-GameOn/Pods-GameOn.release.xcconfig"; sourceTree = "<group>"; };
+		5107C8EB5938AA137F57B68D /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = GameOn/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		65702096517342F9AA3C1084 /* RethinkSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-SemiBold.ttf"; path = "../assets/fonts/static/RethinkSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		6BD43DDAEB8A468B8933DAE6 /* RethinkSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-Bold.ttf"; path = "../assets/fonts/static/RethinkSans-Bold.ttf"; sourceTree = "<group>"; };
+		7605D9C8478C4DC390CC015A /* expo.icon */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = expo.icon; path = GameOn/expo.icon; sourceTree = "<group>"; };
+		9773ECABBD4F0ABA10EBBBE8 /* Pods-GameOn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameOn.debug.xcconfig"; path = "Target Support Files/Pods-GameOn/Pods-GameOn.debug.xcconfig"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = GameOn/SplashScreen.storyboard; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		BCE6FCF898EC0F71BF31F91E /* libPods-GameOn.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GameOn.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6AE6C2A384F73069F1B1E79 /* Pods-GameOn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameOn.release.xcconfig"; path = "Target Support Files/Pods-GameOn/Pods-GameOn.release.xcconfig"; sourceTree = "<group>"; };
-		DE72DE30070547148E19093E /* expo.icon */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = expo.icon; path = GameOn/expo.icon; sourceTree = "<group>"; };
+		C6E22FD803F9438CA28EC93D /* RethinkSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-Regular.ttf"; path = "../assets/fonts/static/RethinkSans-Regular.ttf"; sourceTree = "<group>"; };
+		CF629B54FF514DC3912B55B7 /* RethinkSans-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-Medium.ttf"; path = "../assets/fonts/static/RethinkSans-Medium.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = GameOn/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* GameOn-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "GameOn-Bridging-Header.h"; path = "GameOn/GameOn-Bridging-Header.h"; sourceTree = "<group>"; };
-		FEC8538C1EDEBE5934BBC322 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = GameOn/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		F94793AEB9C1202C57533F9E /* libPods-GameOn.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GameOn.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70784E1012BDCFECC797F865 /* libPods-GameOn.a in Frameworks */,
+				2868A5661A42223E34162EE2 /* libPods-GameOn.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,35 +65,37 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				DE72DE30070547148E19093E /* expo.icon */,
-				FEC8538C1EDEBE5934BBC322 /* PrivacyInfo.xcprivacy */,
+				7605D9C8478C4DC390CC015A /* expo.icon */,
+				5107C8EB5938AA137F57B68D /* PrivacyInfo.xcprivacy */,
 			);
 			name = GameOn;
+			sourceTree = "<group>";
+		};
+		27004D9DA05D6FD6E9C6ACA2 /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				F04DC81D632529ADD6A3D2FE /* GameOn */,
+			);
+			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				BCE6FCF898EC0F71BF31F91E /* libPods-GameOn.a */,
+				F94793AEB9C1202C57533F9E /* libPods-GameOn.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		57B8D5EF1DFC4F6CD95A0723 /* ExpoModulesProviders */ = {
+		51BFD46A227BB6160409E6D3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				61B60F2E3AE3471EC8D0C2F7 /* GameOn */,
+				9773ECABBD4F0ABA10EBBBE8 /* Pods-GameOn.debug.xcconfig */,
+				1EDC7896D8464DCA06F44242 /* Pods-GameOn.release.xcconfig */,
 			);
-			name = ExpoModulesProviders;
-			sourceTree = "<group>";
-		};
-		61B60F2E3AE3471EC8D0C2F7 /* GameOn */ = {
-			isa = PBXGroup;
-			children = (
-				88A66E940087BEB14A719512 /* ExpoModulesProvider.swift */,
-			);
-			name = GameOn;
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -110,9 +112,9 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				B7890543F3574C5BA9F20375 /* Resources */,
-				906A2EC8F42DEED58EEDB9D2 /* Pods */,
-				57B8D5EF1DFC4F6CD95A0723 /* ExpoModulesProviders */,
+				89A3BBFFBE324B75B757E831 /* Resources */,
+				51BFD46A227BB6160409E6D3 /* Pods */,
+				27004D9DA05D6FD6E9C6ACA2 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -127,24 +129,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		906A2EC8F42DEED58EEDB9D2 /* Pods */ = {
+		89A3BBFFBE324B75B757E831 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				61567E90522F0A5A429AB9DD /* Pods-GameOn.debug.xcconfig */,
-				C6AE6C2A384F73069F1B1E79 /* Pods-GameOn.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		B7890543F3574C5BA9F20375 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				3F07E8C9926C416EAD96861B /* RethinkSans-Regular.ttf */,
-				446E3CF7887C425DA8B218A8 /* RethinkSans-Medium.ttf */,
-				2058D42BE23643009571A391 /* RethinkSans-SemiBold.ttf */,
-				3D43B7B6B90E435C8840EF08 /* RethinkSans-Bold.ttf */,
-				68714A8DC00C4FB49215B000 /* RethinkSans-ExtraBold.ttf */,
+				C6E22FD803F9438CA28EC93D /* RethinkSans-Regular.ttf */,
+				CF629B54FF514DC3912B55B7 /* RethinkSans-Medium.ttf */,
+				65702096517342F9AA3C1084 /* RethinkSans-SemiBold.ttf */,
+				6BD43DDAEB8A468B8933DAE6 /* RethinkSans-Bold.ttf */,
+				10FF4A7E96BA472083FFFCA6 /* RethinkSans-ExtraBold.ttf */,
 			);
 			name = Resources;
 			path = "";
@@ -159,6 +151,14 @@
 			path = GameOn/Supporting;
 			sourceTree = "<group>";
 		};
+		F04DC81D632529ADD6A3D2FE /* GameOn */ = {
+			isa = PBXGroup;
+			children = (
+				0A3AA74FEA0D2E41B82EA210 /* ExpoModulesProvider.swift */,
+			);
+			name = GameOn;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -166,14 +166,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "GameOn" */;
 			buildPhases = (
-				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				9102876C3E02B1E2FE48E7F5 /* [Expo] Configure project */,
+				5274A9B4853C40C338400BCE /* [CP] Check Pods Manifest.lock */,
+				340AC61D6B89183234959C8D /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				AD730E345E6AFFA78073A5D0 /* [CP] Embed Pods Frameworks */,
+				4663DC1222D820CBF2C17C0E /* [CP] Embed Pods Frameworks */,
+				087EC623AF5ECEA226F0DA9E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -193,8 +193,8 @@
 				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = FPU2HVP8H7;
 						LastSwiftMigration = 1250;
+						DevelopmentTeam = "FPU2HVP8H7";
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -225,13 +225,13 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				BF6642084E1C48DC895237E1 /* expo.icon in Resources */,
-				6B4E20ED8E5343B29A810162 /* RethinkSans-Regular.ttf in Resources */,
-				33DE0BDA32EB41E7BB29AD62 /* RethinkSans-Medium.ttf in Resources */,
-				326705C052A54E41B39F6B10 /* RethinkSans-SemiBold.ttf in Resources */,
-				69C45E331AA6401DA5C09AE5 /* RethinkSans-Bold.ttf in Resources */,
-				2D2AA629D3684BB593FB8070 /* RethinkSans-ExtraBold.ttf in Resources */,
-				6BFCC7FA4500FE38BBDCDFCC /* PrivacyInfo.xcprivacy in Resources */,
+				775F1C888C1944D092A29937 /* expo.icon in Resources */,
+				5CD8CDD0C9344EDA82D89DB1 /* RethinkSans-Regular.ttf in Resources */,
+				588CBF25C54440979739DA27 /* RethinkSans-Medium.ttf in Resources */,
+				C28AD698E02F4A71AB659946 /* RethinkSans-SemiBold.ttf in Resources */,
+				1D70E6AE42B14F5BA4C3381C /* RethinkSans-Bold.ttf in Resources */,
+				DFE4528C72A145549721D728 /* RethinkSans-ExtraBold.ttf in Resources */,
+				B31BF0F589BB045CCAC6773F /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,29 +255,7 @@
 			shellPath = /bin/sh;
 			shellScript = "if [[ -f \"$PODS_ROOT/../.xcode.env\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env\"\nfi\nif [[ -f \"$PODS_ROOT/../.xcode.env.local\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.local\"\nfi\n\n# The project root by default is one level up from the ios directory\nexport PROJECT_ROOT=\"$PROJECT_DIR\"/..\n\nif [[ \"$CONFIGURATION\" = *Debug* ]]; then\n  export SKIP_BUNDLING=1\nfi\nif [[ -z \"$ENTRY_FILE\" ]]; then\n  # Set the entry JS file using the bundler's entry resolution.\n  export ENTRY_FILE=\"$(\"$NODE_BINARY\" -e \"require('expo/scripts/resolveAppEntry')\" \"$PROJECT_ROOT\" ios absolute | tail -n 1)\"\nfi\n\nif [[ -z \"$CLI_PATH\" ]]; then\n  # Use Expo CLI\n  export CLI_PATH=\"$(\"$NODE_BINARY\" --print \"require.resolve('@expo/cli', { paths: [require.resolve('expo/package.json')] })\")\"\nfi\nif [[ -z \"$BUNDLE_COMMAND\" ]]; then\n  # Default Expo CLI command for bundling\n  export BUNDLE_COMMAND=\"export:embed\"\nfi\n\n# Source .xcode.env.updates if it exists to allow\n# SKIP_BUNDLING to be unset if needed\nif [[ -f \"$PODS_ROOT/../.xcode.env.updates\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.updates\"\nfi\n# Source local changes to allow overrides\n# if needed\nif [[ -f \"$PODS_ROOT/../.xcode.env.local\" ]]; then\n  source \"$PODS_ROOT/../.xcode.env.local\"\nfi\n\n`\"$NODE_BINARY\" --print \"require('path').dirname(require.resolve('react-native/package.json')) + '/scripts/react-native-xcode.sh'\"`\n\n";
 		};
-		08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-GameOn-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
+		087EC623AF5ECEA226F0DA9E /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -329,7 +307,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GameOn/Pods-GameOn-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9102876C3E02B1E2FE48E7F5 /* [Expo] Configure project */ = {
+		340AC61D6B89183234959C8D /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -353,7 +331,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-GameOn/expo-configure-project.sh\"\n";
 		};
-		AD730E345E6AFFA78073A5D0 /* [CP] Embed Pods Frameworks */ = {
+		4663DC1222D820CBF2C17C0E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -399,6 +377,28 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GameOn/Pods-GameOn-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		5274A9B4853C40C338400BCE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GameOn-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -407,7 +407,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				6CB2DE40730B99C82AE6BD37 /* ExpoModulesProvider.swift in Sources */,
+				9FA0C33C1997D3E9E2FF1C13 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,15 +416,12 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 61567E90522F0A5A429AB9DD /* Pods-GameOn.debug.xcconfig */;
+			baseConfigurationReference = 9773ECABBD4F0ABA10EBBBE8 /* Pods-GameOn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = expo;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = GameOn/GameOn.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FPU2HVP8H7;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -451,20 +448,20 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
+				DEVELOPMENT_TEAM = "FPU2HVP8H7";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C6AE6C2A384F73069F1B1E79 /* Pods-GameOn.release.xcconfig */;
+			baseConfigurationReference = 1EDC7896D8464DCA06F44242 /* Pods-GameOn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = expo;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = GameOn/GameOn.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = FPU2HVP8H7;
 				INFOPLIST_FILE = GameOn/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -485,6 +482,9 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
+				DEVELOPMENT_TEAM = "FPU2HVP8H7";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 			};
 			name = Release;
 		};

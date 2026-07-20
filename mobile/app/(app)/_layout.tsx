@@ -6,7 +6,6 @@ import { ActivityIndicator, View } from "react-native";
 export default function AppLayout() {
   const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
   const isLoading = useAuthStore((state) => state.isLoading);
-  const user = useAuthStore((state) => state.user);
 
   if (isLoading) {
     return (

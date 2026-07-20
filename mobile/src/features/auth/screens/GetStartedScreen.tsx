@@ -12,33 +12,35 @@ import Entypo from '@expo/vector-icons/Entypo';
 import { Image } from "expo-image";
 import { signInWithApple } from "@/features/auth/services/auth.service";
 import Screen from "@/components/Screen";
+import { api } from "@/api/axios";
 
 const googleIcon = require("@/assets/images/Google.svg");
 
 export default function GetStartedScreen() {
     const { signInWithGoogle } = useGoogleAuth();
     const [isGoogleLoading, setIsGoogleLoading] = useState(false);
-     const fetchWithAuth = useAuthStore((state) => state.fetchWithAuth);
+    const refreshUser = useAuthStore((state) => state.refreshUser);
 
     const handleGoogleLogin = async () => {
         if (isGoogleLoading) return;
+
         try {
             setIsGoogleLoading(true);
             Keyboard.dismiss();
-            const response = await signInWithGoogle();
 
-            if (!response) return;
+            const userCredential = await signInWithGoogle();
 
-            const res = await fetchWithAuth(
-                "http://localhost:8000/api/auth/test"
-            );
+            if (!userCredential) return;
 
-            const data = await res.json();
-            router.replace("/(app)/home")
-            console.log("Backend Response:", data);
+            const idToken = await userCredential.user.getIdToken();
+
+            await api.post("/auth/signup", {
+                idToken,
+            });
+
+            await refreshUser();
         } catch (error) {
             console.error(error);
-            setIsGoogleLoading(false);
         } finally {
             setIsGoogleLoading(false);
         }
