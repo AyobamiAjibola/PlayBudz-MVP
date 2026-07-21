@@ -8,7 +8,7 @@ export const tenantName = "mobalabbsgmail";
 export const userFlow = "B2X_1_email_with_password";
 
 export const redirectUri = AuthSession.makeRedirectUri({
-  scheme: "gameon",
+  scheme: "playbudz",
   path: "auth",
 });
 

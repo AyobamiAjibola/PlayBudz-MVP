@@ -1,28 +1,33 @@
 {
   "expo": {
-    "name": "Game On",
-    "slug": "game-on",
+    "name": "PlayBudz",
+    "slug": "PlayBudz",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "gameon",
+    "scheme": "playbudz",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon",
+      "googleServicesFile": "./GoogleService-Info.plist",
+      "icon": "./assets/images/icon.png",
       "bundleIdentifier": "com.mobalabs.gameon",
       "infoPlist": {
-        "NSLocationWhenInUseUsageDescription": "Allow Game On to use your precise location so we can show your current location."
-      }
+        "NSLocationWhenInUseUsageDescription": "Allow PlayBudz to use your precise location so we can show your current location."
+      },
+      "appleTeamId": "7RBMN3ZN66"
     },
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/images/android-icon-foreground.png",
-        "backgroundImage": "./assets/images/android-icon-background.png",
-        "monochromeImage": "./assets/images/android-icon-monochrome.png"
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundImage": "./assets/images/adaptive-icon.png",
+        "monochromeImage": "./assets/images/adaptive-icon.png"
       },
       "predictiveBackGestureEnabled": false,
-      "package": "com.mobalabs.gameon"
+      "package": "com.mobalabs.gameon",
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "output": "static",
@@ -49,7 +54,7 @@
         {
           "backgroundColor": "#880000",
           "android": {
-            "image": "./assets/images/GameOn.png",
+            "image": "./assets/images/playbudz.png",
             "imageWidth": 140
           }
         }
@@ -70,7 +75,16 @@
       "@react-native-google-signin/google-signin",
       "expo-secure-store",
       "expo-font",
-      "@react-native-community/datetimepicker"
+      "@react-native-community/datetimepicker",
+      "./plugins/withModularHeaders",
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static"
+          }
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true,
@@ -79,8 +93,9 @@
     "extra": {
       "router": {},
       "eas": {
-        "projectId": "390bc921-c6c2-4bdf-b8c0-8522604adb38"
+        "projectId": "2b6e82e8-7c89-492f-9105-ec112a7cd7c7"
       }
-    }
+    },
+    "owner": "ayobamiajibola"
   }
 }

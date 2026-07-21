@@ -12,6 +12,7 @@ import { router, useFocusEffect } from "expo-router";
 import { getSecureJson, saveSecureItem, saveSecureJson } from "@/components/SecureStore";
 import { ON_BOARDING_DATA_KEY } from "@/constants/helper";
 import { OnboardingData } from "../types/onboarding.type";
+import { useAuthStore } from "@/stores/auth.store";
 
 const genderOptions = [
   { label: "Male", value: "male" },
@@ -24,6 +25,12 @@ export default function FirstScreen() {
     const [bio, setBio] = useState<string>("");
     const [dateOfBirth, setDateOfBirth] = useState<string>("");
     const [gender, setGender] = useState("");
+    const { user } = useAuthStore.getState();
+
+    const displayName =
+        (user?.auth.displayName ?? user?.profile.fullName)
+            ?.split(" ")[0]
+            ?.replace(/\s/g, "");
 
     const handleBtn = async () => {
          const onboarding =
@@ -67,7 +74,7 @@ export default function FirstScreen() {
             <ProgressBar currentStep={1} totalSteps={5}/>
             <View className="flex-1 justify-start px-6" style={{marginTop: 40}}>
                 <Text className="text-left font-bold text-black" style={{fontSize: FontSize.screenTitle, fontFamily: Font.semiBold}}>
-                    Welcome Ann, let’s know more about you
+                    Welcome {displayName || ""}, let’s know more about you
                 </Text>
                 <Text className="text-left"  
                     style={{

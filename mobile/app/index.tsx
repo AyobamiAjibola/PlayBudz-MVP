@@ -110,7 +110,7 @@ export default function Index() {
             className="text-center text-3xl mb-2"
             style={{ fontFamily: "RethinkSans-ExtraBold" }}
           >
-            Welcome to GameOn
+            Welcome to PlayBudz
           </Text>
           <Text className="text-center" style={{color: Colors.textGrey, fontSize: 16}}>
             Connect with people nearby, organise 

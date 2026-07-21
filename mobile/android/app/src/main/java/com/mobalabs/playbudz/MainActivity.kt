@@ -1,4 +1,4 @@
-package com.mobalabs.gameon
+package com.mobalabs.playbudz
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build

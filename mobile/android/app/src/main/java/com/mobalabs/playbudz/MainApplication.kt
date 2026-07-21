@@ -1,4 +1,4 @@
-package com.mobalabs.gameon
+package com.mobalabs.playbudz
 import com.facebook.react.common.assets.ReactFontManager
 
 import android.app.Application
