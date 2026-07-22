@@ -7,43 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06E35FABC5C540F88392D89B /* RethinkSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D7E0E33478714A95AE2B4A2F /* RethinkSans-Medium.ttf */; };
-		0CF86D1B3FCD43A4925FC14A /* RethinkSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DAC9C4D8892B47B59DAA4F99 /* RethinkSans-SemiBold.ttf */; };
-		10EAA961D7AA42F3B8CE24B4 /* RethinkSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BA26F23EF3A64C2999466F16 /* RethinkSans-Bold.ttf */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		2927989B7D07430AC99F69BA /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F40E50B4AD00F59100417A8 /* ExpoModulesProvider.swift */; };
-		2FC2E206FBF84673BBCE2578 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7B9E8593B4BC4362B69B3EA7 /* GoogleService-Info.plist */; };
+		31016146608E49FF837455AE /* RethinkSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7148285F076F4073B8B64703 /* RethinkSans-Regular.ttf */; };
+		320C54B3C1610F6F747AE5B0 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE6F03DDFA8F02006D3D476 /* ExpoModulesProvider.swift */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		52ADD3B795A544F0A2449624 /* expo.icon in Resources */ = {isa = PBXBuildFile; fileRef = 08F7C3B6EEB54AB1801A7CBF /* expo.icon */; };
-		5653C2ACF3644E1BAC9C2780 /* RethinkSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 97B7D55021AF4208B3884B06 /* RethinkSans-ExtraBold.ttf */; };
-		7D69A6257E82F3C3AB8AE742 /* Pods_PlayBudz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78EA492126CFB12F03617AEF /* Pods_PlayBudz.framework */; };
+		5C12BC1EFA53F3BBBD42B9D6 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 726C10915EF59387851D876B /* PrivacyInfo.xcprivacy */; };
+		714BD341B6894A4599A2CDBB /* RethinkSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B9FA47D42A7F40BB81911CC2 /* RethinkSans-SemiBold.ttf */; };
+		9E487E9C70BC4141B494D9E1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D14D64A7ECBA43328B08FCE8 /* GoogleService-Info.plist */; };
+		AA88A4EA39964BD3B40BC73D /* RethinkSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52A50779F6AD46A9A47DCCE1 /* RethinkSans-Medium.ttf */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		CA071205B91387826469A39F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 7D0E28F97B3419B9022801DB /* PrivacyInfo.xcprivacy */; };
-		D9113177D6394CC89F17569D /* RethinkSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDC18F7777734DB893122C77 /* RethinkSans-Regular.ttf */; };
+		C5D77FAA7BC44DC6BAA455C4 /* RethinkSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8DCD03FEB3C846ABA464159F /* RethinkSans-Bold.ttf */; };
+		EFBE58D882B44AFE93BA567A /* RethinkSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DC8EF74CA8B4B57AE75B067 /* RethinkSans-ExtraBold.ttf */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
+		F72118DEEADCAA77AB4341EF /* Pods_PlayBudz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C955218C7C754E615E72676E /* Pods_PlayBudz.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		08F7C3B6EEB54AB1801A7CBF /* expo.icon */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = expo.icon; path = PlayBudz/expo.icon; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* PlayBudz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayBudz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PlayBudz/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PlayBudz/Info.plist; sourceTree = "<group>"; };
-		4F40E50B4AD00F59100417A8 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-PlayBudz/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		78EA492126CFB12F03617AEF /* Pods_PlayBudz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlayBudz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B9E8593B4BC4362B69B3EA7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "PlayBudz/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		7D0E28F97B3419B9022801DB /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = PlayBudz/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		97B7D55021AF4208B3884B06 /* RethinkSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-ExtraBold.ttf"; path = "../assets/fonts/static/RethinkSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		2DC8EF74CA8B4B57AE75B067 /* RethinkSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-ExtraBold.ttf"; path = "../assets/fonts/static/RethinkSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		52A50779F6AD46A9A47DCCE1 /* RethinkSans-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-Medium.ttf"; path = "../assets/fonts/static/RethinkSans-Medium.ttf"; sourceTree = "<group>"; };
+		70ACBF4D91E41F1235F10D07 /* Pods-PlayBudz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayBudz.release.xcconfig"; path = "Target Support Files/Pods-PlayBudz/Pods-PlayBudz.release.xcconfig"; sourceTree = "<group>"; };
+		7148285F076F4073B8B64703 /* RethinkSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-Regular.ttf"; path = "../assets/fonts/static/RethinkSans-Regular.ttf"; sourceTree = "<group>"; };
+		726C10915EF59387851D876B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = PlayBudz/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		8DCD03FEB3C846ABA464159F /* RethinkSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-Bold.ttf"; path = "../assets/fonts/static/RethinkSans-Bold.ttf"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = PlayBudz/SplashScreen.storyboard; sourceTree = "<group>"; };
-		BA26F23EF3A64C2999466F16 /* RethinkSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-Bold.ttf"; path = "../assets/fonts/static/RethinkSans-Bold.ttf"; sourceTree = "<group>"; };
+		B9FA47D42A7F40BB81911CC2 /* RethinkSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-SemiBold.ttf"; path = "../assets/fonts/static/RethinkSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		D7E0E33478714A95AE2B4A2F /* RethinkSans-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-Medium.ttf"; path = "../assets/fonts/static/RethinkSans-Medium.ttf"; sourceTree = "<group>"; };
-		DA75BF84B5D5C592998E43B9 /* Pods-PlayBudz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayBudz.debug.xcconfig"; path = "Target Support Files/Pods-PlayBudz/Pods-PlayBudz.debug.xcconfig"; sourceTree = "<group>"; };
-		DAC9C4D8892B47B59DAA4F99 /* RethinkSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-SemiBold.ttf"; path = "../assets/fonts/static/RethinkSans-SemiBold.ttf"; sourceTree = "<group>"; };
-		DDC18F7777734DB893122C77 /* RethinkSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-Regular.ttf"; path = "../assets/fonts/static/RethinkSans-Regular.ttf"; sourceTree = "<group>"; };
+		C955218C7C754E615E72676E /* Pods_PlayBudz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlayBudz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D14D64A7ECBA43328B08FCE8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "PlayBudz/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DEE6F03DDFA8F02006D3D476 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-PlayBudz/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = PlayBudz/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* PlayBudz-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PlayBudz-Bridging-Header.h"; path = "PlayBudz/PlayBudz-Bridging-Header.h"; sourceTree = "<group>"; };
-		FE7F4A59E34D62C8850B10E5 /* Pods-PlayBudz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayBudz.release.xcconfig"; path = "Target Support Files/Pods-PlayBudz/Pods-PlayBudz.release.xcconfig"; sourceTree = "<group>"; };
+		FB138F7376B71BF428F24535 /* Pods-PlayBudz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayBudz.debug.xcconfig"; path = "Target Support Files/Pods-PlayBudz/Pods-PlayBudz.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,7 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7D69A6257E82F3C3AB8AE742 /* Pods_PlayBudz.framework in Frameworks */,
+				F72118DEEADCAA77AB4341EF /* Pods_PlayBudz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,48 +65,26 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				08F7C3B6EEB54AB1801A7CBF /* expo.icon */,
-				7B9E8593B4BC4362B69B3EA7 /* GoogleService-Info.plist */,
-				7D0E28F97B3419B9022801DB /* PrivacyInfo.xcprivacy */,
+				D14D64A7ECBA43328B08FCE8 /* GoogleService-Info.plist */,
+				726C10915EF59387851D876B /* PrivacyInfo.xcprivacy */,
 			);
 			name = PlayBudz;
-			sourceTree = "<group>";
-		};
-		28F88241CFAA3A1B866451FF /* ExpoModulesProviders */ = {
-			isa = PBXGroup;
-			children = (
-				CA48F0FE64B8630C86B6331C /* PlayBudz */,
-			);
-			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				78EA492126CFB12F03617AEF /* Pods_PlayBudz.framework */,
+				C955218C7C754E615E72676E /* Pods_PlayBudz.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		33BF49D9BC154F90A9C16D61 /* Resources */ = {
+		6D641244D9C1EEF6866C10CC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				DDC18F7777734DB893122C77 /* RethinkSans-Regular.ttf */,
-				D7E0E33478714A95AE2B4A2F /* RethinkSans-Medium.ttf */,
-				DAC9C4D8892B47B59DAA4F99 /* RethinkSans-SemiBold.ttf */,
-				BA26F23EF3A64C2999466F16 /* RethinkSans-Bold.ttf */,
-				97B7D55021AF4208B3884B06 /* RethinkSans-ExtraBold.ttf */,
-			);
-			name = Resources;
-			path = "";
-			sourceTree = "<group>";
-		};
-		3EE79235B7F7163270725F88 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				DA75BF84B5D5C592998E43B9 /* Pods-PlayBudz.debug.xcconfig */,
-				FE7F4A59E34D62C8850B10E5 /* Pods-PlayBudz.release.xcconfig */,
+				FB138F7376B71BF428F24535 /* Pods-PlayBudz.debug.xcconfig */,
+				70ACBF4D91E41F1235F10D07 /* Pods-PlayBudz.release.xcconfig */,
 			);
 			name = Pods;
 			path = Pods;
@@ -128,9 +104,9 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				33BF49D9BC154F90A9C16D61 /* Resources */,
-				3EE79235B7F7163270725F88 /* Pods */,
-				28F88241CFAA3A1B866451FF /* ExpoModulesProviders */,
+				E3CB4738D1854BD187116946 /* Resources */,
+				6D641244D9C1EEF6866C10CC /* Pods */,
+				B7ECB9AB1BED3550B2E0A2AA /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -145,6 +121,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9231E5411C894A8E81602BC4 /* PlayBudz */ = {
+			isa = PBXGroup;
+			children = (
+				DEE6F03DDFA8F02006D3D476 /* ExpoModulesProvider.swift */,
+			);
+			name = PlayBudz;
+			sourceTree = "<group>";
+		};
+		B7ECB9AB1BED3550B2E0A2AA /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				9231E5411C894A8E81602BC4 /* PlayBudz */,
+			);
+			name = ExpoModulesProviders;
+			sourceTree = "<group>";
+		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,12 +146,17 @@
 			path = PlayBudz/Supporting;
 			sourceTree = "<group>";
 		};
-		CA48F0FE64B8630C86B6331C /* PlayBudz */ = {
+		E3CB4738D1854BD187116946 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4F40E50B4AD00F59100417A8 /* ExpoModulesProvider.swift */,
+				7148285F076F4073B8B64703 /* RethinkSans-Regular.ttf */,
+				52A50779F6AD46A9A47DCCE1 /* RethinkSans-Medium.ttf */,
+				B9FA47D42A7F40BB81911CC2 /* RethinkSans-SemiBold.ttf */,
+				8DCD03FEB3C846ABA464159F /* RethinkSans-Bold.ttf */,
+				2DC8EF74CA8B4B57AE75B067 /* RethinkSans-ExtraBold.ttf */,
 			);
-			name = PlayBudz;
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,13 +167,14 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "PlayBudz" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				6E1D065D8AFD3433E5FE315F /* [Expo] Configure project */,
+				135CD0D431782250580F0916 /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				B03113591A71E64C7B72D885 /* [CP] Embed Pods Frameworks */,
+				00B45F4E0F0F478788B19914 /* [Expo Dev Launcher] Strip Local Network Keys for Release */,
+				5F275517CB21DBA34B5A79B2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -226,20 +224,33 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				52ADD3B795A544F0A2449624 /* expo.icon in Resources */,
-				2FC2E206FBF84673BBCE2578 /* GoogleService-Info.plist in Resources */,
-				D9113177D6394CC89F17569D /* RethinkSans-Regular.ttf in Resources */,
-				06E35FABC5C540F88392D89B /* RethinkSans-Medium.ttf in Resources */,
-				0CF86D1B3FCD43A4925FC14A /* RethinkSans-SemiBold.ttf in Resources */,
-				10EAA961D7AA42F3B8CE24B4 /* RethinkSans-Bold.ttf in Resources */,
-				5653C2ACF3644E1BAC9C2780 /* RethinkSans-ExtraBold.ttf in Resources */,
-				CA071205B91387826469A39F /* PrivacyInfo.xcprivacy in Resources */,
+				9E487E9C70BC4141B494D9E1 /* GoogleService-Info.plist in Resources */,
+				31016146608E49FF837455AE /* RethinkSans-Regular.ttf in Resources */,
+				AA88A4EA39964BD3B40BC73D /* RethinkSans-Medium.ttf in Resources */,
+				714BD341B6894A4599A2CDBB /* RethinkSans-SemiBold.ttf in Resources */,
+				C5D77FAA7BC44DC6BAA455C4 /* RethinkSans-Bold.ttf in Resources */,
+				EFBE58D882B44AFE93BA567A /* RethinkSans-ExtraBold.ttf in Resources */,
+				5C12BC1EFA53F3BBBD42B9D6 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		00B45F4E0F0F478788B19914 /* [Expo Dev Launcher] Strip Local Network Keys for Release */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[Expo Dev Launcher] Strip Local Network Keys for Release";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Strip dev-launcher-specific local network permission keys from non-Debug builds\n# This only removes _expo._tcp Bonjour services and the dev-launcher usage description.\n# Other Bonjour services and custom descriptions are preserved for production use.\n\nif [ \"$CONFIGURATION\" != \"Debug\" ]; then\n  PLIST_PATH=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n  if [ -f \"$PLIST_PATH\" ]; then\n    # Check if NSBonjourServices exists\n    if /usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" >/dev/null 2>&1; then\n      # Get the count of services\n      COUNT=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null | grep \"^    \" | wc -l | tr -d ' ')\n\n      # Remove _expo._tcp\n      for ((i=COUNT-1; i>=0; i--)); do\n        SERVICE=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices:$i\" \"$PLIST_PATH\" 2>/dev/null || echo \"\")\n        if echo \"$SERVICE\" | grep -q \"_expo._tcp\"; then\n          /usr/libexec/PlistBuddy -c \"Delete :NSBonjourServices:$i\" \"$PLIST_PATH\" 2>/dev/null || true\n        fi\n      done\n\n      # If the array is now empty, remove it entirely\n      REMAINING=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null | grep \"^    \" | wc -l | tr -d ' ')\n      if [ \"$REMAINING\" -eq \"0\" ]; then\n        /usr/libexec/PlistBuddy -c \"Delete :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null || true\n      fi\n    fi\n\n    # Only delete the description if it matches the dev-launcher default text\n    DESC=$(/usr/libexec/PlistBuddy -c \"Print :NSLocalNetworkUsageDescription\" \"$PLIST_PATH\" 2>/dev/null || echo \"\")\n    if echo \"$DESC\" | grep -q \"Expo Dev Launcher\"; then\n      /usr/libexec/PlistBuddy -c \"Delete :NSLocalNetworkUsageDescription\" \"$PLIST_PATH\" 2>/dev/null || true\n    fi\n  fi\nfi\n";
+		};
 		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -279,7 +290,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6E1D065D8AFD3433E5FE315F /* [Expo] Configure project */ = {
+		135CD0D431782250580F0916 /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -303,59 +314,7 @@
 			shellPath = /bin/sh;
 			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-PlayBudz/expo-configure-project.sh\"\n";
 		};
-		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-PlayBudz/Pods-PlayBudz-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/AppAuth/AppAuthCore_Privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/EXApplication/ExpoApplication_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoDevice/ExpoDevice_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoNotifications/ExpoNotifications_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoSystemUI/ExpoSystemUI_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/GTMAppAuth/GTMAppAuth_Privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher_Core_Privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleSignIn/GoogleSignIn.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities_Privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises_Privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/PromisesSwift/Promises_Privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/RNCAsyncStorage/RNCAsyncStorage_resources.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/RNSVG/RNSVGFilters.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/React-Core_privacy.bundle",
-				"${PODS_CONFIGURATION_BUILD_DIR}/React-cxxreact/React-cxxreact_privacy.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AppAuthCore_Privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoApplication_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoConstants_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoDevice_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoFileSystem_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoNotifications_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoSystemUI_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GTMAppAuth_Privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GTMSessionFetcher_Core_Privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleUtilities_Privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FBLPromises_Privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Promises_Privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RNCAsyncStorage_resources.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RNSVGFilters.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-Core_privacy.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-cxxreact_privacy.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlayBudz/Pods-PlayBudz-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B03113591A71E64C7B72D885 /* [CP] Embed Pods Frameworks */ = {
+		5F275517CB21DBA34B5A79B2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -401,6 +360,62 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlayBudz/Pods-PlayBudz-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PlayBudz/Pods-PlayBudz-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/AppAuth/AppAuthCore_Privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXApplication/ExpoApplication_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/EXConstants.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/EXConstants/ExpoConstants_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoDevice/ExpoDevice_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoFileSystem/ExpoFileSystem_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoNotifications/ExpoNotifications_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/ExpoSystemUI/ExpoSystemUI_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/GTMAppAuth/GTMAppAuth_Privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher_Core_Privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleSignIn/GoogleSignIn.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities_Privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises_Privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/PromisesSwift/Promises_Privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RNCAsyncStorage/RNCAsyncStorage_resources.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RNSVG/RNSVGFilters.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core/React-Core_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-cxxreact/React-cxxreact_privacy.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-launcher/EXDevLauncher.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/expo-dev-menu/EXDevMenu.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AppAuthCore_Privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoApplication_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXConstants.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoConstants_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoDevice_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoFileSystem_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoNotifications_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ExpoSystemUI_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GTMAppAuth_Privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GTMSessionFetcher_Core_Privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleUtilities_Privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FBLPromises_Privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Promises_Privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RNCAsyncStorage_resources.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/RNSVGFilters.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-Core_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/React-cxxreact_privacy.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevLauncher.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/EXDevMenu.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlayBudz/Pods-PlayBudz-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -409,7 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				2927989B7D07430AC99F69BA /* ExpoModulesProvider.swift in Sources */,
+				320C54B3C1610F6F747AE5B0 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,9 +433,9 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA75BF84B5D5C592998E43B9 /* Pods-PlayBudz.debug.xcconfig */;
+			baseConfigurationReference = FB138F7376B71BF428F24535 /* Pods-PlayBudz.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = expo;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PlayBudz/PlayBudz.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
@@ -444,7 +459,7 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mobalabs.gameon;
+				PRODUCT_BUNDLE_IDENTIFIER = com.playbudz.app;
 				PRODUCT_NAME = PlayBudz;
 				SWIFT_OBJC_BRIDGING_HEADER = "PlayBudz/PlayBudz-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -456,9 +471,9 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FE7F4A59E34D62C8850B10E5 /* Pods-PlayBudz.release.xcconfig */;
+			baseConfigurationReference = 70ACBF4D91E41F1235F10D07 /* Pods-PlayBudz.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = expo;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PlayBudz/PlayBudz.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
@@ -477,7 +492,7 @@
 					"-lc++",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mobalabs.gameon;
+				PRODUCT_BUNDLE_IDENTIFIER = com.playbudz.app;
 				PRODUCT_NAME = PlayBudz;
 				SWIFT_OBJC_BRIDGING_HEADER = "PlayBudz/PlayBudz-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

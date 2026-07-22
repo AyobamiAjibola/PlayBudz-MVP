@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>775139503787-if69a5oatuvt13p0fe8atp0e5hgpbt9q.apps.googleusercontent.com</string>
+	<string>775139503787-3ih8lqd824v4k53b0f2i6nss1utoobrd.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.775139503787-if69a5oatuvt13p0fe8atp0e5hgpbt9q</string>
+	<string>com.googleusercontent.apps.775139503787-3ih8lqd824v4k53b0f2i6nss1utoobrd</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>775139503787-e4lmrj6931i5v95eu0phsmp17bk8iqkl.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.mobalabs.gameon</string>
+	<string>com.playbudz.app</string>
 	<key>PROJECT_ID</key>
 	<string>game-on-721e8</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:775139503787:ios:4587f31d0436fc67bbd1ee</string>
+	<string>1:775139503787:ios:442ce953db80f02dbbd1ee</string>
 </dict>
 </plist>

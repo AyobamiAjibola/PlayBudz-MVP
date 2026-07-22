@@ -30,13 +30,19 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>playbudz</string>
-				<string>com.mobalabs.gameon</string>
+				<string>com.playbudz.app</string>
 			</array>
 		</dict>
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.775139503787-if69a5oatuvt13p0fe8atp0e5hgpbt9q</string>
+				<string>com.googleusercontent.apps.775139503787-3ih8lqd824v4k53b0f2i6nss1utoobrd</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>exp+playbudz</string>
 			</array>
 		</dict>
 	</array>
@@ -53,10 +59,16 @@
 		<key>NSAllowsLocalNetworking</key>
 		<true/>
 	</dict>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_expo._tcp</string>
+	</array>
 	<key>NSCameraUsageDescription</key>
-	<string>Allow Game On to access your camera so you can take a profile picture.</string>
+	<string>Allow PlayBudz to access your camera so you can take a profile picture.</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Allow $(PRODUCT_NAME) to access your Face ID biometric data.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>Expo Dev Launcher uses the local network to discover and connect to development servers running on your computer.</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Allow $(PRODUCT_NAME) to access your location</string>
 	<key>NSLocationAlwaysUsageDescription</key>
@@ -68,7 +80,7 @@
 	<key>NSMotionUsageDescription</key>
 	<string>Allow $(PRODUCT_NAME) to detect your current motion activity</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Allow Game On to access your photos so you can upload a profile picture.</string>
+	<string>Allow PlayBudz to access your photos so you can upload a profile picture.</string>
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>

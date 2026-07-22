@@ -9,8 +9,7 @@
     "userInterfaceStyle": "automatic",
     "ios": {
       "googleServicesFile": "./GoogleService-Info.plist",
-      "icon": "./assets/images/icon.png",
-      "bundleIdentifier": "com.mobalabs.gameon",
+      "bundleIdentifier": "com.playbudz.app",
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "Allow PlayBudz to use your precise location so we can show your current location."
       },
@@ -18,13 +17,13 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#880000",
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundImage": "./assets/images/adaptive-icon.png",
         "monochromeImage": "./assets/images/adaptive-icon.png"
       },
+      "googleServicesFile": "./google-services.json",
       "predictiveBackGestureEnabled": false,
-      "package": "com.mobalabs.gameon",
+      "package": "com.playbudz.app",
       "permissions": [
         "android.permission.RECORD_AUDIO"
       ]
@@ -39,23 +38,27 @@
       [
         "@react-native-google-signin/google-signin",
         {
-          "iosUrlScheme": "com.googleusercontent.apps.775139503787-if69a5oatuvt13p0fe8atp0e5hgpbt9q"
+          "iosUrlScheme": "com.googleusercontent.apps.775139503787-3ih8lqd824v4k53b0f2i6nss1utoobrd"
         }
       ],
       [
         "expo-image-picker",
         {
-          "photosPermission": "Allow Game On to access your photos so you can upload a profile picture.",
-          "cameraPermission": "Allow Game On to access your camera so you can take a profile picture."
+          "photosPermission": "Allow PlayBudz to access your photos so you can upload a profile picture.",
+          "cameraPermission": "Allow PlayBudz to access your camera so you can take a profile picture."
         }
       ],
       [
         "expo-splash-screen",
         {
           "backgroundColor": "#880000",
+          "imageWidth": 140,
+          "image": "./assets/images/playbudz.png",
+          "ios": {
+            "backgroundColor": "#880000"
+          },
           "android": {
-            "image": "./assets/images/playbudz.png",
-            "imageWidth": 140
+            "backgroundColor": "#880000"
           }
         }
       ],

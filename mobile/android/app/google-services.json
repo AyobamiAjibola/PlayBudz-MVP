@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "775139503787",
+    "project_id": "game-on-721e8",
+    "storage_bucket": "game-on-721e8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:775139503787:android:41d202e67e2ad485bbd1ee",
+        "android_client_info": {
+          "package_name": "com.playbudz.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "775139503787-55m2joo68o1hhkilg3j3kinism944rss.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlEt_Rs6JsQ-hcPH3vwL6QuRYYH_sMvM0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "775139503787-55m2joo68o1hhkilg3j3kinism944rss.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "775139503787-3ih8lqd824v4k53b0f2i6nss1utoobrd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.playbudz.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -14,7 +14,7 @@ import { useRef } from "react";
 WebBrowser.maybeCompleteAuthSession();
 
 const redirectUri = makeRedirectUri({
-  scheme: "com.mobalabs.gameon",
+  scheme: "com.playbudz.app",
 });
 
 export function useGoogleAuth() {
