@@ -33,7 +33,7 @@ async function bootstrap() {
 
   app.useLogger(app.get(Logger));
 
-  const port = process.env.PORT ?? 8000;
+  const port = process.env.PORT ?? 3000;
 
   await app.listen(port);
 
