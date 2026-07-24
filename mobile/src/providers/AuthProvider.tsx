@@ -21,7 +21,7 @@ export function AuthProvider({ children }: PropsWithChildren) {
           if (firebaseUser) {
             await refreshUser();
             const { user } = useAuthStore.getState();
-
+            // console.log(user, "user in provider")
             if (!user?.profile.registrationComplete) {
               const step = await getSecureItem("onboardingStep");
               

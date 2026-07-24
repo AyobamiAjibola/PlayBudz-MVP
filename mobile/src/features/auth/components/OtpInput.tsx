@@ -51,7 +51,6 @@ export default function OtpInput({ length = 6, otp, setOtp }: IProps) {
           onKeyPress={({ nativeEvent }) =>
             handleKeyPress(nativeEvent.key, index)
           }
-          keyboardType="number-pad"
           maxLength={1}
           textAlign="center"
           className="border border-gray-300 bg-white text-xl font-semibold text-black"

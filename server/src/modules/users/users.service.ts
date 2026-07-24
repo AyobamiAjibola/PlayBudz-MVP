@@ -114,10 +114,14 @@ export class UsersService {
     const provider = decoded.firebase?.sign_in_provider;
 
     const newUser = await this.usersRepository.create({
-      fullName: data.fullName,
+      fullName:
+        provider === 'google.com'
+          ? ((decoded.name as string) ?? '')
+          : data.fullName,
       firebaseUid,
       provider,
       email: email as string,
+      image: provider === 'google.com' ? (decoded.picture ?? '') : '',
     });
 
     return {

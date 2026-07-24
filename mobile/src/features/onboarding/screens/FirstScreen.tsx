@@ -2,7 +2,7 @@ import AppTextInput from "@/components/AppTextInput";
 import Screen from "@/components/Screen";
 import { Text } from "@/components/ui/text";
 import { Colors, Font, FontSize } from "@/constants/utils";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { View } from "react-native";
 import ProgressBar from "../component/ProgressBar";
 import BottomSection from "@/features/auth/components/BottomSection";
@@ -26,6 +26,7 @@ export default function FirstScreen() {
     const [dateOfBirth, setDateOfBirth] = useState<string>("");
     const [gender, setGender] = useState("");
     const { user } = useAuthStore.getState();
+    const signOut = useAuthStore((state) => state.signOut);
 
     const displayName =
         (user?.auth.displayName ?? user?.profile.fullName)
@@ -69,8 +70,16 @@ export default function FirstScreen() {
         }, [])
     );
 
+    // const remove = async () => {
+    //     console.log("pressed")
+    //     await removeSecureItem(ON_BOARDING_DATA_KEY)
+    //     await removeSecureItem("onboardingStep")
+    //     await signOut();
+    // }
+
     return (
-        <Screen>
+        <Screen showBackBtn={false}>
+            <View style={{marginBottom: 20}} />
             <ProgressBar currentStep={1} totalSteps={5}/>
             <View className="flex-1 justify-start px-6" style={{marginTop: 40}}>
                 <Text className="text-left font-bold text-black" style={{fontSize: FontSize.screenTitle, fontFamily: Font.semiBold}}>

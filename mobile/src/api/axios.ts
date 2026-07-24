@@ -12,6 +12,7 @@ export const api = axios.create({
 api.interceptors.request.use(
   async (config) => {
     try {
+      await auth.authStateReady();
       const user = auth.currentUser;
 
       if (user) {

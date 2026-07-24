@@ -12,6 +12,7 @@ import { useTimer } from '@/hooks/useTimer'
 import { useState } from 'react'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '@/config/firebase'
+import { useAuthStore } from '@/stores/auth.store'
 
 export default function OtpScreen() {
     const { email, password, fullName } = useLocalSearchParams<{
@@ -24,6 +25,7 @@ export default function OtpScreen() {
     const [otp, setOtp] = useState<string[]>(Array(otpLength).fill(""));
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
+    const refreshUser = useAuthStore((state) => state.refreshUser);
 
     const handleBtn = async () => {
         setLoading(true)
@@ -49,7 +51,8 @@ export default function OtpScreen() {
             });
             
             if(response.data.success) {
-                router.push("/onboarding-first")
+                await refreshUser()
+                router.replace("/onboarding-first")
             }
             
         } catch (error) {

@@ -1,6 +1,6 @@
 import ProfileScreen from "@/features/profile/screens/ProfileScreen";
 
-export default function ProfilePage() {
+export default function Profile() {
   return (
     <ProfileScreen/>
   )

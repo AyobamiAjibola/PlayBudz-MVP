@@ -10,14 +10,17 @@ export const Colors = {
   dangerLight: "#FFE5E5",
   dangerBorder: "#880000",
   disabled: "#b76666",
-  bgGrey: "#EBEBF0"
+  bgGrey: "#EBEBF0",
+  appBg: "#f9f9f9"
 } as const;
 
 export const FontSize = {
   default: 16,
   screenTitle: 32,
   md: 18,
-  sm: 14
+  sm: 14,
+  lg: 24,
+  xs: 12
 }
 
 export const Font = {

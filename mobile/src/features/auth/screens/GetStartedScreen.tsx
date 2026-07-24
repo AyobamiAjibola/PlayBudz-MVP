@@ -34,11 +34,14 @@ export default function GetStartedScreen() {
 
             const idToken = await userCredential.user.getIdToken();
 
-            await api.post("/auth/signup", {
+            const response = await api.post("/users/create-user", {
                 idToken,
-            });
+            })
 
-            await refreshUser();
+            if(response.data.success) {
+                await refreshUser()
+                router.replace("/onboarding-first")
+            }
         } catch (error) {
             console.error(error);
         } finally {

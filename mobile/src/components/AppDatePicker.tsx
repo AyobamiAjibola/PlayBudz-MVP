@@ -3,7 +3,6 @@ import {
   Platform,
   Pressable,
   Text,
-  TouchableOpacity,
   View,
 } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
@@ -83,6 +82,7 @@ export default function AppDatePicker({
             maximumDate={maximumDate}
             minimumDate={minimumDate}
             style={{ height: 120 }}
+            textColor="black"
           />
 
           <AppButton
@@ -102,6 +102,7 @@ export default function AppDatePicker({
           onChange={handleChange}
           maximumDate={maximumDate}
           minimumDate={minimumDate}
+          textColor="black"
         />
       )}
 

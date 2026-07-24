@@ -1,28 +1,45 @@
-import { View, Text } from "react-native";
+import { View, Text, Pressable, StyleSheet } from "react-native";
 import { useProfile } from "../hooks/useProfile";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Screen from "@/components/Screen";
+import { useAuthStore } from "@/stores/auth.store";
 
 export default function ProfileScreen() {
-//   const { data, isLoading, error } = useProfile();
+  const signOut = useAuthStore((state) => state.signOut);
 
-//   if (isLoading) {
-//     return <Text>Loading...</Text>;
-//   }
-
-//   if (error) {
-//     return <Text>Something went wrong</Text>;
-//   }
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
-    <SafeAreaView style={{flex: 1}}
-          // className="flex-1 bg-slate-500 px-6"
-          edges={["top"]}
+    <Screen>
+      <View style={styles.container}>
+        <Pressable
+          onPress={handleSignOut}
+          style={{
+            paddingHorizontal: 12,
+            height: 30, backgroundColor: "black",
+            borderRadius: 20, 
+          }}
         >
-      <Text className="text-red-600 text-3xl">Profile Screen</Text>
-      <Text className="text-3xl font-bold text-black text-center">
-                    Welcome to Game On
-                </Text>
-      {/* <Text>{data.email}</Text> */}
-    </SafeAreaView>
+          <Text className="text-base font-semibold text-white">
+            Sign Out
+          </Text>
+        </Pressable>
+      </View>
+      
+    </Screen>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
+  }
+})

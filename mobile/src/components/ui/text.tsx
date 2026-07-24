@@ -1,3 +1,4 @@
+import { FontSize } from "@/constants/utils";
 import { Text as RNText, TextProps } from "react-native";
 
 interface Props extends TextProps {
@@ -10,7 +11,7 @@ export function Text({ className, style, ...props }: Props) {
       {...props}
       className={className}
       style={[
-        { fontFamily: "RethinkSans" },
+        { fontFamily: "RethinkSans", fontSize: FontSize.default },
         style,
       ]}
     />
