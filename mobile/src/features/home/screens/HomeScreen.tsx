@@ -191,14 +191,17 @@ export default function HomeScreen() {
     <Screen
       showContent={true} 
       RenderContent={RenderContent}
+      style={{paddingHorizontal: 0}}
     >
       <ScrollView 
         contentContainerStyle={{ flexGrow: 1 }}
         showsVerticalScrollIndicator={false}
-        style={styles.container} className="px-6"
+        // style={styles.container}
       >
-        <View>
-          <SectionHeading title="Your Events" onPress={()=>router.push("/(app)/home/events")}/>
+        <View style={{marginTop: 30}}>
+          <View style={{paddingHorizontal: 24}}>
+            <SectionHeading title="Your Events" onPress={()=>router.push("/(app)/home/events")}/>
+          </View>
           <View style={styles.filter}>
             {filter.map((item) => (
               <TouchableOpacity key={item} onPress={()=>handleChange(item)}>
@@ -219,11 +222,13 @@ export default function HomeScreen() {
         </View>
 
         <View style={{marginTop: 40}}>
-          <SectionHeading title="Players like you" onPress={()=>router.push("/home/discover-players")}/>
+          <View style={{paddingHorizontal: 24}}>
+            <SectionHeading title="Players like you" onPress={()=>router.push("/home/discover-players")}/>
+          </View>
           <PlayersSection players={players} />
         </View>
 
-        <View style={{marginTop: 30}}>
+        <View style={{marginTop: 30, paddingHorizontal: 24}}>
           <SectionHeading title="Recommended events" onPress={()=>router.push("/home/discover-events")}/>
           <RecommendedEventSection events={events} />
         </View>
@@ -235,14 +240,14 @@ export default function HomeScreen() {
       >
         <View style={styles.modalContainer}>
           <View className="px-6" style={[styles.container, { height: "auto"}]}>
-              <View style={styles.notificationWrapper}>
-                <SimpleLineIcons name="arrow-left" size={19} color="black" onPress={()=>setIsNotification(false)} style={{marginTop: 10}}/>
-                <Text style={styles.title}>
-                  Notification
-                </Text>
-              </View>
+            <View style={styles.notificationWrapper}>
+              <SimpleLineIcons name="arrow-left" size={19} color="black" onPress={()=>setIsNotification(false)} style={{marginTop: 10}}/>
+              <Text style={styles.title}>
+                Notification
+              </Text>
+            </View>
           </View>
-          {!notification.length && <View style={styles.emptyNotification}>
+          {!notificationData.length && <View style={styles.emptyNotification}>
             <Image
               source={notificationBell}
               alt="Notification"
@@ -303,6 +308,9 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 24,
     backgroundColor: Colors.appBg,
     paddingBottom: 20
+  },
+  notificationContainer: {
+
   },
   container: {
     display: "flex",
@@ -366,8 +374,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: "flex-start",
     alignItems: 'center',
-    marginTop: 16
-  },
+    marginTop: 16,
+    paddingHorizontal: 24  },
   filterBtn: {
     borderRadius: 16,
     paddingHorizontal: 18,

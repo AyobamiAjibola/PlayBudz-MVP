@@ -1,10 +1,11 @@
 import { Colors, Font, FontSize } from "@/constants/utils";
 import { ComponentType, ReactNode } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { StyleProp, StyleSheet, View, ViewStyle } from "react-native";
+import { Keyboard, KeyboardAvoidingView, Platform, StyleProp, StyleSheet, TouchableOpacity, TouchableWithoutFeedback, View, ViewStyle } from "react-native";
 import { SimpleLineIcons } from "@expo/vector-icons";
-import { router } from "expo-router";
+import { Href, router } from "expo-router";
 import { Text } from "./ui/text";
+import { StatusBar } from "expo-status-bar";
 
 interface ScreenProps {
   children: ReactNode;
@@ -13,19 +14,40 @@ interface ScreenProps {
   screenTitle?: string;
   showContent?: boolean;
   RenderContent?: ComponentType;
+  backBtnPadding?: number;
+  screenPaddingBottom?: number;
+  backBtnRoute?: Href;
+  dismissKeyboard?: boolean;
+  avoidKeyboard?: boolean;
 }
 
-export default function Screen({ children, style, showContent=true, showBackBtn=true, screenTitle="", RenderContent }: ScreenProps) {
-  return (
-    <SafeAreaView
-      style={[{ flex: 1, backgroundColor: Colors.appBg, paddingBottom: 90 }, style]}
-      edges={["right"]}
-    >
+export default function Screen({ 
+  children, style, showContent=true, 
+  showBackBtn=true, screenTitle="", 
+  RenderContent, backBtnPadding=60,
+  screenPaddingBottom=90, backBtnRoute,
+  dismissKeyboard = false,
+  avoidKeyboard = false,
+}: ScreenProps) {
+
+  let content = (
+    <View style={{flex: 1}}>
       {!showContent 
-        ? ( <View className="px-6" style={[styles.container, { height: "auto", paddingTop: 60}]}>
+        ? ( <View style={[styles.container, { height: "auto", paddingTop: backBtnPadding, paddingHorizontal: 22}]}>
               { showBackBtn && 
                 <View style={styles.wrapper}>
-                  <SimpleLineIcons name="arrow-left" size={19} color="black" onPress={()=>router.back()} style={{marginTop: 10}}/>
+                  <TouchableOpacity
+                    onPress={() => {
+                      if (backBtnRoute) {
+                        router.push(backBtnRoute);
+                      } else {
+                        router.back();
+                      }
+                    }}
+                    style={{marginTop: 10}}
+                  >
+                    <SimpleLineIcons name="arrow-left" size={19} color="black" />
+                  </TouchableOpacity>
                   <Text style={styles.title}>
                     {" "} {screenTitle}
                   </Text>
@@ -38,7 +60,38 @@ export default function Screen({ children, style, showContent=true, showBackBtn=
           </View>
         )}
       {children}
-    </SafeAreaView>
+    </View>
+  )
+
+  if (dismissKeyboard) {
+    content = (
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        {content}
+      </TouchableWithoutFeedback>
+    );
+  }
+
+  if (avoidKeyboard) {
+    content = (
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+      >
+        {content}
+      </KeyboardAvoidingView>
+    );
+  }
+
+  return (
+    <>
+      <StatusBar style="dark" />
+      <SafeAreaView
+        style={[{ flex: 1, backgroundColor: Colors.appBg, paddingBottom: screenPaddingBottom }, style]}
+        edges={["right"]}
+      >
+        {content}
+      </SafeAreaView>
+    </>
   );
 }
 

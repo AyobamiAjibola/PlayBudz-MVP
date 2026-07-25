@@ -37,7 +37,7 @@ export default function EventSection({events}: EventsProps) {
 
   const MAX_DOTS = 5;
 
-    const getVisibleDots = () => {
+  const getVisibleDots = () => {
     if (events.length <= MAX_DOTS) {
         return events.map((_, index) => index);
     }
@@ -54,54 +54,55 @@ export default function EventSection({events}: EventsProps) {
         { length: end - start },
         (_, i) => start + i
     );
-    };
+  };
 
-    return (
-        <View style={styles.container}>
-            <FlatList
-                data={events}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                keyExtractor={(item) => item.id as string}
-                snapToInterval={CARD_WIDTH + CARD_SPACING}
-                decelerationRate="fast"
-                contentContainerStyle={styles.listContent}
-                onViewableItemsChanged={onViewableItemsChanged}
-                viewabilityConfig={viewabilityConfig}
-                renderItem={({ item }) => (
-                    <EventCard item={item} cardWidth={CARD_WIDTH}/>
-                )}
-            />
+  return (
+    <View style={styles.container}>
+      <FlatList
+        data={events}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={(item) => item.id as string}
+        snapToInterval={CARD_WIDTH + CARD_SPACING}
+        decelerationRate="fast"
+        contentContainerStyle={styles.listContent}
+        onViewableItemsChanged={onViewableItemsChanged}
+        viewabilityConfig={viewabilityConfig}
+        renderItem={({ item }) => (
+            <EventCard item={item} cardWidth={CARD_WIDTH}/>
+        )}
+      />
 
-            <View style={styles.pagination}>
-                {getVisibleDots().map((index, i) => {
-                    const isActive = index === currentIndex;
+      <View style={styles.pagination}>
+          {getVisibleDots().map((index, i) => {
+              const isActive = index === currentIndex;
 
-                    const isSmall =
-                        (i === 0 && index > 0) ||
-                        (i === MAX_DOTS - 1 &&
-                            index < events.length - 1);
+              const isSmall =
+                  (i === 0 && index > 0) ||
+                  (i === MAX_DOTS - 1 &&
+                      index < events.length - 1);
 
-                    return (
-                        <PaginationDot
-                            key={index}
-                            isActive={isActive}
-                            isSmall={isSmall}
-                        />
-                    );
-                })}
-            </View>
-        </View>
-    );
+              return (
+                  <PaginationDot
+                      key={index}
+                      isActive={isActive}
+                      isSmall={isSmall}
+                  />
+              );
+          })}
+      </View>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
-    // paddingVertical: 16
+    // paddingHorizontal: 16
   },
   listContent: {
     gap: CARD_SPACING,
-    paddingVertical: 12
+    paddingVertical: 12,
+    paddingHorizontal: 30
   },
   pagination: {
     flexDirection: "row",

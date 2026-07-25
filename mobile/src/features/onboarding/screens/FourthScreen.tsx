@@ -1,6 +1,6 @@
 import Screen from "@/components/Screen";
 import ProgressBar from "../component/ProgressBar";
-import { StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { Text } from "@/components/ui/text";
 import { Colors, Font, FontSize } from "@/constants/utils";
 import BottomSection from "@/features/auth/components/BottomSection";
@@ -26,9 +26,15 @@ export default function FourthScreen() {
     };
 
     return (
-        <Screen>
+        <Screen screenPaddingBottom={0} backBtnPadding={40} showContent={false} backBtnRoute={"/onboarding-third"}>
             <ProgressBar currentStep={4} totalSteps={5}/>
-            <View className="flex-1 justify-start px-6" style={{marginTop: 40}}>
+             <ScrollView className="px-6"
+                contentContainerStyle={{
+                    flexGrow: 1,
+                    justifyContent: "flex-start",
+                    marginTop: 20
+                }}
+            >
                 <Text className="text-left font-bold text-black" style={{fontSize: FontSize.screenTitle, fontFamily: Font.semiBold}}>
                     Let’s put a face to the name
                 </Text>
@@ -55,7 +61,7 @@ export default function FourthScreen() {
                         )
                     }
                 </View>
-            </View>
+            </ScrollView>
 
             <BottomSection 
                 handleBtn={handleBtn} 

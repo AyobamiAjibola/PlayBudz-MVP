@@ -3,7 +3,7 @@ import Screen from "@/components/Screen";
 import { Text } from "@/components/ui/text";
 import { Colors, Font, FontSize } from "@/constants/utils";
 import { useCallback, useState } from "react";
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 import ProgressBar from "../component/ProgressBar";
 import BottomSection from "@/features/auth/components/BottomSection";
 import AppDatePicker from "@/components/AppDatePicker";
@@ -78,10 +78,16 @@ export default function FirstScreen() {
     // }
 
     return (
-        <Screen showBackBtn={false}>
+        <Screen showBackBtn={false} screenPaddingBottom={0} dismissKeyboard={true}>
             <View style={{marginBottom: 20}} />
             <ProgressBar currentStep={1} totalSteps={5}/>
-            <View className="flex-1 justify-start px-6" style={{marginTop: 40}}>
+            <ScrollView className="px-6"
+                contentContainerStyle={{
+                    flexGrow: 1,
+                    justifyContent: "flex-start",
+                    marginTop: 20
+                }}
+            >   
                 <Text className="text-left font-bold text-black" style={{fontSize: FontSize.screenTitle, fontFamily: Font.semiBold}}>
                     Welcome {displayName || ""}, let’s know more about you
                 </Text>
@@ -122,8 +128,8 @@ export default function FirstScreen() {
                         }}
                     />
                 </View>
-            </View>
-
+            </ScrollView>
+        
             <BottomSection handleBtn={handleBtn} btnDisabled={validation}/>
         </Screen>
     )

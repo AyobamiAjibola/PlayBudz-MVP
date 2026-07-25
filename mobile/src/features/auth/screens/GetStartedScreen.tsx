@@ -101,7 +101,9 @@ export default function GetStartedScreen() {
     ]
 
     return (
-        <Screen style={{paddingBottom: 20}}>
+        <Screen backBtnPadding={40}
+            showContent={false}
+        >
             <View className="flex-1 justify-center px-6">
                 <Text className="text-left font-bold text-black" style={{fontSize: FontSize.screenTitle, fontFamily: Font.semiBold}}>
                     Sign up to get started

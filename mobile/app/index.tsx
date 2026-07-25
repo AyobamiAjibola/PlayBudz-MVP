@@ -11,7 +11,7 @@ import Animated, {
 import { useEffect } from "react";
 import { Text } from "@/components/ui/text";
 import { AppButton } from "@/components/ui/button";
-import { Colors } from "@/constants/utils";
+import { Colors, FontSize } from "@/constants/utils";
 import { router } from "expo-router";
 
 const { height } = Dimensions.get("window");
@@ -106,13 +106,16 @@ export default function Index() {
         </View>
 
         <View className="bg-white flex-1 flex-col items-center justify-start" style={{marginTop: 60}}>
-          <Text 
-            className="text-center text-3xl mb-2"
-            style={{ fontFamily: "RethinkSans-ExtraBold" }}
+          <Text
+            style={{ 
+              fontFamily: "RethinkSans-ExtraBold",
+              fontSize: 32, textAlign: "center",
+              marginBottom: 8
+            }}
           >
             Welcome to PlayBudz
           </Text>
-          <Text className="text-center" style={{color: Colors.textGrey, fontSize: 16}}>
+          <Text className="text-center" style={{color: Colors.textGrey, fontSize: FontSize.default}}>
             Connect with people nearby, organise 
           </Text>
           <Text className="text-center" style={{color: Colors.textGrey, fontSize: 16}}>
@@ -123,7 +126,7 @@ export default function Index() {
             title="Get started" 
             onPress={() => router.push("/get-started")} 
             textStyle={{fontFamily: "RethinkSans-SemiBold"}}
-            buttonStyle={{marginTop: 40}}
+            buttonStyle={{marginTop: 40, width: "100%"}}
           />
           <Text className="text-center" style={{color: Colors.textGrey, fontSize: 16, marginTop: 8}}>
             Already have an account?{" "}

@@ -1,7 +1,7 @@
 import Screen from '@/components/Screen'
 import { useState } from 'react'
 import ProgressBar from '../component/ProgressBar'
-import { Pressable, StyleSheet, View } from 'react-native'
+import { ScrollView, StyleSheet, View } from 'react-native'
 import { Text } from '@/components/ui/text'
 import { Colors, Font, FontSize } from '@/constants/utils'
 import { LocationSearchInput, SelectedLocation } from '@/components/LocationSearchInput'
@@ -13,7 +13,6 @@ import { AppButton } from '@/components/ui/button'
 import { getSecureJson, removeSecureItem } from '@/components/SecureStore'
 import { OnboardingData } from '../types/onboarding.type'
 import { ON_BOARDING_DATA_KEY } from '@/constants/helper'
-import * as ImagePicker from "expo-image-picker";
 import { useAppStore } from '@/stores/app.store'
 import { api } from '@/api/axios'
 import { router } from 'expo-router'
@@ -102,9 +101,18 @@ export default function FifthScreen() {
     };
 
     return (
-        <Screen>
+        <Screen screenPaddingBottom={0} backBtnPadding={40} 
+            showContent={false} backBtnRoute={"/onboarding-fourth"}
+            dismissKeyboard={true}
+        >
             <ProgressBar currentStep={5} totalSteps={5}/>
-            <View className="flex-1 justify-start px-6" style={{marginTop: 40}}>
+            <View className="px-6"
+                style={{
+                    flexGrow: 1,
+                    justifyContent: "flex-start",
+                    marginTop: 20
+                }}
+            >   
                 <Text className="text-left font-bold text-black" style={{fontSize: FontSize.screenTitle, fontFamily: Font.semiBold}}>
                     Where are you located?
                 </Text>
@@ -125,7 +133,7 @@ export default function FifthScreen() {
                         onSelectLocation={setSelectedLocation}
                     />
                 </View>
-            </View>
+            </View> 
 
             <BottomSection handleBtn={handleSubmit} isLoading={isLoading} />
             <AppModal

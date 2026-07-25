@@ -1,6 +1,6 @@
 import Screen from "@/components/Screen";
 import ProgressBar from "../component/ProgressBar";
-import { Pressable, StyleSheet, View } from "react-native";
+import { Pressable, ScrollView, StyleSheet, View } from "react-native";
 import { Text } from "@/components/ui/text";
 import { Colors, Font, FontSize } from "@/constants/utils";
 import BottomSection from "@/features/auth/components/BottomSection";
@@ -89,9 +89,15 @@ export default function ThirdScreen() {
     );
 
     return (
-        <Screen>
+        <Screen screenPaddingBottom={0} backBtnPadding={40} showContent={false} backBtnRoute={"/onboarding-second"}>
             <ProgressBar currentStep={3} totalSteps={5}/>
-            <View className="flex-1 justify-start px-6" style={{marginTop: 40}}>
+            <ScrollView className="px-6"
+                contentContainerStyle={{
+                    flexGrow: 1,
+                    justifyContent: "flex-start",
+                    marginTop: 20
+                }}
+            >
                 <Text className="text-left font-bold text-black" style={{fontSize: FontSize.screenTitle, fontFamily: Font.semiBold}}>
                     How skilled are you?
                 </Text>
@@ -140,7 +146,7 @@ export default function ThirdScreen() {
                         ))
                     }
                 </View>
-            </View>
+            </ScrollView>
 
             <BottomSection handleBtn={handleBtn} btnDisabled={!isComplete} />
             <AppModal

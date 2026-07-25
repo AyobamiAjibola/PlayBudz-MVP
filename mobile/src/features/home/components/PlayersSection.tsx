@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
   },
   listContent: {
     gap: CARD_SPACING,
-    paddingVertical: 12
+    paddingVertical: 12,
+    paddingHorizontal: 24
   }
 });

@@ -26,6 +26,6 @@ export default function RecommendedEventSection({events}: EventsProps) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 12
+    marginTop: 12,
   }
 });

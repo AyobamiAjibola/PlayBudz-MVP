@@ -1,7 +1,7 @@
 import { Text } from "@/components/ui/text";
 import { Colors, Font, FontSize } from "@/constants/utils";
 import ProgressBar from "../component/ProgressBar";
-import { FlatList, Pressable, StyleSheet, TextInput, View } from "react-native";
+import { FlatList, Pressable, ScrollView, StyleSheet, TextInput, View } from "react-native";
 import Screen from "@/components/Screen";
 import { router, useFocusEffect } from "expo-router";
 import BottomSection from "@/features/auth/components/BottomSection";
@@ -127,9 +127,15 @@ export default function SecondScreen() {
     );
 
     return (
-        <Screen>
+        <Screen screenPaddingBottom={0} backBtnPadding={40} showContent={false} backBtnRoute={"/onboarding-first"}>
             <ProgressBar currentStep={2} totalSteps={5}/>
-            <View className="flex-1 justify-start px-6" style={{marginTop: 40}}>
+            <ScrollView className="px-6"
+                contentContainerStyle={{
+                    flexGrow: 1,
+                    justifyContent: "flex-start",
+                    marginTop: 20
+                }}
+            >
                 <Text className="text-left font-bold text-black" style={{fontSize: FontSize.screenTitle, fontFamily: Font.semiBold}}>
                     What are your sport interests ?
                 </Text>
@@ -149,7 +155,7 @@ export default function SecondScreen() {
                     filteredSports={filteredSports}
                     setShowSearchModal={setShowSearchModal}
                 />
-            </View>
+            </ScrollView>
 
             <BottomSection handleBtn={handleBtn} btnDisabled={!selected.length} />
             <AppModal

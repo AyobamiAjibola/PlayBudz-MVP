@@ -5,9 +5,10 @@ export default function AppTabs() {
 
   return (
     <NativeTabs
-      disableTransparentOnScrollEdge={true}
+      disableTransparentOnScrollEdge={false}
       tintColor={Colors.primary}
       minimizeBehavior="onScrollDown"
+      backgroundColor={"white"}
     >
       <NativeTabs.Trigger name="home">
         <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
