@@ -4,19 +4,29 @@ import { Redirect } from "expo-router";
 import { ActivityIndicator, View } from "react-native";
 
 export default function AppLayout() {
-  const isAuthenticated = useAuthStore((state) => state.isAuthenticated);
+  const user = useAuthStore((state) => state.user);
   const isLoading = useAuthStore((state) => state.isLoading);
 
   if (isLoading) {
     return (
-      <View className="flex-1 items-center justify-center bg-white">
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <ActivityIndicator />
       </View>
     );
   }
 
-  if (!isAuthenticated) {
+  if (!user) {
     return <Redirect href="/login" />;
+  }
+
+  if (!user.profile.registrationComplete) {
+    return <Redirect href="/onboarding-check" />;
   }
 
   return <AppTabs/>;

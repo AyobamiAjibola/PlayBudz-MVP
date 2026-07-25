@@ -1,8 +1,7 @@
 import { View, Text, Pressable, StyleSheet } from "react-native";
-import { useProfile } from "../hooks/useProfile";
-import { SafeAreaView } from "react-native-safe-area-context";
 import Screen from "@/components/Screen";
 import { useAuthStore } from "@/stores/auth.store";
+import { router } from "expo-router";
 
 export default function ProfileScreen() {
   const signOut = useAuthStore((state) => state.signOut);
@@ -10,6 +9,7 @@ export default function ProfileScreen() {
   const handleSignOut = async () => {
     try {
       await signOut();
+      router.replace("/get-started")
     } catch (error) {
       console.error(error);
     }

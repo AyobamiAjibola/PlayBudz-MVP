@@ -7,41 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C4C1110F6694DF99414A8CB /* RethinkSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C13AB1D975D4401EA4521148 /* RethinkSans-ExtraBold.ttf */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		31016146608E49FF837455AE /* RethinkSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7148285F076F4073B8B64703 /* RethinkSans-Regular.ttf */; };
-		320C54B3C1610F6F747AE5B0 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE6F03DDFA8F02006D3D476 /* ExpoModulesProvider.swift */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		5C12BC1EFA53F3BBBD42B9D6 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 726C10915EF59387851D876B /* PrivacyInfo.xcprivacy */; };
-		714BD341B6894A4599A2CDBB /* RethinkSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B9FA47D42A7F40BB81911CC2 /* RethinkSans-SemiBold.ttf */; };
-		9E487E9C70BC4141B494D9E1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D14D64A7ECBA43328B08FCE8 /* GoogleService-Info.plist */; };
-		AA88A4EA39964BD3B40BC73D /* RethinkSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 52A50779F6AD46A9A47DCCE1 /* RethinkSans-Medium.ttf */; };
+		74781807FE1540C59D7AB5DD /* RethinkSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7FFB5A5859714066853485ED /* RethinkSans-Regular.ttf */; };
+		76A632AACA5D1D67CE91454E /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F79161E9C4129C86712BB553 /* PrivacyInfo.xcprivacy */; };
+		9069C546AEA541E296C35DBF /* RethinkSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D8BB2F23D0B74FB58E8E7DC8 /* RethinkSans-SemiBold.ttf */; };
+		9C4EA4D10D0E41D6BF648311 /* RethinkSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A73EA702BC7741208F3A4203 /* RethinkSans-Medium.ttf */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		C5D77FAA7BC44DC6BAA455C4 /* RethinkSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8DCD03FEB3C846ABA464159F /* RethinkSans-Bold.ttf */; };
-		EFBE58D882B44AFE93BA567A /* RethinkSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2DC8EF74CA8B4B57AE75B067 /* RethinkSans-ExtraBold.ttf */; };
+		BEE8B4E22D42F2F9DCB5862D /* Pods_PlayBudz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3673F1696A6E697F8CC93D7F /* Pods_PlayBudz.framework */; };
+		CDFD02CAC9BB4160A5295676 /* RethinkSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3AE99F2FE29A4AE09A02EE1C /* RethinkSans-Bold.ttf */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
-		F72118DEEADCAA77AB4341EF /* Pods_PlayBudz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C955218C7C754E615E72676E /* Pods_PlayBudz.framework */; };
+		F903D6E70FEC48249C6D44E2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 97FAE3C69CF142CA9E3C6510 /* GoogleService-Info.plist */; };
+		FD95DBB28170DA830E4BF6A2 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62306FFA74B59A660414D311 /* ExpoModulesProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		13B07F961A680F5B00A75B9A /* PlayBudz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayBudz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = PlayBudz/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = PlayBudz/Info.plist; sourceTree = "<group>"; };
-		2DC8EF74CA8B4B57AE75B067 /* RethinkSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-ExtraBold.ttf"; path = "../assets/fonts/static/RethinkSans-ExtraBold.ttf"; sourceTree = "<group>"; };
-		52A50779F6AD46A9A47DCCE1 /* RethinkSans-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-Medium.ttf"; path = "../assets/fonts/static/RethinkSans-Medium.ttf"; sourceTree = "<group>"; };
-		70ACBF4D91E41F1235F10D07 /* Pods-PlayBudz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayBudz.release.xcconfig"; path = "Target Support Files/Pods-PlayBudz/Pods-PlayBudz.release.xcconfig"; sourceTree = "<group>"; };
-		7148285F076F4073B8B64703 /* RethinkSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-Regular.ttf"; path = "../assets/fonts/static/RethinkSans-Regular.ttf"; sourceTree = "<group>"; };
-		726C10915EF59387851D876B /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = PlayBudz/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		8DCD03FEB3C846ABA464159F /* RethinkSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-Bold.ttf"; path = "../assets/fonts/static/RethinkSans-Bold.ttf"; sourceTree = "<group>"; };
+		3673F1696A6E697F8CC93D7F /* Pods_PlayBudz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlayBudz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3AE99F2FE29A4AE09A02EE1C /* RethinkSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-Bold.ttf"; path = "../assets/fonts/static/RethinkSans-Bold.ttf"; sourceTree = "<group>"; };
+		62306FFA74B59A660414D311 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-PlayBudz/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		7FFB5A5859714066853485ED /* RethinkSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-Regular.ttf"; path = "../assets/fonts/static/RethinkSans-Regular.ttf"; sourceTree = "<group>"; };
+		97FAE3C69CF142CA9E3C6510 /* GoogleService-Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "PlayBudz/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A73EA702BC7741208F3A4203 /* RethinkSans-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-Medium.ttf"; path = "../assets/fonts/static/RethinkSans-Medium.ttf"; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = PlayBudz/SplashScreen.storyboard; sourceTree = "<group>"; };
-		B9FA47D42A7F40BB81911CC2 /* RethinkSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-SemiBold.ttf"; path = "../assets/fonts/static/RethinkSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		C955218C7C754E615E72676E /* Pods_PlayBudz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PlayBudz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D14D64A7ECBA43328B08FCE8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "PlayBudz/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		DEE6F03DDFA8F02006D3D476 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-PlayBudz/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		C13AB1D975D4401EA4521148 /* RethinkSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-ExtraBold.ttf"; path = "../assets/fonts/static/RethinkSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		D8BB2F23D0B74FB58E8E7DC8 /* RethinkSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = "RethinkSans-SemiBold.ttf"; path = "../assets/fonts/static/RethinkSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = PlayBudz/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* PlayBudz-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PlayBudz-Bridging-Header.h"; path = "PlayBudz/PlayBudz-Bridging-Header.h"; sourceTree = "<group>"; };
-		FB138F7376B71BF428F24535 /* Pods-PlayBudz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayBudz.debug.xcconfig"; path = "Target Support Files/Pods-PlayBudz/Pods-PlayBudz.debug.xcconfig"; sourceTree = "<group>"; };
+		F640BD5B1C8CCBE6718E1B18 /* Pods-PlayBudz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayBudz.release.xcconfig"; path = "Target Support Files/Pods-PlayBudz/Pods-PlayBudz.release.xcconfig"; sourceTree = "<group>"; };
+		F79161E9C4129C86712BB553 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = PlayBudz/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		FE11CF8CDA42859A25EDF769 /* Pods-PlayBudz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayBudz.debug.xcconfig"; path = "Target Support Files/Pods-PlayBudz/Pods-PlayBudz.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,7 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F72118DEEADCAA77AB4341EF /* Pods_PlayBudz.framework in Frameworks */,
+				BEE8B4E22D42F2F9DCB5862D /* Pods_PlayBudz.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,8 +65,8 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				D14D64A7ECBA43328B08FCE8 /* GoogleService-Info.plist */,
-				726C10915EF59387851D876B /* PrivacyInfo.xcprivacy */,
+				97FAE3C69CF142CA9E3C6510 /* GoogleService-Info.plist */,
+				F79161E9C4129C86712BB553 /* PrivacyInfo.xcprivacy */,
 			);
 			name = PlayBudz;
 			sourceTree = "<group>";
@@ -75,19 +75,9 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				C955218C7C754E615E72676E /* Pods_PlayBudz.framework */,
+				3673F1696A6E697F8CC93D7F /* Pods_PlayBudz.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6D641244D9C1EEF6866C10CC /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				FB138F7376B71BF428F24535 /* Pods-PlayBudz.debug.xcconfig */,
-				70ACBF4D91E41F1235F10D07 /* Pods-PlayBudz.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -104,9 +94,9 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				E3CB4738D1854BD187116946 /* Resources */,
-				6D641244D9C1EEF6866C10CC /* Pods */,
-				B7ECB9AB1BED3550B2E0A2AA /* ExpoModulesProviders */,
+				E56E59C794B3400CB337A71A /* Resources */,
+				B09AA4CC3B96BF310E6B9F37 /* Pods */,
+				C6F6305A0A0CFEC835711308 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -121,20 +111,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9231E5411C894A8E81602BC4 /* PlayBudz */ = {
+		9466C3B1C2451F413DC19790 /* PlayBudz */ = {
 			isa = PBXGroup;
 			children = (
-				DEE6F03DDFA8F02006D3D476 /* ExpoModulesProvider.swift */,
+				62306FFA74B59A660414D311 /* ExpoModulesProvider.swift */,
 			);
 			name = PlayBudz;
 			sourceTree = "<group>";
 		};
-		B7ECB9AB1BED3550B2E0A2AA /* ExpoModulesProviders */ = {
+		B09AA4CC3B96BF310E6B9F37 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9231E5411C894A8E81602BC4 /* PlayBudz */,
+				FE11CF8CDA42859A25EDF769 /* Pods-PlayBudz.debug.xcconfig */,
+				F640BD5B1C8CCBE6718E1B18 /* Pods-PlayBudz.release.xcconfig */,
 			);
-			name = ExpoModulesProviders;
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
@@ -146,14 +138,22 @@
 			path = PlayBudz/Supporting;
 			sourceTree = "<group>";
 		};
-		E3CB4738D1854BD187116946 /* Resources */ = {
+		C6F6305A0A0CFEC835711308 /* ExpoModulesProviders */ = {
 			isa = PBXGroup;
 			children = (
-				7148285F076F4073B8B64703 /* RethinkSans-Regular.ttf */,
-				52A50779F6AD46A9A47DCCE1 /* RethinkSans-Medium.ttf */,
-				B9FA47D42A7F40BB81911CC2 /* RethinkSans-SemiBold.ttf */,
-				8DCD03FEB3C846ABA464159F /* RethinkSans-Bold.ttf */,
-				2DC8EF74CA8B4B57AE75B067 /* RethinkSans-ExtraBold.ttf */,
+				9466C3B1C2451F413DC19790 /* PlayBudz */,
+			);
+			name = ExpoModulesProviders;
+			sourceTree = "<group>";
+		};
+		E56E59C794B3400CB337A71A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7FFB5A5859714066853485ED /* RethinkSans-Regular.ttf */,
+				A73EA702BC7741208F3A4203 /* RethinkSans-Medium.ttf */,
+				D8BB2F23D0B74FB58E8E7DC8 /* RethinkSans-SemiBold.ttf */,
+				3AE99F2FE29A4AE09A02EE1C /* RethinkSans-Bold.ttf */,
+				C13AB1D975D4401EA4521148 /* RethinkSans-ExtraBold.ttf */,
 			);
 			name = Resources;
 			path = "";
@@ -167,14 +167,14 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "PlayBudz" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				135CD0D431782250580F0916 /* [Expo] Configure project */,
+				7E39045C6060B5B15DC5C3AF /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				00B45F4E0F0F478788B19914 /* [Expo Dev Launcher] Strip Local Network Keys for Release */,
-				5F275517CB21DBA34B5A79B2 /* [CP] Embed Pods Frameworks */,
+				2975F8B242EE46E59B6B9B5A /* [Expo Dev Launcher] Strip Local Network Keys for Release */,
+				60FEC536B4B5E6DEDE113713 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -224,33 +224,19 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				9E487E9C70BC4141B494D9E1 /* GoogleService-Info.plist in Resources */,
-				31016146608E49FF837455AE /* RethinkSans-Regular.ttf in Resources */,
-				AA88A4EA39964BD3B40BC73D /* RethinkSans-Medium.ttf in Resources */,
-				714BD341B6894A4599A2CDBB /* RethinkSans-SemiBold.ttf in Resources */,
-				C5D77FAA7BC44DC6BAA455C4 /* RethinkSans-Bold.ttf in Resources */,
-				EFBE58D882B44AFE93BA567A /* RethinkSans-ExtraBold.ttf in Resources */,
-				5C12BC1EFA53F3BBBD42B9D6 /* PrivacyInfo.xcprivacy in Resources */,
+				F903D6E70FEC48249C6D44E2 /* GoogleService-Info.plist in Resources */,
+				74781807FE1540C59D7AB5DD /* RethinkSans-Regular.ttf in Resources */,
+				9C4EA4D10D0E41D6BF648311 /* RethinkSans-Medium.ttf in Resources */,
+				9069C546AEA541E296C35DBF /* RethinkSans-SemiBold.ttf in Resources */,
+				CDFD02CAC9BB4160A5295676 /* RethinkSans-Bold.ttf in Resources */,
+				0C4C1110F6694DF99414A8CB /* RethinkSans-ExtraBold.ttf in Resources */,
+				76A632AACA5D1D67CE91454E /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		00B45F4E0F0F478788B19914 /* [Expo Dev Launcher] Strip Local Network Keys for Release */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[Expo Dev Launcher] Strip Local Network Keys for Release";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Strip dev-launcher-specific local network permission keys from non-Debug builds\n# This only removes _expo._tcp Bonjour services and the dev-launcher usage description.\n# Other Bonjour services and custom descriptions are preserved for production use.\n\nif [ \"$CONFIGURATION\" != \"Debug\" ]; then\n  PLIST_PATH=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n  if [ -f \"$PLIST_PATH\" ]; then\n    # Check if NSBonjourServices exists\n    if /usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" >/dev/null 2>&1; then\n      # Get the count of services\n      COUNT=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null | grep \"^    \" | wc -l | tr -d ' ')\n\n      # Remove _expo._tcp\n      for ((i=COUNT-1; i>=0; i--)); do\n        SERVICE=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices:$i\" \"$PLIST_PATH\" 2>/dev/null || echo \"\")\n        if echo \"$SERVICE\" | grep -q \"_expo._tcp\"; then\n          /usr/libexec/PlistBuddy -c \"Delete :NSBonjourServices:$i\" \"$PLIST_PATH\" 2>/dev/null || true\n        fi\n      done\n\n      # If the array is now empty, remove it entirely\n      REMAINING=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null | grep \"^    \" | wc -l | tr -d ' ')\n      if [ \"$REMAINING\" -eq \"0\" ]; then\n        /usr/libexec/PlistBuddy -c \"Delete :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null || true\n      fi\n    fi\n\n    # Only delete the description if it matches the dev-launcher default text\n    DESC=$(/usr/libexec/PlistBuddy -c \"Print :NSLocalNetworkUsageDescription\" \"$PLIST_PATH\" 2>/dev/null || echo \"\")\n    if echo \"$DESC\" | grep -q \"Expo Dev Launcher\"; then\n      /usr/libexec/PlistBuddy -c \"Delete :NSLocalNetworkUsageDescription\" \"$PLIST_PATH\" 2>/dev/null || true\n    fi\n  fi\nfi\n";
-		};
 		00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -290,31 +276,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		135CD0D431782250580F0916 /* [Expo] Configure project */ = {
+		2975F8B242EE46E59B6B9B5A /* [Expo Dev Launcher] Strip Local Network Keys for Release */ = {
 			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"$(SRCROOT)/.xcode.env",
-				"$(SRCROOT)/.xcode.env.local",
-				"$(SRCROOT)/PlayBudz/PlayBudz.entitlements",
-				"$(SRCROOT)/Pods/Target Support Files/Pods-PlayBudz/expo-configure-project.sh",
 			);
-			name = "[Expo] Configure project";
-			outputFileListPaths = (
-			);
+			name = "[Expo Dev Launcher] Strip Local Network Keys for Release";
 			outputPaths = (
-				"$(SRCROOT)/Pods/Target Support Files/Pods-PlayBudz/ExpoModulesProvider.swift",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-PlayBudz/expo-configure-project.sh\"\n";
+			shellScript = "# Strip dev-launcher-specific local network permission keys from non-Debug builds\n# This only removes _expo._tcp Bonjour services and the dev-launcher usage description.\n# Other Bonjour services and custom descriptions are preserved for production use.\n\nif [ \"$CONFIGURATION\" != \"Debug\" ]; then\n  PLIST_PATH=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n  if [ -f \"$PLIST_PATH\" ]; then\n    # Check if NSBonjourServices exists\n    if /usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" >/dev/null 2>&1; then\n      # Get the count of services\n      COUNT=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null | grep \"^    \" | wc -l | tr -d ' ')\n\n      # Remove _expo._tcp\n      for ((i=COUNT-1; i>=0; i--)); do\n        SERVICE=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices:$i\" \"$PLIST_PATH\" 2>/dev/null || echo \"\")\n        if echo \"$SERVICE\" | grep -q \"_expo._tcp\"; then\n          /usr/libexec/PlistBuddy -c \"Delete :NSBonjourServices:$i\" \"$PLIST_PATH\" 2>/dev/null || true\n        fi\n      done\n\n      # If the array is now empty, remove it entirely\n      REMAINING=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null | grep \"^    \" | wc -l | tr -d ' ')\n      if [ \"$REMAINING\" -eq \"0\" ]; then\n        /usr/libexec/PlistBuddy -c \"Delete :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null || true\n      fi\n    fi\n\n    # Only delete the description if it matches the dev-launcher default text\n    DESC=$(/usr/libexec/PlistBuddy -c \"Print :NSLocalNetworkUsageDescription\" \"$PLIST_PATH\" 2>/dev/null || echo \"\")\n    if echo \"$DESC\" | grep -q \"Expo Dev Launcher\"; then\n      /usr/libexec/PlistBuddy -c \"Delete :NSLocalNetworkUsageDescription\" \"$PLIST_PATH\" 2>/dev/null || true\n    fi\n  fi\nfi\n";
 		};
-		5F275517CB21DBA34B5A79B2 /* [CP] Embed Pods Frameworks */ = {
+		60FEC536B4B5E6DEDE113713 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -359,6 +335,30 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PlayBudz/Pods-PlayBudz-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		7E39045C6060B5B15DC5C3AF /* [Expo] Configure project */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/.xcode.env",
+				"$(SRCROOT)/.xcode.env.local",
+				"$(SRCROOT)/PlayBudz/PlayBudz.entitlements",
+				"$(SRCROOT)/Pods/Target Support Files/Pods-PlayBudz/expo-configure-project.sh",
+			);
+			name = "[Expo] Configure project";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(SRCROOT)/Pods/Target Support Files/Pods-PlayBudz/ExpoModulesProvider.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-PlayBudz/expo-configure-project.sh\"\n";
 		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -424,7 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				320C54B3C1610F6F747AE5B0 /* ExpoModulesProvider.swift in Sources */,
+				FD95DBB28170DA830E4BF6A2 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,7 +433,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB138F7376B71BF428F24535 /* Pods-PlayBudz.debug.xcconfig */;
+			baseConfigurationReference = FE11CF8CDA42859A25EDF769 /* Pods-PlayBudz.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -460,18 +460,18 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_DEBUG";
 				PRODUCT_BUNDLE_IDENTIFIER = com.playbudz.app;
-				PRODUCT_NAME = "PlayBudz";
+				PRODUCT_NAME = PlayBudz;
 				SWIFT_OBJC_BRIDGING_HEADER = "PlayBudz/PlayBudz-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70ACBF4D91E41F1235F10D07 /* Pods-PlayBudz.release.xcconfig */;
+			baseConfigurationReference = F640BD5B1C8CCBE6718E1B18 /* Pods-PlayBudz.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -493,10 +493,10 @@
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D EXPO_CONFIGURATION_RELEASE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.playbudz.app;
-				PRODUCT_NAME = "PlayBudz";
+				PRODUCT_NAME = PlayBudz;
 				SWIFT_OBJC_BRIDGING_HEADER = "PlayBudz/PlayBudz-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

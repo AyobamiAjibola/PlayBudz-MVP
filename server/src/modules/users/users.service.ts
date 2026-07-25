@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersRepository } from './users.repository';
@@ -110,8 +114,25 @@ export class UsersService {
 
     const firebaseUid = decoded.uid;
     const email = decoded.email;
-
     const provider = decoded.firebase?.sign_in_provider;
+
+    if (!email) {
+      throw new BadRequestException(
+        'Firebase account does not contain an email address.',
+      );
+    }
+
+    const existingUser = await this.usersRepository.findUnique({
+      firebaseUid,
+    });
+
+    if (existingUser) {
+      return {
+        success: true,
+        message: 'User account already exists.',
+        data: existingUser,
+      };
+    }
 
     const newUser = await this.usersRepository.create({
       fullName:
@@ -120,7 +141,7 @@ export class UsersService {
           : data.fullName,
       firebaseUid,
       provider,
-      email: email as string,
+      email: email,
       image: provider === 'google.com' ? (decoded.picture ?? '') : '',
     });
 
@@ -131,7 +152,7 @@ export class UsersService {
     };
   }
 
-  async updateUser(params: {
+  async updateUser_(params: {
     where: Prisma.UserWhereUniqueInput;
     data: UpdateUserDto;
   }): Promise<ApiResponse<User>> {
@@ -145,19 +166,19 @@ export class UsersService {
     };
   }
 
-  async updateNotification(dto: FirebaseUser): Promise<ApiResponse<null>> {
-    const user = await this.usersRepository.findOne({
-      firebaseUid: dto.uid,
+  async updateUser(
+    user: FirebaseUser,
+    dto: UpdateUserDto,
+  ): Promise<ApiResponse<null>> {
+    const u = await this.usersRepository.findOne({
+      firebaseUid: user.uid,
     });
 
-    if (!user) {
+    if (!u) {
       throw new NotFoundException('User not found');
     }
 
-    await this.usersRepository.update(
-      { id: user.id },
-      { notificationEnabled: !user.notificationEnabled },
-    );
+    await this.usersRepository.update({ id: u.id }, dto);
 
     return {
       success: true,

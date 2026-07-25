@@ -3,7 +3,8 @@ import axios from "axios";
 
 export const api = axios.create({
   baseURL: process.env.EXPO_PUBLIC_BASE_URL,
-   headers: {
+  timeout: 15000,
+  headers: {
     "Content-Type": "application/json",
     Accept: "application/json",
   },
@@ -12,7 +13,7 @@ export const api = axios.create({
 api.interceptors.request.use(
   async (config) => {
     try {
-      await auth.authStateReady();
+      // await auth.authStateReady();
       const user = auth.currentUser;
 
       if (user) {
@@ -33,11 +34,39 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    const message =
-      error.response?.data?.message ??
-      error.response?.data?.error ??
-      "Something went wrong.";
+    if (axios.isAxiosError(error)) {
+      console.log("API error:", {
+        url: error.config?.url,
+        method: error.config?.method,
+        status: error.response?.status,
+        data: error.response?.data,
+        baseURL: error.config?.baseURL,
+        message: error.message,
+      });
 
-    return Promise.reject(new Error(message));
+      const responseMessage =
+        error.response?.data?.message;
+
+      const message = Array.isArray(responseMessage)
+        ? responseMessage.join(", ")
+        : responseMessage ||
+          error.message ||
+          "Something went wrong";
+
+      return Promise.reject(new Error(message));
+    }
+
+    return Promise.reject(error);
   }
 );
+// api.interceptors.response.use(
+//   (response) => response,
+//   (error) => {
+//     const message =
+//       error.response?.data?.message ??
+//       error.response?.data?.error ??
+//       "Something went wrong.";
+
+//     return Promise.reject(new Error(message));
+//   }
+// );

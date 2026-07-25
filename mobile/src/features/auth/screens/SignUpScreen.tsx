@@ -1,160 +1,256 @@
-import AppTextInput from "@/components/AppTextInput";
-import Screen from "@/components/Screen";
-import { AppButton } from "@/components/ui/button";
+import { View, Keyboard, TouchableOpacity } from "react-native";
+import { useGoogleAuth } from "@/hooks/useGoogleAuth";
+import { useState } from "react";
+import { useAuthStore } from "@/stores/auth.store";
+import { router } from "expo-router";
 import { Text } from "@/components/ui/text";
 import { Colors, Font, FontSize } from "@/constants/utils";
-import { useState } from "react";
-import { Pressable, View } from "react-native";
-import BottomSection from "../components/BottomSection";
-import { router } from "expo-router";
-import { Ionicons } from "@expo/vector-icons";
-import { createUserWithEmailAndPassword, fetchSignInMethodsForEmail } from "firebase/auth";
-import { auth } from "@/config/firebase";
-import Toast from "react-native-toast-message";
-import { emailRegex, passwordRegex } from "@/constants/helper";
+import { StyleSheet } from "react-native";
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import AntDesign from '@expo/vector-icons/AntDesign';
+import Entypo from '@expo/vector-icons/Entypo';
+import { Image } from "expo-image";
+import { signInWithApple } from "@/features/auth/services/auth.service";
+import Screen from "@/components/Screen";
 import { api } from "@/api/axios";
+import Toast from "react-native-toast-message";
+import { getPushToken } from "@/features/onboarding/services/notification.service";
+
+const googleIcon = require("@/assets/images/Google.svg");
 
 export default function SignUpScreen() {
-    const [name, setName] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
-    const [email, setEmail] = useState<string>("");
-    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const { signInWithGoogle } = useGoogleAuth();
+    const [isGoogleLoading, setIsGoogleLoading] = useState(false);
+    const refreshUser = useAuthStore((state) => state.refreshUser);
 
-    const handleBtn = async () => {
-        setIsLoading(true);
-        //check if email exist in google auth
+    // const handleGoogleSignUp = async () => {
+    //     if (isGoogleLoading) return;
+
+    //     try {
+    //         setIsGoogleLoading(true);
+    //         Keyboard.dismiss();
+
+    //         const userCredential = await signInWithGoogle();
+
+    //         if (!userCredential) return;
+
+    //         const firebaseUser = userCredential.user;
+    //         const idToken = await firebaseUser.getIdToken();
+
+    //         const response = await api.post("/users/create-user", {
+    //             idToken,
+    //         })
+
+    //         if(response.data.success) {
+    //             await refreshUser(firebaseUser)
+    //             // router.replace("/onboarding-first")
+    //         }
+    //     } catch (error) {
+    //         console.error("Google sign-up error:", error);
+    //         Toast.show({
+    //             type: "error",
+    //             text1:
+    //                 error instanceof Error
+    //                 ? error.message
+    //                 : "Unable to create your account",
+    //         });
+    //     } finally {
+    //         setIsGoogleLoading(false);
+    //     }
+    // };
+
+    const handleGoogleAuth = async () => {
+        if (isGoogleLoading) return;
+
         try {
-            const methods = await fetchSignInMethodsForEmail(auth, email);
+            setIsGoogleLoading(true);
+            Keyboard.dismiss();
 
-            if (methods.length > 0) {
-                Toast.show({
-                    type: "error",
-                    text1: "This email is already in use.",
-                    text1Style:{fontFamily: Font.regular, fontSize: FontSize.default}
-                });
-                setIsLoading(false);
-                return;
-            }
+            const userCredential = await signInWithGoogle();
 
-            if(!emailRegex.test(email)) {
-                Toast.show({
-                    type: "error",
-                    text1: "Please enter a valid email address.",
-                    text1Style:{fontFamily: Font.regular, fontSize: FontSize.default}
-                });
-                setIsLoading(false);
-                return;
-            }
+            if (!userCredential) return;
 
-            if(!passwordRegex.test(password)) {
-                Toast.show({
-                    type: "error",
-                    text1: "Password is incorrect.",
-                    text1Style:{fontFamily: Font.regular, fontSize: FontSize.default}
-                });
-                setIsLoading(false);
-                return;
-            }
+            const firebaseUser = userCredential.user;
+            const idToken = await firebaseUser.getIdToken();
 
-            try {
-                const response = await api.post("/auth/send-otp", {email});
+            await api.post("/auth/login", {
+                idToken,
+            });
 
-                if(response.data.success) {
-                    router.push({pathname: "/otp", params: {email, password, fullName: name}})
-                }
-
-            } catch (error) {
-                Toast.show({
-                    type: "error",
-                    text1: (error as Error).message,
-                    text1Style:{fontFamily: Font.regular, fontSize: FontSize.sm}
+            //save new pushToken
+            const pushToken = await getPushToken();
+            if(pushToken.granted) {
+                await api.patch("/users/update-user-info", {
+                    pushToken: pushToken.token,
                 });
             }
 
-        } catch (err: any) {
-            console.error("Error checking email availability:", err);
+            await refreshUser(firebaseUser);
+        } catch (error) {
+            console.error("Google authentication error:", error);
+
             Toast.show({
-                type: "error",
-                text1: err.message || 'Could not verify email. Please try again.'
+            type: "error",
+            text1:
+                error instanceof Error
+                ? error.message
+                : "Unable to continue with Google",
             });
         } finally {
-            setIsLoading(false);
+            setIsGoogleLoading(false);
         }
-    }
+    };
 
-    const validate = !email && !name && !password
+    const handleAppleLogin = async () => {
+        try {
+            const response = await signInWithApple();
+
+            console.log(response.user);
+        } catch (error) {
+            console.error("Apple login error:", error);
+        }
+    };
+
+    const socialButton = [
+        {
+            text: "Continue with Facebook",
+            icon: <MaterialCommunityIcons name="facebook" size={28} color="white" />,
+            bgColor: "#1877F2",
+            onPress: ()=>console.log("facebook"),
+            border:  "#1877F2",
+            textColor: "white"
+        },
+        {
+            text: "Continue with Apple",
+            icon: <AntDesign name="apple" size={28} color="white" />,
+            bgColor: "#000000",
+            onPress: ()=>console.log("apple"),
+            border:  "#000000",
+            textColor: "white"
+        },
+        {
+            text: "Continue with Google",
+            icon: <Image
+                    source={googleIcon}
+                    contentFit="cover"
+                    style={{
+                        width: 24, height: 24
+                    }}
+                />,
+            bgColor: "white",
+            onPress: () => handleGoogleAuth(),
+            border: Colors.borderColor,
+            textColor: "black"
+        },
+        {
+            text: "Continue with Email",
+            icon: <Entypo name="mail" size={28} color="#7C7C9C" />,
+            bgColor: "white",
+            onPress: () => router.push("/email-sign-up"),
+            border: Colors.borderColor,
+            textColor: "black"
+        }
+    ]
 
     return (
-        <Screen showContent={false} screenPaddingBottom={0} backBtnPadding={40}>
-            <View className="flex-1 px-6" style={{marginTop: 80}}>
+        <Screen 
+            showContent={false} 
+            screenPaddingBottom={0} 
+            backBtnPadding={40}
+        >
+            <View className="flex-1 justify-center px-6">
                 <Text className="text-left font-bold text-black" style={{fontSize: FontSize.screenTitle, fontFamily: Font.semiBold}}>
-                    Let’s create your account 
+                    Sign up to get started
                 </Text>
-                <Text className="text-left"  
+
+                <Text className="mt-2 text-left"  style={{color: Colors.textGrey, fontSize: FontSize.default}}>
+                    Choose how you’d like to create your account
+                </Text>
+
+                <View className="mt-10 gap-4">
+                    {socialButton.map((v, k) => (
+                        <TouchableOpacity
+                            key={k}
+                            onPress={v.onPress}
+                            style={[styles.socialBtn, {
+                                backgroundColor: v.bgColor,
+                                borderColor: v.border
+                            }]}
+                        >
+                            {v.icon}
+                            <Text style={{color: v.textColor, fontSize: FontSize.default, fontFamily: Font.semiBold}}>
+                                {v.text}
+                            </Text>
+                            <View/>
+                        </TouchableOpacity>
+                    ))}
+                </View>
+
+                <View 
                     style={{
-                        color: Colors.textGrey, 
-                        fontSize: FontSize.default,
-                        marginTop: 30, marginBottom: 10
+                        alignItems: "center",
+                        flexDirection: "row",
+                        justifyContent: "flex-start",
+                        marginTop: 20, gap: 4
                     }}
                 >
-                    Enter your details below to create account
-                </Text>
-
-                <View className="flex" style={{gap: 18}}>
-                    <AppTextInput
-                        value={name}
-                        onChangeText={setName}
-                        placeholder="Name"
-                        keyboardType="default"
-                        autoCapitalize="words"
-                        autoCorrect={false}
-                    />
-
-                    <AppTextInput
-                        value={email}
-                        onChangeText={setEmail}
-                        placeholder="Email address"
-                        keyboardType="email-address"
-                        autoCapitalize="none"
-                        autoCorrect={false}
-                    />
-
-                    <AppTextInput
-                        value={password}
-                        onChangeText={setPassword}
-                        placeholder="Password"
-                        secureTextEntry={!isPasswordVisible}
-                        autoCapitalize="none"
-                        autoCorrect={false}
-                        rightIcon={
-                            <Pressable
-                                onPress={() => setIsPasswordVisible((prev) => !prev)}
-                                style={{
-                                    position: "absolute",
-                                    right: 16,
-                                    top: 0,
-                                    height: 56,
-                                    justifyContent: "center",
-                                }}
-                                hitSlop={10}
-                                >
-                                <Ionicons
-                                    name={isPasswordVisible ? "eye-off-outline" : "eye-outline"}
-                                    size={22}
-                                    color="#6B7280"
-                                />
-                            </Pressable>
-                        }
-                    />
+                    <Text className="text-left" style={{color: Colors.textGrey, fontSize: 16}}>
+                        Already have an account?
+                    </Text>
+                    <TouchableOpacity onPress={() => router.push("/login")}>
+                        <Text 
+                            style={{color: Colors.primary, fontFamily: "RethinkSans-Bold"}}
+                        >
+                            Log in
+                        </Text>
+                    </TouchableOpacity>
                 </View>
             </View>
 
-            <BottomSection 
-                handleBtn={handleBtn} 
-                btnDisabled={validate} 
-                isLoading={isLoading} 
-            />
+            <View style={styles.bottom} className="px-6">
+                <View style={styles.divider} />
+                <Text style={{fontSize: 16, color: Colors.textGrey}}>
+                    By continuing, you agree to our {" "}
+                    <Text style={{
+                        fontFamily: "RethinkSans-Bold",
+                        textDecorationLine: "underline", color: 'black'}}>
+                        Terms of Service
+                    </Text> and acknowledge 
+                    that you understand the {" "}
+                    <Text style={{
+                        fontFamily: "RethinkSans-Bold",
+                        textDecorationLine: "underline", color: 'black'}}
+                    >
+                        Privacy Policy.
+                    </Text>
+                </Text>
+            </View>
         </Screen>
     )
 }
+
+const styles = StyleSheet.create({
+    socialBtn: {
+        borderRadius: 24,
+        height: 54,
+        backgroundColor: "black",
+        display: "flex",
+        justifyContent: "space-between",
+        paddingHorizontal: 16,
+        alignItems: 'center',
+        flexDirection: 'row',
+        borderWidth: 1
+    },
+    bottom: {
+        display: "flex",
+        justifyContent: "flex-start",
+        gap: 15,
+        paddingBottom: 44,
+    },
+    divider: {
+        height: 1,
+        backgroundColor: Colors.lightBorderColor,
+        width: "100%",
+        marginVertical: 16,
+    },
+})

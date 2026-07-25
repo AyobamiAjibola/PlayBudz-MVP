@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "User" ALTER COLUMN "pushToken" DROP DEFAULT,
+ALTER COLUMN "pushToken" SET DATA TYPE TEXT;

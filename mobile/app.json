@@ -8,9 +8,11 @@
     "scheme": "playbudz",
     "userInterfaceStyle": "automatic",
     "ios": {
+      "buildNumber": "7",
       "googleServicesFile": "./GoogleService-Info.plist",
       "bundleIdentifier": "com.playbudz.app",
       "infoPlist": {
+        "GIDClientID": "775139503787-3ih8lqd824v4k53b0f2i6nss1utoobrd.apps.googleusercontent.com",
         "NSLocationWhenInUseUsageDescription": "Allow PlayBudz to use your precise location so we can show your current location."
       },
       "appleTeamId": "7RBMN3ZN66"
@@ -75,7 +77,6 @@
         }
       ],
       "expo-web-browser",
-      "@react-native-google-signin/google-signin",
       "expo-secure-store",
       "expo-font",
       "@react-native-community/datetimepicker",

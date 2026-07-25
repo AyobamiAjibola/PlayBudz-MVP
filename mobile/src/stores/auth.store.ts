@@ -24,7 +24,7 @@ type AuthState = {
   setIsLoading: (value: boolean) => void;
   setError: (error: FirebaseError | Error | null) => void;
 
-  refreshUser: () => Promise<void>;
+  refreshUser: (firebaseUser?: User) => Promise<void>;
   signOut: () => Promise<void>;
 
 };
@@ -45,11 +45,11 @@ export const useAuthStore = create<AuthState>((set) => ({
 
   setError: (error) => set({ error }),
 
-  refreshUser: async () => {
+  refreshUser: async (providedFirebaseUser) => {
     try {
-      set({ isLoading: true });
+      set({ isLoading: true, error: null });
 
-      const firebaseUser = auth.currentUser;
+      const firebaseUser = providedFirebaseUser ?? auth.currentUser;
 
       if (!firebaseUser) {
         set({
@@ -62,22 +62,34 @@ export const useAuthStore = create<AuthState>((set) => ({
       }
 
       const response = await api.get("/auth/me");
-      const user = response.data.data
+      const profile = response.data.data;
+
       set({
         user: {
           auth: firebaseUser,
           profile: {
-            registrationComplete: user.registrationComplete,
-            fullName: user.fullName,
-            image: user.image,
-            location: user.location,
+            registrationComplete: profile.registrationComplete === true,
+            fullName: profile.fullName,
+            image: profile.image,
+            location: profile.location,
           }
         },
         isAuthenticated: true,
         error: null,
       });
     } catch (error) {
-      set({ error: error as Error });
+      const normalizedError =
+        error instanceof Error
+          ? error
+          : new Error("Unable to load user profile");
+      
+      set({
+        user: null,
+        isAuthenticated: false,
+        error: normalizedError,
+      });
+
+      throw normalizedError;
     } finally {
       set({ isLoading: false });
     }

@@ -85,6 +85,7 @@ export const UserScalarFieldEnum = {
   image: 'image',
   location: 'location',
   notificationEnabled: 'notificationEnabled',
+  pushToken: 'pushToken',
   password: 'password',
   updatedAt: 'updatedAt',
   refreshToken: 'refreshToken',

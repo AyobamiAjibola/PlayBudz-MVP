@@ -1,8 +1,4 @@
-import {
-  BadRequestException,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersRepository } from '../users/users.repository';
 import { FirebaseService } from 'src/firebase/firebase.service';
@@ -128,7 +124,6 @@ export class AuthService {
 
     const firebaseUid = decoded.uid;
     const email = decoded.email;
-
     const provider = decoded.firebase?.sign_in_provider;
 
     let user = await this.usersRepository.findUnique({ firebaseUid });
@@ -137,23 +132,32 @@ export class AuthService {
       const shouldAutoCreate =
         provider === 'google.com' || provider === 'apple.com';
 
-      if (!shouldAutoCreate) {
-        throw new UnauthorizedException(
-          'User account not found. Please register first.',
-        );
-      }
+      // if (!shouldAutoCreate) {
+      //   throw new UnauthorizedException(
+      //     'User account not found. Please register first.',
+      //   );
+      // }
 
-      user = await this.usersRepository.create({
-        firebaseUid,
-        email: email as string,
-        provider,
-      });
+      // user = await this.usersRepository.create({
+      //   firebaseUid,
+      //   email: email as string,
+      //   provider,
+      // });
+      if (shouldAutoCreate) {
+        user = await this.usersRepository.create({
+          fullName: decoded.name as string,
+          firebaseUid,
+          provider,
+          email: email as string,
+          image: provider === 'google.com' ? (decoded.picture ?? '') : '',
+        });
+      }
     }
 
     return {
       success: true,
       message: 'Successful.',
-      data: user,
+      data: user as User,
     };
   }
 }

@@ -37,6 +37,7 @@ export type UserMinAggregateOutputType = {
   image: string | null
   location: string | null
   notificationEnabled: boolean | null
+  pushToken: string | null
   password: string | null
   updatedAt: Date | null
   refreshToken: string | null
@@ -57,6 +58,7 @@ export type UserMaxAggregateOutputType = {
   image: string | null
   location: string | null
   notificationEnabled: boolean | null
+  pushToken: string | null
   password: string | null
   updatedAt: Date | null
   refreshToken: string | null
@@ -77,6 +79,7 @@ export type UserCountAggregateOutputType = {
   image: number
   location: number
   notificationEnabled: number
+  pushToken: number
   password: number
   updatedAt: number
   refreshToken: number
@@ -99,6 +102,7 @@ export type UserMinAggregateInputType = {
   image?: true
   location?: true
   notificationEnabled?: true
+  pushToken?: true
   password?: true
   updatedAt?: true
   refreshToken?: true
@@ -119,6 +123,7 @@ export type UserMaxAggregateInputType = {
   image?: true
   location?: true
   notificationEnabled?: true
+  pushToken?: true
   password?: true
   updatedAt?: true
   refreshToken?: true
@@ -139,6 +144,7 @@ export type UserCountAggregateInputType = {
   image?: true
   location?: true
   notificationEnabled?: true
+  pushToken?: true
   password?: true
   updatedAt?: true
   refreshToken?: true
@@ -232,6 +238,7 @@ export type UserGroupByOutputType = {
   image: string | null
   location: string | null
   notificationEnabled: boolean | null
+  pushToken: string | null
   password: string | null
   updatedAt: Date
   refreshToken: string | null
@@ -273,6 +280,7 @@ export type UserWhereInput = {
   image?: Prisma.StringNullableFilter<"User"> | string | null
   location?: Prisma.StringNullableFilter<"User"> | string | null
   notificationEnabled?: Prisma.BoolNullableFilter<"User"> | boolean | null
+  pushToken?: Prisma.StringNullableFilter<"User"> | string | null
   password?: Prisma.StringNullableFilter<"User"> | string | null
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   refreshToken?: Prisma.StringNullableFilter<"User"> | string | null
@@ -295,6 +303,7 @@ export type UserOrderByWithRelationInput = {
   image?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
   notificationEnabled?: Prisma.SortOrderInput | Prisma.SortOrder
+  pushToken?: Prisma.SortOrderInput | Prisma.SortOrder
   password?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   refreshToken?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -320,6 +329,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   image?: Prisma.StringNullableFilter<"User"> | string | null
   location?: Prisma.StringNullableFilter<"User"> | string | null
   notificationEnabled?: Prisma.BoolNullableFilter<"User"> | boolean | null
+  pushToken?: Prisma.StringNullableFilter<"User"> | string | null
   password?: Prisma.StringNullableFilter<"User"> | string | null
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   refreshToken?: Prisma.StringNullableFilter<"User"> | string | null
@@ -342,6 +352,7 @@ export type UserOrderByWithAggregationInput = {
   image?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrderInput | Prisma.SortOrder
   notificationEnabled?: Prisma.SortOrderInput | Prisma.SortOrder
+  pushToken?: Prisma.SortOrderInput | Prisma.SortOrder
   password?: Prisma.SortOrderInput | Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   refreshToken?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -368,6 +379,7 @@ export type UserScalarWhereWithAggregatesInput = {
   image?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   location?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   notificationEnabled?: Prisma.BoolNullableWithAggregatesFilter<"User"> | boolean | null
+  pushToken?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   password?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   refreshToken?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
@@ -388,6 +400,7 @@ export type UserCreateInput = {
   image?: string | null
   location?: string | null
   notificationEnabled?: boolean | null
+  pushToken?: string | null
   password?: string | null
   updatedAt?: Date | string
   refreshToken?: string | null
@@ -410,6 +423,7 @@ export type UserUncheckedCreateInput = {
   image?: string | null
   location?: string | null
   notificationEnabled?: boolean | null
+  pushToken?: string | null
   password?: string | null
   updatedAt?: Date | string
   refreshToken?: string | null
@@ -432,6 +446,7 @@ export type UserUpdateInput = {
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notificationEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -454,6 +469,7 @@ export type UserUncheckedUpdateInput = {
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notificationEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -476,6 +492,7 @@ export type UserCreateManyInput = {
   image?: string | null
   location?: string | null
   notificationEnabled?: boolean | null
+  pushToken?: string | null
   password?: string | null
   updatedAt?: Date | string
   refreshToken?: string | null
@@ -496,6 +513,7 @@ export type UserUpdateManyMutationInput = {
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notificationEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -516,6 +534,7 @@ export type UserUncheckedUpdateManyInput = {
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notificationEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -536,6 +555,7 @@ export type UserCountOrderByAggregateInput = {
   image?: Prisma.SortOrder
   location?: Prisma.SortOrder
   notificationEnabled?: Prisma.SortOrder
+  pushToken?: Prisma.SortOrder
   password?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   refreshToken?: Prisma.SortOrder
@@ -556,6 +576,7 @@ export type UserMaxOrderByAggregateInput = {
   image?: Prisma.SortOrder
   location?: Prisma.SortOrder
   notificationEnabled?: Prisma.SortOrder
+  pushToken?: Prisma.SortOrder
   password?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   refreshToken?: Prisma.SortOrder
@@ -576,6 +597,7 @@ export type UserMinOrderByAggregateInput = {
   image?: Prisma.SortOrder
   location?: Prisma.SortOrder
   notificationEnabled?: Prisma.SortOrder
+  pushToken?: Prisma.SortOrder
   password?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   refreshToken?: Prisma.SortOrder
@@ -645,6 +667,7 @@ export type UserCreateWithoutGamesCreatedInput = {
   image?: string | null
   location?: string | null
   notificationEnabled?: boolean | null
+  pushToken?: string | null
   password?: string | null
   updatedAt?: Date | string
   refreshToken?: string | null
@@ -666,6 +689,7 @@ export type UserUncheckedCreateWithoutGamesCreatedInput = {
   image?: string | null
   location?: string | null
   notificationEnabled?: boolean | null
+  pushToken?: string | null
   password?: string | null
   updatedAt?: Date | string
   refreshToken?: string | null
@@ -703,6 +727,7 @@ export type UserUpdateWithoutGamesCreatedInput = {
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notificationEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -724,6 +749,7 @@ export type UserUncheckedUpdateWithoutGamesCreatedInput = {
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notificationEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -745,6 +771,7 @@ export type UserCreateWithoutParticipantsInput = {
   image?: string | null
   location?: string | null
   notificationEnabled?: boolean | null
+  pushToken?: string | null
   password?: string | null
   updatedAt?: Date | string
   refreshToken?: string | null
@@ -766,6 +793,7 @@ export type UserUncheckedCreateWithoutParticipantsInput = {
   image?: string | null
   location?: string | null
   notificationEnabled?: boolean | null
+  pushToken?: string | null
   password?: string | null
   updatedAt?: Date | string
   refreshToken?: string | null
@@ -803,6 +831,7 @@ export type UserUpdateWithoutParticipantsInput = {
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notificationEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -824,6 +853,7 @@ export type UserUncheckedUpdateWithoutParticipantsInput = {
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notificationEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -885,6 +915,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   image?: boolean
   location?: boolean
   notificationEnabled?: boolean
+  pushToken?: boolean
   password?: boolean
   updatedAt?: boolean
   refreshToken?: boolean
@@ -908,6 +939,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   image?: boolean
   location?: boolean
   notificationEnabled?: boolean
+  pushToken?: boolean
   password?: boolean
   updatedAt?: boolean
   refreshToken?: boolean
@@ -928,6 +960,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   image?: boolean
   location?: boolean
   notificationEnabled?: boolean
+  pushToken?: boolean
   password?: boolean
   updatedAt?: boolean
   refreshToken?: boolean
@@ -948,6 +981,7 @@ export type UserSelectScalar = {
   image?: boolean
   location?: boolean
   notificationEnabled?: boolean
+  pushToken?: boolean
   password?: boolean
   updatedAt?: boolean
   refreshToken?: boolean
@@ -955,7 +989,7 @@ export type UserSelectScalar = {
   registrationComplete?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"email" | "id" | "firebaseUid" | "createdAt" | "fullName" | "dob" | "gender" | "biography" | "interests" | "image" | "location" | "notificationEnabled" | "password" | "updatedAt" | "refreshToken" | "provider" | "registrationComplete", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"email" | "id" | "firebaseUid" | "createdAt" | "fullName" | "dob" | "gender" | "biography" | "interests" | "image" | "location" | "notificationEnabled" | "pushToken" | "password" | "updatedAt" | "refreshToken" | "provider" | "registrationComplete", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   gamesCreated?: boolean | Prisma.User$gamesCreatedArgs<ExtArgs>
   participants?: boolean | Prisma.User$participantsArgs<ExtArgs>
@@ -983,6 +1017,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     image: string | null
     location: string | null
     notificationEnabled: boolean | null
+    pushToken: string | null
     password: string | null
     updatedAt: Date
     refreshToken: string | null
@@ -1425,6 +1460,7 @@ export interface UserFieldRefs {
   readonly image: Prisma.FieldRef<"User", 'String'>
   readonly location: Prisma.FieldRef<"User", 'String'>
   readonly notificationEnabled: Prisma.FieldRef<"User", 'Boolean'>
+  readonly pushToken: Prisma.FieldRef<"User", 'String'>
   readonly password: Prisma.FieldRef<"User", 'String'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly refreshToken: Prisma.FieldRef<"User", 'String'>

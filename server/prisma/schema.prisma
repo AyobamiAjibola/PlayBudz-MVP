@@ -21,6 +21,7 @@ model User {
   image        String?
   location     String?
   notificationEnabled Boolean?       @default(false)
+  pushToken    String?        
   password     String?
   updatedAt    DateTime        @updatedAt
   refreshToken String?

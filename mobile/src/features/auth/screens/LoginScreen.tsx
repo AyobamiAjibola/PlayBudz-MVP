@@ -1,4 +1,4 @@
-import { View, Keyboard, TouchableOpacity, Pressable } from "react-native";
+import { View, Keyboard, TouchableOpacity, Pressable, ScrollView } from "react-native";
 import { useGoogleAuth } from "@/hooks/useGoogleAuth";
 import { loginWithEmail, signInWithApple } from "../services/auth.service";
 import { useState } from "react";
@@ -16,6 +16,9 @@ import { Ionicons } from "@expo/vector-icons";
 import { api } from "@/api/axios";
 import Toast from "react-native-toast-message";
 import { router } from "expo-router";
+import { auth } from "@/config/firebase";
+import { signOut as firebaseSignOut } from "firebase/auth";
+import { getPushToken } from "@/features/onboarding/services/notification.service";
 
 const googleIcon = require("@/assets/images/Google.svg");
 
@@ -26,29 +29,83 @@ export default function LoginScreen() {
     const [isGoogleLoading, setIsGoogleLoading] = useState(false);
     const refreshUser = useAuthStore((state) => state.refreshUser);
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const handleEmailLogin = async () => {
+        if(isLoading) return;
+
         try {
+            setIsLoading(true)
             const userCredential = await loginWithEmail(email, password);
 
-            const idToken = await userCredential.user.getIdToken();
+            const firebaseUser = userCredential.user;
+            const idToken = await firebaseUser.getIdToken();
 
             await api.post("/auth/login", {
                 idToken,
             });
 
-            await refreshUser();
+            //save new pushToken
+            const pushToken = await getPushToken();
+            if(pushToken.granted) {
+                await api.patch("/users/update-user-info", {
+                    pushToken: pushToken.token,
+                });
+            }
+
+            await refreshUser(firebaseUser);
         } catch (error) {
-            console.error(error, "error from login");
+            // Prevent Firebase from remaining authenticated
+            // when the backend rejects the login.
+            if (auth.currentUser) {
+                await firebaseSignOut(auth);
+            }
+
+            console.error("Error from email login:", error);
+
             Toast.show({
                 type: "error",
-                text1: (error as Error).message,
+                text1: 
+                    error instanceof Error
+                        ? error.message
+                        : "Unable to log in",
                 text1Style:{fontFamily: Font.regular, fontSize: FontSize.sm}
             });
+        } finally {
+            setIsLoading(false)
         }
     };
 
-    const handleGoogleLogin = async () => {
+    // const handleGoogleLogin = async () => {
+    //     if (isGoogleLoading) return;
+
+    //     try {
+    //         setIsGoogleLoading(true);
+    //         Keyboard.dismiss();
+
+    //         const userCredential = await signInWithGoogle();
+
+    //         if (!userCredential) return;
+
+    //         const firebaseUser = userCredential.user;
+    //         const idToken = await firebaseUser.getIdToken();
+
+    //         await api.post("/auth/login", {
+    //             idToken,
+    //         });
+
+    //         await refreshUser(firebaseUser);
+    //     } catch (error) {
+    //         if (auth.currentUser) {
+    //             await firebaseSignOut(auth);
+    //         }
+    //         console.error("Error from Google login:", error);
+    //     } finally {
+    //         setIsGoogleLoading(false);
+    //     }
+    // };
+
+    const handleGoogleAuth = async () => {
         if (isGoogleLoading) return;
 
         try {
@@ -59,15 +116,32 @@ export default function LoginScreen() {
 
             if (!userCredential) return;
 
-            const idToken = await userCredential.user.getIdToken();
+            const firebaseUser = userCredential.user;
+            const idToken = await firebaseUser.getIdToken();
 
             await api.post("/auth/login", {
                 idToken,
             });
 
-            await refreshUser();
+            //save new pushToken
+            const pushToken = await getPushToken();
+            if(pushToken.granted) {
+                await api.patch("/users/update-user-info", {
+                    pushToken: pushToken.token,
+                });
+            }
+
+            await refreshUser(firebaseUser);
         } catch (error) {
-            console.error(error);
+            console.error("Google authentication error:", error);
+
+            Toast.show({
+            type: "error",
+            text1:
+                error instanceof Error
+                ? error.message
+                : "Unable to continue with Google",
+            });
         } finally {
             setIsGoogleLoading(false);
         }
@@ -110,15 +184,27 @@ export default function LoginScreen() {
                     }}
                 />,
             bgColor: "white",
-            onPress: ()=>handleGoogleLogin(),
+            onPress: ()=>handleGoogleAuth(),
             border: Colors.borderColor,
             textColor: "black"
         }
     ]
 
     return (
-        <Screen showContent={false} screenPaddingBottom={0} backBtnPadding={40}>
-            <View className="flex-1 justify-center px-6">
+        <Screen 
+            showContent={false} 
+            screenPaddingBottom={0} 
+            backBtnPadding={40}
+            dismissKeyboard={true}
+            avoidKeyboard={true}
+        >
+            <ScrollView className="px-6"
+                contentContainerStyle={{
+                    flexGrow: 1,
+                    justifyContent: "flex-start",
+                    marginTop: 20
+                }}
+            >
                 <Text className="text-left font-bold text-black" style={{fontSize: FontSize.screenTitle, fontFamily: Font.semiBold}}>
                     Welcome back
                 </Text>
@@ -215,6 +301,7 @@ export default function LoginScreen() {
                     onPress={handleEmailLogin} 
                     textStyle={{fontFamily: "RethinkSans-SemiBold"}}
                     buttonStyle={{marginTop: 30, width: "100%"}}
+                    isLoading={isLoading}
                 />
                 <View 
                     style={{
@@ -227,7 +314,7 @@ export default function LoginScreen() {
                     <Text className="text-left" style={{color: Colors.textGrey, fontSize: 16}}>
                         Don't have an account?
                     </Text>
-                    <TouchableOpacity onPress={() => router.push("/get-started")}>
+                    <TouchableOpacity onPress={() => router.push("/sign-up")}>
                         <Text 
                             style={{color: Colors.primary, fontFamily: "RethinkSans-Bold"}}
                         >
@@ -235,7 +322,7 @@ export default function LoginScreen() {
                         </Text>
                     </TouchableOpacity>
                 </View>
-            </View>
+            </ScrollView>
         </Screen>
     )
 }

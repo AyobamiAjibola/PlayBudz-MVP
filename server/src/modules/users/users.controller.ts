@@ -33,18 +33,22 @@ export class UsersController {
     return this.usersService.createUserFirebase(dto);
   }
 
+  //not in use
   @Patch('update-user/:id')
   updateUser(@Param('id') id: string, @Body() dto: UpdateUserDto) {
-    return this.usersService.updateUser({
+    return this.usersService.updateUser_({
       where: { id },
       data: dto,
     });
   }
 
   @UseGuards(FirebaseAuthGuard)
-  @Patch('update-notification')
-  updateNotification(@CurrentUser() user: FirebaseUser) {
-    return this.usersService.updateNotification(user);
+  @Patch('update-user-info')
+  updateNotification(
+    @CurrentUser() user: FirebaseUser,
+    @Body() body: UpdateUserDto,
+  ) {
+    return this.usersService.updateUser(user, body);
   }
 
   @UseGuards(FirebaseAuthGuard)

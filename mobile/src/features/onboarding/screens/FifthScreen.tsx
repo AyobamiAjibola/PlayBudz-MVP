@@ -1,7 +1,7 @@
 import Screen from '@/components/Screen'
 import { useState } from 'react'
 import ProgressBar from '../component/ProgressBar'
-import { ScrollView, StyleSheet, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { Text } from '@/components/ui/text'
 import { Colors, Font, FontSize } from '@/constants/utils'
 import { LocationSearchInput, SelectedLocation } from '@/components/LocationSearchInput'
@@ -18,6 +18,7 @@ import { api } from '@/api/axios'
 import { router } from 'expo-router'
 import { useAuthStore } from '@/stores/auth.store'
 import Toast from 'react-native-toast-message'
+import { getPushToken } from '../services/notification.service'
 
 export default function FifthScreen() {
     const [location, setLocation] = useState<string>("");
@@ -28,29 +29,72 @@ export default function FifthScreen() {
     const refreshUser = useAuthStore((state) => state.refreshUser);
 
     const enableNotifications = async () => {
-        setIsLoading(true);
+        if (isLoading) return;
 
         try {
-            const { status } =
-            await Notifications.requestPermissionsAsync();
+            setIsLoading(true);
 
-            if (status === "granted") {
-            await api.patch("/users/update-notification");
+            const result = await getPushToken();
+
+            if (!result.granted) {
+                router.replace("/home");
+                return;
             }
 
-            router.replace("/(app)/home");
-        } catch (error) {
-            console.error(error, "notification error");
+            await api.patch("/users/update-user-info", {
+                notificationEnabled: true,
+                pushToken: result.token,
+            });
 
-            router.replace("/(app)/home");
+            await refreshUser();
+            router.replace("/home");
+            
+        } catch (error) {
+            console.error(error);
+
+            Toast.show({
+                type: "error",
+                text1:
+                    error instanceof Error
+                    ? error.message
+                    : "Unable to enable notifications",
+                text1Style: {
+                    fontFamily: Font.regular,
+                    fontSize: FontSize.sm,
+                },
+            });
         } finally {
             setIsLoading(false);
         }
     };
+    
+    const disableNotification = async () => {
+        if (isLoading) return;
 
-    const disableNotification = () => {
-        router.replace('/(app)/home')
-    }
+        try {
+            setIsLoading(true);
+
+            // await api.patch("/users/update-notification", {
+            //     notificationEnabled: false,
+            // });
+
+            await refreshUser();
+
+            router.replace("/home");
+        } catch (error) {
+            console.error("Disable notification error:", error);
+
+            Toast.show({
+                type: "error",
+                text1:
+                    error instanceof Error
+                    ? error.message
+                    : "Unable to update notification preference",
+            });
+        } finally {
+            setIsLoading(false);
+        }
+    };
 
     const handleSubmit = async () => {
         setIsLoading(true)
@@ -82,9 +126,10 @@ export default function FifthScreen() {
 
             if(response.data.success) {
                 setProfileImage(null)
-                await refreshUser();
+                
                 await removeSecureItem("onboardingStep");
                 await removeSecureItem(ON_BOARDING_DATA_KEY);
+
                 setNotification(true);
             }
 

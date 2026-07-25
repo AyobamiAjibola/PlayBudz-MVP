@@ -32,4 +32,8 @@ export class UpdateUserDto {
   @IsOptional()
   @IsBoolean()
   notification?: boolean;
+
+  @IsOptional()
+  @IsString()
+  pushToken?: string;
 }

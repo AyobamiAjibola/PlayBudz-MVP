@@ -90,8 +90,17 @@ export default function OtpScreen() {
     const validate = otp.join("").length !== otpLength;
 
     return (
-        <Screen>
-            <View className="flex-1 justify-start px-6" style={{marginTop: 60}}>
+        <Screen screenPaddingBottom={0}
+            dismissKeyboard={true}
+            avoidKeyboard={true}
+        >
+            <View className="px-6" 
+                style={{
+                    marginTop: 60,
+                    flexGrow: 1,
+                    justifyContent: "flex-start",
+                }}
+            >
                 <Text className="text-left font-bold text-black" style={{fontSize: FontSize.screenTitle, fontFamily: Font.semiBold}}>
                     Verify your account
                 </Text>
