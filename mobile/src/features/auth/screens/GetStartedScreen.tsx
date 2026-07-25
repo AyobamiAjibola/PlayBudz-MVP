@@ -101,9 +101,7 @@ export default function GetStartedScreen() {
     ]
 
     return (
-        <Screen backBtnPadding={40}
-            showContent={false}
-        >
+        <Screen showContent={false} screenPaddingBottom={0} backBtnPadding={40}>
             <View className="flex-1 justify-center px-6">
                 <Text className="text-left font-bold text-black" style={{fontSize: FontSize.screenTitle, fontFamily: Font.semiBold}}>
                     Sign up to get started
@@ -132,14 +130,25 @@ export default function GetStartedScreen() {
                     ))}
                 </View>
 
-                <Text className="text-left" style={{color: Colors.textGrey, fontSize: 16, marginTop: 20}}>
-                    Already have an account?{" "}
-                    <Text onPress={() => router.push("/login")}
-                        style={{color: Colors.primary, fontFamily: "RethinkSans-Bold"}}
-                    >
-                        Log in
+                <View 
+                    style={{
+                        alignItems: "center",
+                        flexDirection: "row",
+                        justifyContent: "flex-start",
+                        marginTop: 20, gap: 4
+                    }}
+                >
+                    <Text className="text-left" style={{color: Colors.textGrey, fontSize: 16}}>
+                        Already have an account?
                     </Text>
-                </Text>
+                    <TouchableOpacity onPress={() => router.push("/login")}>
+                        <Text 
+                            style={{color: Colors.primary, fontFamily: "RethinkSans-Bold"}}
+                        >
+                            Log in
+                        </Text>
+                    </TouchableOpacity>
+                </View>
             </View>
 
             <View style={styles.bottom} className="px-6">

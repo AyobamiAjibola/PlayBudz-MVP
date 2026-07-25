@@ -15,6 +15,7 @@ import { AppButton } from "@/components/ui/button";
 import { Ionicons } from "@expo/vector-icons";
 import { api } from "@/api/axios";
 import Toast from "react-native-toast-message";
+import { router } from "expo-router";
 
 const googleIcon = require("@/assets/images/Google.svg");
 
@@ -116,7 +117,7 @@ export default function LoginScreen() {
     ]
 
     return (
-        <Screen>
+        <Screen showContent={false} screenPaddingBottom={0} backBtnPadding={40}>
             <View className="flex-1 justify-center px-6">
                 <Text className="text-left font-bold text-black" style={{fontSize: FontSize.screenTitle, fontFamily: Font.semiBold}}>
                     Welcome back
@@ -196,14 +197,17 @@ export default function LoginScreen() {
                         }
                     />
 
-                    <Text
-                        onPress={()=>console.log("forgot password")}
-                        style={{
-                            fontFamily: "RethinkSans-Bold",
-                            fontSize: FontSize.default,
-                            color: Colors.primary
-                        }}
-                    >Forgot password?</Text>
+                    <TouchableOpacity onPress={()=>console.log("forgot password")}>
+                        <Text
+                            style={{
+                                fontFamily: "RethinkSans-Bold",
+                                fontSize: FontSize.default,
+                                color: Colors.primary
+                            }}
+                        >
+                            Forgot password?
+                        </Text>
+                    </TouchableOpacity>
                 </View>
 
                 <AppButton
@@ -212,6 +216,25 @@ export default function LoginScreen() {
                     textStyle={{fontFamily: "RethinkSans-SemiBold"}}
                     buttonStyle={{marginTop: 30, width: "100%"}}
                 />
+                <View 
+                    style={{
+                        alignItems: "center",
+                        flexDirection: "row",
+                        justifyContent: "center",
+                        gap: 4, marginTop: 10
+                    }}
+                >
+                    <Text className="text-left" style={{color: Colors.textGrey, fontSize: 16}}>
+                        Don't have an account?
+                    </Text>
+                    <TouchableOpacity onPress={() => router.push("/get-started")}>
+                        <Text 
+                            style={{color: Colors.primary, fontFamily: "RethinkSans-Bold"}}
+                        >
+                            Sign up
+                        </Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </Screen>
     )

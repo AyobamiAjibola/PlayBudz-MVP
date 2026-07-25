@@ -86,7 +86,7 @@ export default function SignUpScreen() {
     const validate = !email && !name && !password
 
     return (
-        <Screen>
+        <Screen showContent={false} screenPaddingBottom={0} backBtnPadding={40}>
             <View className="flex-1 px-6" style={{marginTop: 80}}>
                 <Text className="text-left font-bold text-black" style={{fontSize: FontSize.screenTitle, fontFamily: Font.semiBold}}>
                     Let’s create your account 
