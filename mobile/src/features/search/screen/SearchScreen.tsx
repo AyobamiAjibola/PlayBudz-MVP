@@ -371,7 +371,7 @@ export default function SearchScreen() {
                         : ( <RenderPlayers/> )
                 }
 
-                <TouchableOpacity
+                {activeTab === "Event" && <TouchableOpacity
                     onPress={()=>setListView(!listView)}
                     style={styles.floatingStyle}
                 >
@@ -381,7 +381,7 @@ export default function SearchScreen() {
                             color: "white"
                         }}
                     >{listView ? 'Map view' : 'List view'}</Text>
-                </TouchableOpacity>
+                </TouchableOpacity>}
             </View>
 
             <AppModal
