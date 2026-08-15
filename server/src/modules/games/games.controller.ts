@@ -41,7 +41,7 @@ type SportType = {
 export class GamesController {
   constructor(private readonly gamesService: GamesService) {}
 
-  // @UseGuards(FirebaseAuthGuard)
+  @UseGuards(FirebaseAuthGuard)
   @Post('create-sport-type')
   createSport(@Body() body: SportType) {
     return this.gamesService.createSpotTypes(body.sport);

@@ -450,22 +450,24 @@ const isDisabled =
               marginVertical: 20
             }}
           >
-            {!eventData.image || !imageUri && <View style={styles.image}>
-              <TouchableOpacity style={[styles.cameraIcon, {paddingHorizontal: 24}]}
-                onPress={handleUploadImage}
-              >
-                <CameraIcon/>
-                <Text
-                  style={{
-                    color: "white",
-                    fontFamily: Font.semiBold,
-                    fontSize: FontSize.sm
-                  }}
+            {(!eventData.image && !imageUri) && (
+              <View style={styles.image}>
+                <TouchableOpacity style={[styles.cameraIcon, {paddingHorizontal: 24}]}
+                  onPress={handleUploadImage}
                 >
-                  Upload image
-                </Text>
-              </TouchableOpacity>
-            </View>}
+                  <CameraIcon/>
+                  <Text
+                    style={{
+                      color: "white",
+                      fontFamily: Font.semiBold,
+                      fontSize: FontSize.sm
+                    }}
+                  >
+                    Upload image
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            )}
             {(eventData.image || imageUri) && 
               <View style={{ width: 231, height: 186 }}>
                 <Image
@@ -511,7 +513,7 @@ const isDisabled =
               }))
             }
             placeholder="Event Name"
-            autoCapitalize="words"
+            autoCapitalize="sentences"
             autoCorrect={false}
           />
           <AppSelect

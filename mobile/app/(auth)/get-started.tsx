@@ -88,21 +88,21 @@ const createSport = async (sport: string) => {
 
 export default function GetStarted() {
 
-  useEffect(() => {
-    const createSports = async () => {
-      try {
-        await Promise.all(
-          sports.map((sport) => createSport(sport.value))
-        );
+  // useEffect(() => {
+  //   const createSports = async () => {
+  //     try {
+  //       await Promise.all(
+  //         sports.map((sport) => createSport(sport.value))
+  //       );
 
-        console.log("All sports created successfully");
-      } catch (error) {
-        console.error("Failed to create sports:", error);
-      }
-    };
+  //       console.log("All sports created successfully");
+  //     } catch (error) {
+  //       console.error("Failed to create sports:", error);
+  //     }
+  //   };
 
-    createSports();
-  }, []);
+  //   createSports();
+  // }, []);
   return (
     <View className="flex-1 px-4 flex-col bg-white">
         <View style={{ height: "60%" }}>
