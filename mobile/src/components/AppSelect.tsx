@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { FlatList, Modal, Pressable, Text, View } from "react-native";
+import { ReactNode, useState } from "react";
+import { ActivityIndicator, FlatList, Modal, Pressable, Text, View } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
 export interface SelectOption {
@@ -12,6 +12,8 @@ interface AppSelectProps {
   options: SelectOption[];
   placeholder?: string;
   onChange: (value: string) => void;
+  isLoading?: boolean;
+  icon?: ReactNode;
 }
 
 export default function AppSelect({
@@ -19,6 +21,8 @@ export default function AppSelect({
   options,
   placeholder = "Select an option",
   onChange,
+  isLoading=false,
+  icon,
 }: AppSelectProps) {
   const [open, setOpen] = useState(false);
 
@@ -28,13 +32,33 @@ export default function AppSelect({
     <>
       <Pressable
         onPress={() => setOpen(true)}
-        className="h-14 flex-row items-center justify-between rounded-xl border border-gray-300 bg-white px-4"
+        style={{
+          height: 54,
+          borderRadius: 12,
+          borderWidth: 1,
+          borderColor: "#d1d5db",
+          backgroundColor: "white",
+          paddingHorizontal: 16,
+          justifyContent: "space-between",
+          alignItems: "center",
+          flexDirection: "row",
+          gap: 8
+        }}
       >
-        <Text className={selectedOption ? "text-base text-black" : "text-base text-gray-400"}>
-          {selectedOption?.label || placeholder}
-        </Text>
+        <View
+          style={{
+            gap: 8,
+            flexDirection: "row",
+            alignItems: 'center'
+          }}
+        >
+          { icon }
+          <Text className={selectedOption ? "text-base text-black" : "text-base text-gray-400"}>
+            {selectedOption?.label || placeholder}
+          </Text>
+        </View>
 
-        <Ionicons name="chevron-down" size={20} color="#9CA3AF" />
+        {isLoading ? <ActivityIndicator/> : <Ionicons name="chevron-down" size={20} color="#9CA3AF" />}
       </Pressable>
 
       <Modal

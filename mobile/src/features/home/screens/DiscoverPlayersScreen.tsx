@@ -1,7 +1,10 @@
 import Screen from "@/components/Screen";
-import { Dimensions, FlatList, StyleSheet, View } from "react-native";
-import { players } from "./HomeScreen";
+import { ActivityIndicator, Dimensions, FlatList, StyleSheet, View } from "react-native";
+import { RenderEmptyEvent } from "./HomeScreen";
 import PlayerCard from "../components/PlayerCard";
+import { router } from "expo-router";
+import { usePlayers } from "../hooks/usePlayers";
+import { Text } from "@/components/ui/text";
 
 const { width } = Dimensions.get("window");
 
@@ -13,6 +16,31 @@ const CARD_WIDTH =
 
 export default function DiscoverPlayersScreen() {
 
+    const {
+        players,
+        isLoading: pIsLoading,
+        isFetching: pIsFetching,
+        isError: pIsError,
+        error: pError,
+        refetch: pRefetch,
+    } = usePlayers({ page: 1, limit: 10 });
+
+    if(pIsLoading) {
+        return (
+            <View
+                style={{
+                    paddingHorizontal: 30,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: 8,
+                    minHeight: 200
+                }}
+            >
+                <ActivityIndicator/>
+                <Text>Loading...</Text>
+            </View>
+        )
+    }
 
     return (
         <Screen
@@ -22,9 +50,11 @@ export default function DiscoverPlayersScreen() {
         >
             <FlatList
                 data={players}
+                refreshing={pIsFetching}
+                onRefresh={pRefetch}
                 numColumns={2}
                 showsHorizontalScrollIndicator={false}
-                keyExtractor={(item) => item.chatId as string}
+                keyExtractor={(item) => item.id as string}
                 showsVerticalScrollIndicator={false}
                 columnWrapperStyle={{
                     justifyContent: "space-between",
@@ -36,6 +66,15 @@ export default function DiscoverPlayersScreen() {
                 renderItem={({ item }) => (
                     <PlayerCard item={item} cardWidth={CARD_WIDTH}/>
                 )}
+                ListEmptyComponent={
+                    <RenderEmptyEvent
+                        onPress={()=>router.push('/home')}
+                        message={
+                            `No players`
+                        }
+                        btnText={"Home"}
+                    />
+                }
             />
         </Screen>
     )

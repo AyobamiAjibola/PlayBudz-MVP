@@ -7,10 +7,21 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { UsersRepository } from './users.repository';
 import { ApiResponse } from 'src/common/types/api-response.type';
-import { User, Prisma } from 'src/generated/prisma/browser';
+import { User, Prisma, UserInterest } from 'src/generated/prisma/browser';
 import { AppLoggerService } from 'src/shared/logger/logger.service';
 import { FirebaseService } from 'src/firebase/firebase.service';
 import type { FirebaseUser } from 'src/common/types/authenticated-user.type';
+
+export interface UserLocation {
+  name: string;
+  latitude: number;
+  longitude: number;
+}
+
+export interface InterestsType {
+  interest: string;
+  skill_level: string;
+}
 
 @Injectable()
 export class UsersService {
@@ -26,7 +37,7 @@ export class UsersService {
 
   async getUser(id: string): Promise<ApiResponse<User | null>> {
     const user = await this.usersRepository.findUnique({
-      id,
+      where: { id },
     });
 
     if (!user) {
@@ -80,20 +91,22 @@ export class UsersService {
     dto: UpdateUserDto,
     user: FirebaseUser,
     imageUrl: string,
+    location?: UserLocation,
+    interests?: InterestsType,
   ): Promise<ApiResponse<User>> {
     const data = {
       image: imageUrl,
       dob: dto.dob,
       gender: dto.gender,
       biography: dto.biography,
-      interests: dto.interests,
-      location: dto.location,
+      interests: { create: interests },
+      location: { create: location },
       fullName: dto.fullName,
       registrationComplete: true,
     };
 
-    const u = await this.usersRepository.findOne({
-      firebaseUid: user.uid,
+    const u = await this.usersRepository.findUnique({
+      where: { firebaseUid: user.uid },
     });
 
     if (!u) {
@@ -123,7 +136,7 @@ export class UsersService {
     }
 
     const existingUser = await this.usersRepository.findUnique({
-      firebaseUid,
+      where: { firebaseUid },
     });
 
     if (existingUser) {
@@ -152,33 +165,63 @@ export class UsersService {
     };
   }
 
-  async updateUser_(params: {
-    where: Prisma.UserWhereUniqueInput;
-    data: UpdateUserDto;
-  }): Promise<ApiResponse<User>> {
-    const { where, data } = params;
-    const user = await this.usersRepository.update(where, data);
-
-    return {
-      success: true,
-      message: 'Successful',
-      data: user,
-    };
-  }
-
   async updateUser(
     user: FirebaseUser,
     dto: UpdateUserDto,
+    location?: UserLocation,
+    interests?: InterestsType,
   ): Promise<ApiResponse<null>> {
-    const u = await this.usersRepository.findOne({
-      firebaseUid: user.uid,
+    const u = await this.usersRepository.findUnique({
+      where: { firebaseUid: user.uid },
     });
 
     if (!u) {
       throw new NotFoundException('User not found');
     }
 
-    await this.usersRepository.update({ id: u.id }, dto);
+    const data: Prisma.UserUpdateInput = {
+      ...(dto.dob !== undefined && {
+        dob: dto.dob,
+      }),
+
+      ...(dto.gender !== undefined && {
+        gender: dto.gender,
+      }),
+
+      ...(dto.biography !== undefined && {
+        biography: dto.biography,
+      }),
+
+      ...(dto.fullName !== undefined && {
+        fullName: dto.fullName,
+      }),
+
+      ...(dto.notificationEnabled !== undefined && {
+        notificationEnabled: dto.notificationEnabled,
+      }),
+
+      ...(dto.pushToken !== undefined && {
+        pushToken: dto.pushToken,
+      }),
+
+      ...(interests !== undefined && {
+        interests: {
+          deleteMany: {},
+          create: interests,
+        },
+      }),
+
+      ...(location !== undefined && {
+        location: {
+          upsert: {
+            create: location,
+            update: location,
+          },
+        },
+      }),
+    };
+
+    await this.usersRepository.update({ id: u.id }, data);
 
     return {
       success: true,
@@ -197,6 +240,116 @@ export class UsersService {
       success: true,
       message: 'Successfully deleted user.',
       data: null,
+    };
+  }
+
+  async findAllUsers(
+    page: number = 1,
+    limit: number = 10,
+    search?: string,
+  ): Promise<ApiResponse<User[]>> {
+    const skip = (page - 1) * limit;
+
+    const where: Prisma.UserWhereInput = {};
+
+    if (search) {
+      where.OR = [
+        {
+          fullName: {
+            contains: search,
+            mode: 'insensitive',
+          },
+        },
+        {
+          gender: {
+            contains: search,
+            mode: 'insensitive',
+          },
+        },
+      ];
+    }
+
+    const users = await this.usersRepository.findMany({
+      skip,
+      take: limit,
+      where,
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+
+    return {
+      success: true,
+      message: 'Successful',
+      data: users,
+    };
+  }
+
+  async findPlayersLikeYou(
+    page: number = 1,
+    limit: number = 10,
+    user: FirebaseUser,
+    search?: string,
+  ): Promise<ApiResponse<User[]>> {
+    const skip = (page - 1) * limit;
+
+    const u = await this.usersRepository.findUnique({
+      where: { firebaseUid: user.uid },
+      include: { interests: true },
+    });
+
+    if (!u) {
+      throw new NotFoundException('User not found');
+    }
+
+    const interestNames = u.interests.map((i: UserInterest) => i.interest);
+
+    const where: Prisma.UserWhereInput = {
+      id: {
+        not: u.id,
+      },
+    };
+
+    if (interestNames.length > 0) {
+      where.interests = {
+        some: {
+          interest: {
+            in: interestNames,
+          },
+        },
+      };
+    }
+
+    if (search) {
+      where.OR = [
+        {
+          fullName: {
+            contains: search,
+            mode: 'insensitive',
+          },
+        },
+        {
+          gender: {
+            contains: search,
+            mode: 'insensitive',
+          },
+        },
+      ];
+    }
+
+    const users = await this.usersRepository.findMany({
+      skip,
+      take: limit,
+      where,
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+
+    return {
+      success: true,
+      message: 'Successful',
+      data: users,
     };
   }
 }

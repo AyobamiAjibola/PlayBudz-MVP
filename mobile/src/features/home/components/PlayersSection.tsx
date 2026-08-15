@@ -7,7 +7,7 @@ import {
   ViewToken,
 } from "react-native";
 import PlayerCard from "./PlayerCard";
-import { PlayerType } from "../types/types";
+import { Player } from "../types/types";
 
 const { width } = Dimensions.get("window");
 
@@ -15,7 +15,7 @@ const CARD_WIDTH = width/2 * 0.8;
 const CARD_SPACING = 16;
 
 type PlayerProps = {
-  players: PlayerType[]
+  players: Player[]
 }
 
 export default function PlayersSection({players}: PlayerProps) {
@@ -34,21 +34,21 @@ export default function PlayersSection({players}: PlayerProps) {
   ).current;
 
     return (
-        <View style={styles.container}>
-            <FlatList
-                data={players}
-                horizontal
-                showsHorizontalScrollIndicator={false}
-                keyExtractor={(item) => item.chatId as string}
-                snapToInterval={CARD_WIDTH + CARD_SPACING}
-                decelerationRate="fast"
-                contentContainerStyle={styles.listContent}
-                onViewableItemsChanged={onViewableItemsChanged}
-                viewabilityConfig={viewabilityConfig}
-                renderItem={({ item }) => (
-                  <PlayerCard item={item} cardWidth={CARD_WIDTH}/>
-                )}
-            />
+      <View style={styles.container}>
+        <FlatList
+          data={players}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(item) => item.id as string}
+          snapToInterval={CARD_WIDTH + CARD_SPACING}
+          decelerationRate="fast"
+          contentContainerStyle={styles.listContent}
+          onViewableItemsChanged={onViewableItemsChanged}
+          viewabilityConfig={viewabilityConfig}
+          renderItem={({ item }) => (
+            <PlayerCard item={item} cardWidth={CARD_WIDTH}/>
+          )}
+        />
         </View>
     );
 }

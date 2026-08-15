@@ -30,8 +30,8 @@ export default function EmailSignUpScreen() {
             if (methods.length > 0) {
                 Toast.show({
                     type: "error",
-                    text1: "This email is already in use.",
-                    text1Style:{fontFamily: Font.regular, fontSize: FontSize.default}
+                    text1: "error",
+                    text2: "This email is already in use.",
                 });
                 setIsLoading(false);
                 return;
@@ -40,8 +40,8 @@ export default function EmailSignUpScreen() {
             if(!emailRegex.test(email)) {
                 Toast.show({
                     type: "error",
-                    text1: "Please enter a valid email address.",
-                    text1Style:{fontFamily: Font.regular, fontSize: FontSize.default}
+                    text1: 'Error',
+                    text2: "Please enter a valid email address."
                 });
                 setIsLoading(false);
                 return;
@@ -50,8 +50,8 @@ export default function EmailSignUpScreen() {
             if(!passwordRegex.test(password)) {
                 Toast.show({
                     type: "error",
-                    text1: "Password is incorrect.",
-                    text1Style:{fontFamily: Font.regular, fontSize: FontSize.default}
+                    text1: 'Error',
+                    text2: "Password is incorrect."
                 });
                 setIsLoading(false);
                 return;
@@ -67,8 +67,8 @@ export default function EmailSignUpScreen() {
             } catch (error) {
                 Toast.show({
                     type: "error",
-                    text1: (error as Error).message,
-                    text1Style:{fontFamily: Font.regular, fontSize: FontSize.sm}
+                    text1: 'Error',
+                    text2: (error as Error).message
                 });
             }
 
@@ -76,7 +76,8 @@ export default function EmailSignUpScreen() {
             console.error("Error checking email availability:", err);
             Toast.show({
                 type: "error",
-                text1: err.message || 'Could not verify email. Please try again.'
+                text1: 'Error',
+                text2: err.message || 'Could not verify email. Please try again.'
             });
         } finally {
             setIsLoading(false);

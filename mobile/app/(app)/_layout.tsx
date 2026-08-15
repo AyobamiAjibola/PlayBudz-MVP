@@ -1,6 +1,6 @@
 import AppTabs from "@/components/app-tabs";
 import { useAuthStore } from "@/stores/auth.store";
-import { Redirect } from "expo-router";
+import { Redirect, Stack } from "expo-router";
 import { ActivityIndicator, View } from "react-native";
 
 export default function AppLayout() {
@@ -29,5 +29,10 @@ export default function AppLayout() {
     return <Redirect href="/onboarding-check" />;
   }
 
-  return <AppTabs/>;
+  return (
+    <Stack screenOptions={{ headerShown: false }} >
+      <Stack.Screen name="(screens)" />
+      <Stack.Screen name="event" />
+    </Stack>
+  );
 }

@@ -12,7 +12,6 @@ import { ON_BOARDING_DATA_KEY } from "@/constants/helper";
 import { SelectedType } from "./SecondScreen";
 import { Ionicons, SimpleLineIcons } from "@expo/vector-icons";
 import AppModal from "@/components/AppModal";
-import { api } from "@/api/axios";
 
 const Levels = ["Beginner", "Intermediate", "Expert"]
 

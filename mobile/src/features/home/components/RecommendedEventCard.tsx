@@ -1,92 +1,81 @@
-import { StyleSheet, TouchableOpacity, View } from "react-native";
-import { EventType } from "../types/types";
+import { ActivityIndicator, Pressable, StyleSheet, TouchableOpacity, View } from "react-native";
+import { Game } from "../types/types";
 import { Image } from "expo-image";
 import { Text } from "@/components/ui/text";
 import { Colors, Font, FontSize } from "@/constants/utils";
+import ClockIcon from "@/assets/icons/clock.svg" 
+import ExportIcon from "@/assets/icons/export.svg"
+import LocationIcon from "@/assets/icons/location.svg";
+import SaveIcon from "@/assets/icons/saveIcon.svg"
+import { splitDateAndTime } from "./Event";
+import { router } from "expo-router";
 
 const fallbackImage = require("@/assets/events/1.jpg") 
-const creatorFallbackImage = require("@/assets/events/user.jpg") 
-const locationIcon = require("@/assets/icons/location.svg") 
-const clock = require("@/assets/icons/clock.svg") 
-const exportIcon = require("@/assets/icons/export.svg") 
-const saveIcon = require("@/assets/icons/saveIcon.svg") 
+const creatorFallbackImage = require("@/assets/events/user.jpg")
 
 type IPropsEvent = {
-    item: EventType,
-    cardWidth: any
+    item: Game;
+    cardWidth: any;
 }
 
 export default function RecommendedEventCard({item, cardWidth}: IPropsEvent) {
-  return (
-    <View style={[styles.container, {width: cardWidth}]}>
-        <View style={styles.wrapper}>
-            <Image
-                source={item.image ?? fallbackImage}
-                alt="event image"
-                contentFit="cover"
-                style={{
-                    width: 68,
-                    height: 68,
-                    borderRadius: 8
-                }}
-            />
-            <View style={styles.rightSideWrapper}>
-                <View style={styles.nameSection}>
-                    <View style={styles.creator}>
-                        <Image
-                            source={item.createdBy.profileImage ?? creatorFallbackImage}
-                            alt="created by image"
-                            contentFit="cover"
-                            style={{
-                                height: 20,
-                                width: 20,
-                                borderRadius: "100%"
-                            }}
-                        />
-                        <Text style={{fontSize: FontSize.xs, color: Colors.textGrey}}>
-                            Created by {item.createdBy.name}
-                        </Text>
-                    </View>
+    const { eventDate, eventTime } = splitDateAndTime(item.gameDateTime);
+    const eventImg = `${process.env.EXPO_PUBLIC_SERVER}${item.image}`;
+    const creatorImg = `${process.env.EXPO_PUBLIC_SERVER}${item.creator.image}`;
 
-                    <View style={styles.sportContainer}>
-                        <Text style={{color: "#003300", fontSize: FontSize.xs}}>
-                            {item.sport}
-                        </Text>
+    return (
+        <Pressable style={[styles.container, {width: cardWidth}]}
+            onPress={()=>router.push(`/event/${[item.id]}`)}
+        >
+            <View style={styles.wrapper}>
+                <Image
+                    source={
+                    item.image
+                      ? { uri: eventImg }
+                      : fallbackImage
+                    }
+                    alt="event image"
+                    contentFit="cover"
+                    style={{
+                        width: 68,
+                        height: 68,
+                        borderRadius: 8
+                    }}
+                />
+                <View style={styles.rightSideWrapper}>
+                    <View style={styles.nameSection}>
+                        <View style={styles.creator}>
+                            <Image
+                                source={
+                                    item.creator.image
+                                    ? { uri: creatorImg }
+                                    : creatorFallbackImage
+                                }
+                                alt="created by image"
+                                contentFit="cover"
+                                style={{
+                                    height: 20,
+                                    width: 20,
+                                    borderRadius: "100%"
+                                }}
+                            />
+                            <Text style={{fontSize: FontSize.xs, color: Colors.textGrey}}>
+                                Created by {item.creator.fullName?.trim().split(/\s+/)[0] ?? "User"}
+                            </Text>
+                        </View>
+
+                        <View style={styles.sportContainer}>
+                            <Text style={{color: "#003300", fontSize: FontSize.xs}}>
+                                {item.sport}
+                            </Text>
+                        </View>
                     </View>
+                    <Text style={{fontFamily: Font.semiBold}}>
+                        {item.title}
+                    </Text>
                 </View>
-                <Text style={{fontFamily: Font.semiBold}}>
-                    {item.title}
-                </Text>
-            </View>
-        </View>        
+            </View>        
 
-        <View
-            style={{
-                display: "flex",
-                flexDirection: "row",
-                gap: 4,
-                alignItems: "center"
-            }}
-        >
-            <Image
-                source={clock}
-                alt="event time"
-                style={{height: 16, width: 16}}
-            />
-            <Text style={{fontSize: FontSize.sm, color: Colors.textGrey}}>
-                {item.date}, {item.time}
-            </Text>
-        </View>
-
-        <View
-            style={{
-                display: "flex",
-                justifyContent: "space-between",
-                flexDirection: "row",
-                alignItems: "center",
-                marginTop: -8
-            }}
-        >
             <View
                 style={{
                     display: "flex",
@@ -95,40 +84,51 @@ export default function RecommendedEventCard({item, cardWidth}: IPropsEvent) {
                     alignItems: "center"
                 }}
             >
-                <Image
-                    source={locationIcon}
-                    alt="event location"
-                    style={{height: 16, width: 16}}
-                />
+                <ClockIcon height={16} width={16} />
                 <Text style={{fontSize: FontSize.sm, color: Colors.textGrey}}>
-                    {item.location}
+                    {eventDate}, {eventTime}
                 </Text>
             </View>
 
             <View
                 style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    flexDirection: "row",
                     alignItems: "center",
-                    gap: 8, flexDirection: "row"
+                    marginTop: -8
                 }}
             >
-                <TouchableOpacity>
-                    <Image
-                        source={exportIcon}
-                        alt="share event"
-                        style={{height: 24, width: 24}}
-                    />
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Image
-                        source={saveIcon}
-                        alt="share event"
-                        style={{height: 24, width: 24}}
-                    />
-                </TouchableOpacity>
+                <View
+                    style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        gap: 4,
+                        alignItems: "center"
+                    }}
+                >
+                    <LocationIcon height={16} width={16}/>
+                    <Text style={{fontSize: FontSize.sm, color: Colors.textGrey}}>
+                        {item.location.name}
+                    </Text>
+                </View>
+
+                <View
+                    style={{
+                        alignItems: "center",
+                        gap: 8, flexDirection: "row"
+                    }}
+                >
+                    <TouchableOpacity>
+                        <ExportIcon height={24} width={24}/>
+                    </TouchableOpacity>
+                    <TouchableOpacity>
+                        <SaveIcon height={24} width={24}/>
+                    </TouchableOpacity>
+                </View>
             </View>
-        </View>
-    </View>
-  )
+        </Pressable>
+    )
 }
 
 const styles = StyleSheet.create({
@@ -162,7 +162,8 @@ const styles = StyleSheet.create({
     },
     rightSideWrapper: {
         flex: 1,
-        gap: 12
+        justifyContent: "flex-start",
+        height: "100%"
     },
     nameSection: {
         display: "flex",

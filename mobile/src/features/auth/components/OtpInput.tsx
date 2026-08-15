@@ -1,66 +1,95 @@
+import { Text } from "@/components/ui/text";
+import { Font } from "@/constants/utils";
 import { SetStateAction, useRef, useState } from "react";
-import { TextInput, View } from "react-native";
+import { Pressable, TextInput, View } from "react-native";
 
 type IProps = {
   length?: number,
-  otp: string[],
-  setOtp: React.Dispatch<SetStateAction<string[]>>
+  otp: string,
+  setOtp: React.Dispatch<SetStateAction<string>>
 }
 
 export default function OtpInput({ length = 6, otp, setOtp }: IProps) {
-  const inputsRef = useRef<Array<TextInput | null>>([]);
+  const inputRef = useRef<TextInput>(null);
+  const [error, setError] = useState<string>("");
 
-  const handleChange = (text: string, index: number) => {
-    const digit = text.replace(/[^0-9]/g, "");
+  function handleCodeChange(value: string) {
+    const sanitizedValue = value.replace(/\D/g, "").slice(0, length);
 
-    const newOtp = [...otp];
-    newOtp[index] = digit.slice(-1);
-    setOtp(newOtp);
+    setOtp(sanitizedValue);
 
-    if (digit && index < length - 1) {
-      inputsRef.current[index + 1]?.focus();
+    if (error) {
+      setError("");
     }
-
-    const code = newOtp.join("");
-    console.log(code);
-  };
-
-  const handleKeyPress = (key: string, index: number) => {
-    if (key === "Backspace" && !otp[index] && index > 0) {
-      inputsRef.current[index - 1]?.focus();
-    }
-  };
+  }
 
   return (
-    <View
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        gap: 6, 
-      }}
+    <Pressable
+      onPress={() => inputRef.current?.focus()}
+      className="mt-10"
     >
-      {otp.map((digit, index) => (
-        <TextInput
-          key={index}
-          ref={(ref) => {
-            inputsRef.current[index] = ref;
-          }}
-          value={digit}
-          onChangeText={(text) => handleChange(text, index)}
-          onKeyPress={({ nativeEvent }) =>
-            handleKeyPress(nativeEvent.key, index)
-          }
-          maxLength={1}
-          textAlign="center"
-          className="border border-gray-300 bg-white text-xl font-semibold text-black"
-          style={{
-            height: 54,
-            width: 54,
-            borderRadius: 12
-          }}
-        />
-      ))}
-    </View>
+      <View
+        style={{
+          justifyContent: "space-between",
+          flexDirection: "row"
+        }}
+      >
+          {Array.from({ length: length }).map((_, index) => {
+            const digit = otp[index];
+            const isActive =
+              index === otp.length ||
+              (otp.length === length &&
+              index === length - 1);
+            
+            return (
+              <View
+                key={index}
+                style={{
+                  height: 64, width: "14.5%",
+                  alignItems: "center",
+                  justifyContent: 'center',
+                  borderRadius: 16,
+                  borderWidth: 1,
+                  borderColor: error
+                    ? "#DC2626"
+                    : isActive || !!digit
+                      ? "#178029"
+                      : "#404040", // neutral-700
+
+                  backgroundColor: error
+                    ? "rgba(127, 29, 29, 0.3)"
+                    : "#F5F5F5",
+                }}
+              >
+                <Text
+                  style={{
+                    fontFamily: Font.bold
+                  }}
+                >
+                  {digit ?? ""}
+                </Text>
+              </View>
+            );
+          })}
+      </View>
+
+      <TextInput
+        ref={inputRef}
+        value={otp}
+        onChangeText={handleCodeChange}
+        keyboardType="number-pad"
+        textContentType="oneTimeCode"
+        autoComplete="one-time-code"
+        maxLength={length}
+        autoFocus
+        caretHidden
+        style={{
+          position: "absolute",
+          height: 4,
+          width: 4,
+          opacity: 0
+        }}
+      />
+    </Pressable>
   );
 }

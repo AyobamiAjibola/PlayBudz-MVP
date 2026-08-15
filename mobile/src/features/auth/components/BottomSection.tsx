@@ -28,7 +28,7 @@ export default function BottomSection({
 }: IProps) {
   return (
     <View className="px-6"
-        style={{
+        style={[{
             backgroundColor: "white",
             height: bottomHeight, //showSecondBtn ? 180 : 110,
             width: "100%",
@@ -45,7 +45,7 @@ export default function BottomSection({
 
             // Android
             elevation: 6,
-        }}
+        }]}
     >
         {showSecondBtn && <AppButton
             title={titleSecond}

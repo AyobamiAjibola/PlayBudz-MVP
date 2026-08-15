@@ -8,7 +8,6 @@ import { LocationSearchInput, SelectedLocation } from '@/components/LocationSear
 import BottomSection from '@/features/auth/components/BottomSection'
 import AppModal from '@/components/AppModal'
 import { Ionicons } from "@expo/vector-icons";
-import * as Notifications from "expo-notifications";
 import { AppButton } from '@/components/ui/button'
 import { getSecureJson, removeSecureItem } from '@/components/SecureStore'
 import { OnboardingData } from '../types/onboarding.type'
@@ -54,14 +53,11 @@ export default function FifthScreen() {
 
             Toast.show({
                 type: "error",
-                text1:
+                text1: 'Error',
+                text2:
                     error instanceof Error
                     ? error.message
-                    : "Unable to enable notifications",
-                text1Style: {
-                    fontFamily: Font.regular,
-                    fontSize: FontSize.sm,
-                },
+                    : "Unable to enable notifications"
             });
         } finally {
             setIsLoading(false);
@@ -86,7 +82,8 @@ export default function FifthScreen() {
 
             Toast.show({
                 type: "error",
-                text1:
+                text1: 'Error',
+                text2:
                     error instanceof Error
                     ? error.message
                     : "Unable to update notification preference",
@@ -101,8 +98,7 @@ export default function FifthScreen() {
         try {
             const formData = new FormData();
 
-            const onboarding =
-                await getSecureJson<Partial<OnboardingData>>(ON_BOARDING_DATA_KEY);
+            const onboarding = await getSecureJson<Partial<OnboardingData>>(ON_BOARDING_DATA_KEY);
 
             formData.append("image", {
                 uri: profileImage!.uri,
@@ -114,9 +110,9 @@ export default function FifthScreen() {
             formData.append("biography", onboarding?.bio ?? "");
             formData.append(
                 "interests",
-                JSON.stringify(onboarding?.interests ?? [])
+                JSON.stringify(onboarding?.interests)
             );
-            formData.append("location", JSON.stringify(selectedLocation) ?? "");
+            formData.append("location", JSON.stringify(selectedLocation));
 
             const response = await api.patch("/users/update-user", formData, {
                 headers: {
@@ -136,8 +132,8 @@ export default function FifthScreen() {
         } catch (error) {
             Toast.show({
                 type: "error",
-                text1: (error as Error).message,
-                text1Style:{fontFamily: Font.regular, fontSize: FontSize.sm}
+                text1: 'Error',
+                text2: (error as Error).message
             });
         } finally {
             setIsLoading(false)

@@ -11,7 +11,8 @@ export const Colors = {
   dangerBorder: "#880000",
   disabled: "#b76666",
   bgGrey: "#EBEBF0",
-  appBg: "#f9f9f9"
+  appBg: "#f9f9f9",
+  darkGrey: "#585874"
 } as const;
 
 export const FontSize = {
@@ -28,4 +29,5 @@ export const Font = {
   bold: "RethinkSans-Bold",
   extraBold: "RethinkSans-ExtraBold",
   regular: "RethinkSans",
+  medium: "RethinkSans-Medium"
 }

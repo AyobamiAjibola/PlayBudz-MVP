@@ -19,8 +19,7 @@ import { router } from "expo-router";
 import { auth } from "@/config/firebase";
 import { signOut as firebaseSignOut } from "firebase/auth";
 import { getPushToken } from "@/features/onboarding/services/notification.service";
-
-const googleIcon = require("@/assets/images/Google.svg");
+import GoogleIcon from "@/assets/images/Google.svg";
 
 export default function LoginScreen() {
     const { signInWithGoogle } = useGoogleAuth();
@@ -65,45 +64,16 @@ export default function LoginScreen() {
 
             Toast.show({
                 type: "error",
-                text1: 
+                text1: 'Error',
+                text2: 
                     error instanceof Error
                         ? error.message
-                        : "Unable to log in",
-                text1Style:{fontFamily: Font.regular, fontSize: FontSize.sm}
+                        : "Unable to log in"
             });
         } finally {
             setIsLoading(false)
         }
     };
-
-    // const handleGoogleLogin = async () => {
-    //     if (isGoogleLoading) return;
-
-    //     try {
-    //         setIsGoogleLoading(true);
-    //         Keyboard.dismiss();
-
-    //         const userCredential = await signInWithGoogle();
-
-    //         if (!userCredential) return;
-
-    //         const firebaseUser = userCredential.user;
-    //         const idToken = await firebaseUser.getIdToken();
-
-    //         await api.post("/auth/login", {
-    //             idToken,
-    //         });
-
-    //         await refreshUser(firebaseUser);
-    //     } catch (error) {
-    //         if (auth.currentUser) {
-    //             await firebaseSignOut(auth);
-    //         }
-    //         console.error("Error from Google login:", error);
-    //     } finally {
-    //         setIsGoogleLoading(false);
-    //     }
-    // };
 
     const handleGoogleAuth = async () => {
         if (isGoogleLoading) return;
@@ -137,7 +107,8 @@ export default function LoginScreen() {
 
             Toast.show({
             type: "error",
-            text1:
+            text1: 'Error',
+            text2:
                 error instanceof Error
                 ? error.message
                 : "Unable to continue with Google",
@@ -176,13 +147,7 @@ export default function LoginScreen() {
         },
         {
             text: "Continue with Google",
-            icon: <Image
-                    source={googleIcon}
-                    contentFit="cover"
-                    style={{
-                        width: 24, height: 24
-                    }}
-                />,
+            icon: <GoogleIcon width={24} height={24} />,
             bgColor: "white",
             onPress: ()=>handleGoogleAuth(),
             border: Colors.borderColor,
@@ -262,24 +227,13 @@ export default function LoginScreen() {
                         secureTextEntry={!isPasswordVisible}
                         autoCapitalize="none"
                         autoCorrect={false}
+                        onPressRightIcon={()=>setIsPasswordVisible((prev) => !prev)}
                         rightIcon={
-                            <Pressable
-                                onPress={() => setIsPasswordVisible((prev) => !prev)}
-                                style={{
-                                    position: "absolute",
-                                    right: 16,
-                                    top: 0,
-                                    height: 56,
-                                    justifyContent: "center",
-                                }}
-                                hitSlop={10}
-                                >
-                                <Ionicons
-                                    name={isPasswordVisible ? "eye-off-outline" : "eye-outline"}
-                                    size={22}
-                                    color="#6B7280"
-                                />
-                            </Pressable>
+                            <Ionicons
+                                name={isPasswordVisible ? "eye-off-outline" : "eye-outline"}
+                                size={22}
+                                color="#6B7280"
+                            />
                         }
                     />
 

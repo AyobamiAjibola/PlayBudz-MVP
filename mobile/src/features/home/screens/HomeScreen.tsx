@@ -1,145 +1,153 @@
-import { Pressable, ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
+import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 import { useAuthStore } from "@/stores/auth.store";
 import { Colors, Font, FontSize } from "@/constants/utils";
 import Screen from "@/components/Screen";
-import { Image } from "expo-image";
-import { SimpleLineIcons } from "@expo/vector-icons";
-import SectionHeading from "../components/Sectionheading";
+import { AntDesign, SimpleLineIcons } from "@expo/vector-icons";
 import { Text } from "@/components/ui/text";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import EventSection from "../components/EventSection";
-import { EventType, PlayerType } from "../types/types";
+import { PlayerType } from "../types/types";
 import PlayersSection from "../components/PlayersSection";
 import RecommendedEventSection from "../components/RecommendedEventSection";
-import { router } from "expo-router";
+import { router, useFocusEffect } from "expo-router";
 import AppModal from "@/components/AppModal";
+import NotificationBellIcon from "@/assets/icons/bell.svg"
+import LocationIcon from "@/assets/icons/location.svg";
+import NotificationIcon from "@/assets/icons/notification.svg";
+import Event from "../components/Event";
+import { useEvents } from "../hooks/useEvents";
+import { useRecommendedEvent } from "../hooks/useRecommendedEvent";
+import NoEvent from "@/assets/images/noEvent.svg";
+import { AppButton } from "@/components/ui/button";
+import { useSavedEvent } from "../hooks/useSavedEvents";
+import { usePlayers } from "../hooks/usePlayers";
+import SectionHeading from "../components/SectionHeading";
 
-const locationIcon = require("@/assets/icons/location.svg");
-const notification = require("@/assets/icons/notification.svg");
-const eventImg1 = require("@/assets/events/1.jpg")
-const eventImg2 = require("@/assets/events/2.jpg")
-const eventImg3 = require("@/assets/events/3.jpg")
-const userImg = require("@/assets/events/user.jpg")
-const notificationBell = require("@/assets/icons/bell.svg")
+const userImg = require("@/assets/events/user.jpg");
 
-export const events: EventType[] = [
-  {
-    id: "1",
-    image: eventImg1,
-    createdBy: {
-        name: "Tony",
-        profileImage: userImg
-    },
-    sport: "🏸 Badminton",
-    title: "One player neeed for a Badminton game at Alberta, Canada",
-    date: "March 28",
-    time: "3:00pm",
-    location: "Alberta, Canada"
-  },
-  {
-    id: "2",
-    image: eventImg2,
-    createdBy: {
-        name: "Tony",
-        profileImage: userImg
-    },
-    sport: "🏸 Badminton",
-    title: "One player neeed for a Badminton game at Alberta, Canada",
-    date: "March 28",
-    time: "3:00pm",
-    location: "Alberta, Canada"
-  },
-  {
-    id: "3",
-    image: eventImg3,
-    createdBy: {
-        name: "Tony",
-        profileImage: userImg
-    },
-    sport: "🏸 Badminton",
-    title: "Basketball game event at the stadium, 5 players needed",
-    date: "March 28",
-    time: "3:00pm",
-    location: "Alberta, Canada"
-  },
-   {
-    id: "4",
-    image: eventImg3,
-    createdBy: {
-        name: "Tony",
-        profileImage: userImg
-    },
-    sport: "🏸 Badminton",
-    title: "Basketball game event at the stadium, 5 players needed",
-    date: "March 28",
-    time: "3:00pm",
-    location: "Alberta, Canada"
-  }
-];
-
-export const players: PlayerType[] = [
-  {
-    fullname: "Tony Smith",
-    interests: JSON.stringify([{"interest":"🏀 Basket ball","skill_level":"Beginner"},{"interest":"🥌 Curling","skill_level":"Intermediate"}]),
-    chatId: "1",
-    photo: userImg
-  },
-  {
-    fullname: "Tony Smith",
-    interests: JSON.stringify([{"interest":"🏀 Basket ball","skill_level":"Beginner"},{"interest":"🥌 Curling","skill_level":"Intermediate"}]),
-    chatId: "2",
-    photo: userImg
-  },
-  {
-    fullname: "Tony Smith",
-    interests: JSON.stringify([{"interest":"🏀 Basket ball","skill_level":"Beginner"},{"interest":"🥌 Curling","skill_level":"Intermediate"}]),
-    chatId: "3",
-    photo: userImg
-  },
-  {
-    fullname: "Tony Smith",
-    interests: JSON.stringify([{"interest":"🏀 Basket ball","skill_level":"Beginner"},{"interest":"🥌 Curling","skill_level":"Intermediate"}]),
-    chatId: "4",
-    photo: userImg
-  },
-  {
-    fullname: "Tony Smith",
-    interests: JSON.stringify([{"interest":"🏀 Basket ball","skill_level":"Beginner"},{"interest":"🥌 Curling","skill_level":"Intermediate"}]),
-    chatId: "5",
-    photo: userImg
-  },
-  {
-    fullname: "Tony Smith",
-    interests: JSON.stringify([{"interest":"🏀 Basket ball","skill_level":"Beginner"},{"interest":"🥌 Curling","skill_level":"Intermediate"}]),
-    chatId: "6",
-    photo: userImg
-  },
-  {
-    fullname: "Tony Smith",
-    interests: JSON.stringify([{"interest":"🏀 Basket ball","skill_level":"Beginner"},{"interest":"🥌 Curling","skill_level":"Intermediate"}]),
-    chatId: "7",
-    photo: userImg
-  },
-  {
-    fullname: "Tony Smith",
-    interests: JSON.stringify([{"interest":"🏀 Basket ball","skill_level":"Beginner"},{"interest":"🥌 Curling","skill_level":"Intermediate"}]),
-    chatId: "8",
-    photo: userImg
-  }
-]
+export type EventTab = "Upcoming" | "Saved" | "Past";
+const tabs: EventTab[] = ["Upcoming", "Saved", "Past"];
 
 const notificationData = []
 
+export const RenderEmptyEvent = ({
+  onPress, message, showBtn=true,
+  paddingHorizontal=24, btnText="Search event"
+}: {
+  onPress?: ()=>void,
+  message: string,
+  showBtn?: boolean,
+  paddingHorizontal?: number,
+  btnText?: string
+}) => {
+  return (
+    <View style={[styles.noEventContainer, {paddingHorizontal: paddingHorizontal}]}>
+      <View style={styles.noEvent}>
+        <NoEvent width={126} height={103}/>
+        <Text
+          style={{
+            textAlign: "center"
+          }}
+        >
+          {message}
+        </Text>
+        {showBtn && <AppButton
+          title={btnText}
+          textStyle={{
+            color: Colors.primary,
+            fontSize: FontSize.sm,
+            fontFamily: Font.semiBold
+          }}
+          buttonStyle={{
+            width: 122,
+            height: 36,
+            paddingHorizontal: 16,
+            paddingVertical: 8,
+            backgroundColor: "#FFE5E5"
+          }}
+          onPress={onPress}
+        />}
+      </View>
+    </View>
+  )
+}
+
 export default function HomeScreen() {
   const user = useAuthStore((state) => state.user);
-  const location = JSON.parse(user?.profile.location ?? "");
-  const [selected, setSelected] = useState<string>("Upcoming");
-  const [isNotification, setIsNotification] = useState<boolean>(false)
+  const [selected, setSelected] = useState<EventTab>("Upcoming");
+  const [isNotification, setIsNotification] = useState<boolean>(false);
+  const [openEvent, setOpenEvent] = useState<boolean>(false);
+  const [isEdit, setIsEdit] = useState<boolean>(false);
+  const [date, setDate] = useState<string>("");
 
-  const filter = ["Upcoming", "Saved", "Past"];
+  const mode =
+    selected === "Upcoming"
+      ? "upcoming"
+      : selected === "Past"
+        ? "past"
+        : undefined;
 
-  const handleChange = (item: string) => {
-    setSelected(item)
+  const filter =
+    selected === "Saved"
+      ? "saved"
+      : undefined;
+
+  const {
+    events,
+    isLoading,
+    isFetching,
+    isError,
+    error,
+    refetch,
+  } = useEvents({ page: 1, limit: 10, date, filter, status: mode });
+  const {
+    recommendedEvents,
+    isLoading: recIsLoading,
+    isFetching: recIsFetching,
+    isError: recIsError,
+    error: recError,
+    refetch: recRefetch,
+  } = useRecommendedEvent({ page: 1, limit: 3 });
+
+  const {
+    events: savedEvents,
+    isLoading: sIsLoading,
+    isFetching: sIsFetching,
+    isError: sIsError,
+    error: sError,
+    refetch: sRefetch,
+  } = useSavedEvent({ page: 1, limit: 10 });
+
+  const {
+    players,
+    isLoading: pIsLoading,
+    isFetching: pIsFetching,
+    isError: pIsError,
+    error: pError,
+    refetch: pRefetch,
+  } = usePlayers({ page: 1, limit: 10 });
+
+  const isSaved = filter === "saved";
+
+  const currentEvents = isSaved ? savedEvents : events;
+  const currentLoading = isSaved ? sIsLoading : isLoading;
+  const currentFetching = isSaved ? sIsFetching : isFetching;
+  const currentRefetch = isSaved ? sRefetch : refetch;
+  const currentError = isSaved ? sError : error;
+  const currentIsError = isSaved ? sIsError : isError;
+
+  const handleChange = (item: EventTab) => {
+    setSelected(item);
+  };
+
+  const handleOpenEvent = (edit: boolean) => {
+    if(edit) {
+      setIsEdit(true)
+    } else {
+      setIsEdit(false)
+    }
+
+    setOpenEvent(true)
   }
 
   function RenderContent () {
@@ -157,14 +165,10 @@ export default function HomeScreen() {
             Location
           </Text>
           <View style={styles.location}>
-            <Image
-              source={locationIcon}
-              alt="location"
-              style={{height: 20, width: 20}}
-            />
+            <LocationIcon height={20} width={20}/>
             <TouchableOpacity style={styles.locationBtn}>
               <Text style={{fontSize: FontSize.default, fontFamily: Font.semiBold}}>
-                {location.name}
+                {user?.profile.location?.name}
               </Text>
               <SimpleLineIcons name="arrow-down" size={16} color={Colors.textGrey} />
             </TouchableOpacity>
@@ -177,11 +181,7 @@ export default function HomeScreen() {
               2
             </Text>
           </View>
-          <Image
-            source={notification}
-            alt="location"
-            style={{height: 24, width: 24}}
-          />
+          <NotificationIcon height={24} width={24} />
         </TouchableOpacity>
       </View>
     )
@@ -194,16 +194,15 @@ export default function HomeScreen() {
       style={{paddingHorizontal: 0}}
     >
       <ScrollView 
-        contentContainerStyle={{ flexGrow: 1 }}
+        contentContainerStyle={{ flexGrow: 1, paddingBottom: 60 }}
         showsVerticalScrollIndicator={false}
-        // style={styles.container}
       >
         <View style={{marginTop: 30}}>
           <View style={{paddingHorizontal: 24}}>
-            <SectionHeading title="Your Events" onPress={()=>router.push("/(app)/home/events")}/>
+            <SectionHeading title="Your Events" onPress={()=>router.push("/home/events")}/>
           </View>
           <View style={styles.filter}>
-            {filter.map((item) => (
+            {tabs.map((item) => (
               <TouchableOpacity key={item} onPress={()=>handleChange(item)}>
                 <Text
                   style={[styles.filterBtn, {
@@ -218,21 +217,77 @@ export default function HomeScreen() {
             ))}
           </View>
 
-          <EventSection events={events} />
+          {currentEvents.length > 0 
+            ? ( <EventSection
+                  events={currentEvents}
+                  isLoading={currentLoading}
+                  isFetching={currentFetching}
+                  refetch={currentRefetch}
+                  isError={currentIsError}
+                  error={currentError}
+                />
+              ) : (
+                <RenderEmptyEvent
+                  onPress={()=>router.push('/home/discover-events')}
+                  message={`Search and Explore events related ${"\n"} to your interests nearby`
+                  }
+                />
+              )
+          }
         </View>
 
         <View style={{marginTop: 40}}>
           <View style={{paddingHorizontal: 24}}>
             <SectionHeading title="Players like you" onPress={()=>router.push("/home/discover-players")}/>
           </View>
-          <PlayersSection players={players} />
+          {
+            players.length
+              ? (
+                <PlayersSection players={players} />
+              ) : (
+                <RenderEmptyEvent
+                  onPress={()=>router.push('/home/discover-events')}
+                  message={`No players`}
+                  showBtn={false}
+                />
+              )
+          }
         </View>
 
-        <View style={{marginTop: 30, paddingHorizontal: 24}}>
-          <SectionHeading title="Recommended events" onPress={()=>router.push("/home/discover-events")}/>
-          <RecommendedEventSection events={events} />
+        <View 
+          style={{
+            marginTop: 30, 
+            paddingHorizontal: 24
+          }}
+        >
+          <SectionHeading title="Recommended events" onPress={()=>router.push("/search")}/>
+          {
+            recommendedEvents.length
+            ? (
+              <RecommendedEventSection events={recommendedEvents} />
+            ) : (
+              <RenderEmptyEvent
+                showBtn={false}
+                paddingHorizontal={0}
+                message={`Search and Explore events related ${"\n"} to your interests nearby`}
+              />
+            )
+          }
+          
         </View>
       </ScrollView>
+
+      <TouchableOpacity
+        onPress={()=>router.push('/event/create')}
+        style={styles.addEvent}
+      >
+        <AntDesign name="plus" size={14} color="white" />
+        <Text
+          style={{
+            color: "white"
+          }}
+        >Create event</Text>
+      </TouchableOpacity>
 
       <AppModal
         visible={isNotification}
@@ -248,14 +303,7 @@ export default function HomeScreen() {
             </View>
           </View>
           {!notificationData.length && <View style={styles.emptyNotification}>
-            <Image
-              source={notificationBell}
-              alt="Notification"
-              style={{
-                height: 64,
-                width: 64
-              }}
-            />
+            <NotificationBellIcon height={64} width={64} />
             <Text
               style={{
                 fontSize: FontSize.lg,
@@ -282,6 +330,43 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
+  noEventContainer: {
+    width: "100%",
+    backgroundColor: "transparent",
+    marginTop: 16
+  },
+  noEvent: {
+    height: 277,
+    gap: 16,
+    paddingHorizontal: 16,
+    paddingTop: 8,
+    paddingBottom: 24,
+    borderRadius: 16,
+    justifyContent: 'center',
+    alignItems: "center",
+    backgroundColor: "white"
+  },
+  addEvent:{
+    position: "absolute",
+    right: 20,
+    bottom: 30,
+    width: 140,
+    height: 36,
+    borderRadius: 24,
+    backgroundColor: Colors.primary,
+    alignItems: "center",
+    justifyContent: "center",
+    elevation: 6,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    flexDirection: "row",
+    gap: 4
+  },
   notificationWrapper: {
     display: "flex",
     flexDirection: "row", 

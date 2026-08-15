@@ -3,7 +3,9 @@ import {
   ActivityIndicator,
   FlatList,
   Pressable,
+  StyleProp,
   View,
+  ViewStyle,
 } from "react-native";
 import * as Location from "expo-location";
 import { Text } from "./ui/text";
@@ -11,12 +13,13 @@ import { Colors, Font, FontSize } from "@/constants/utils";
 import AppTextInput from "./AppTextInput";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { Ionicons } from "@expo/vector-icons";
+import LocationIcon from "@/assets/icons/loc.svg"
 
 export type SelectedLocation = {
   name: string;
   latitude: number;
   longitude: number;
-};
+} | null;
 
 type LocationSuggestion = {
   display_name: string;
@@ -29,6 +32,7 @@ type LocationSearchInputProps = {
   onChangeText: (value: string) => void;
   onSelectLocation: (location: SelectedLocation) => void;
   placeholder?: string;
+  currentLocStyle?: StyleProp<ViewStyle>;
 };
 
 export function LocationSearchInput({
@@ -36,6 +40,7 @@ export function LocationSearchInput({
   onChangeText,
   onSelectLocation,
   placeholder = "Search Location",
+  currentLocStyle,
 }: LocationSearchInputProps) {
   const [suggestions, setSuggestions] = useState<LocationSuggestion[]>([]);
   const [loadingCurrentLocation, setLoadingCurrentLocation] = useState(false);
@@ -76,11 +81,11 @@ export function LocationSearchInput({
   };
 
   const handleReset = () => {
-    const selectedLocation = {};
+    const selectedLocation = null
 
     onChangeText("");
     setSuggestions([]);
-    onSelectLocation;
+    onSelectLocation(selectedLocation);
   };
 
   const useCurrentLocation = async () => {
@@ -145,44 +150,22 @@ export function LocationSearchInput({
         autoCapitalize="words"
         autoCorrect={false}
         style={{paddingLeft: 40}}
+        onPressRightIcon={handleReset}
         rightIcon={
-          <Pressable
-              onPress={handleReset}
-              style={{
-                position: "absolute",
-                right: 16,
-                top: -2,
-                height: 56,
-                justifyContent: "center",
-              }}
-              hitSlop={10}
-              >
-              <Ionicons
-                  name="close-circle"
-                  size={22}
-                  color="#6B7280"
-              />
-          </Pressable>
+          value && 
+            <Ionicons
+              name="close-circle"
+              size={22}
+              color="#6B7280"
+            />
         }
-        leftIcon={
-          <Ionicons
-            name="location-outline"
-            size={22}
-            color={Colors.borderColor}
-            style={{
-              position: "absolute",
-              left: 12,
-              top: 14,
-              zIndex: 10
-            }}
-          />
-        }
+        leftIcon={ <LocationIcon/>}
       />
 
       <Pressable
         onPress={useCurrentLocation}
         className="flex-row items-center gap-2"
-        style={{justifyContent: "space-between", marginTop: 16}}
+        style={[{justifyContent: "space-between", marginTop: 16}, currentLocStyle]}
       >
         <View  
           style={{
@@ -196,12 +179,12 @@ export function LocationSearchInput({
           {loadingCurrentLocation ? (
             <ActivityIndicator size="small" />
           ) : (
-            <FontAwesome name="map" size={20} color="black" />
+            <FontAwesome name="map" size={16} color="black" />
           )}
 
           <Text 
             style={{
-              fontSize: FontSize.default,
+              fontSize: FontSize.sm,
               fontFamily: Font.semiBold
             }}
           >

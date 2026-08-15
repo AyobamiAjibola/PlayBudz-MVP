@@ -9,18 +9,13 @@ import { AuthModule } from './modules/auth/auth.module';
 import { FirebaseModule } from './firebase/firebase.module';
 import { EmailModule } from './email/email.module';
 import { RedisModule } from './redis/redis.module';
-import { ServeStaticModule } from '@nestjs/serve-static';
-import { join } from 'path';
 import { HealthModule } from './health/health.module';
+import { GamesModule } from './modules/games/games.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-    }),
-    ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'uploads'),
-      serveRoot: '/uploads',
     }),
     PrismaModule,
     UsersModule,
@@ -30,6 +25,7 @@ import { HealthModule } from './health/health.module';
     EmailModule,
     RedisModule,
     HealthModule,
+    GamesModule,
   ],
   providers: [
     {

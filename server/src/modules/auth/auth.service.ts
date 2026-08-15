@@ -104,8 +104,12 @@ export class AuthService {
   }
 
   async profile(user: FirebaseUser): Promise<ApiResponse<User>> {
-    const u = await this.usersRepository.findOne({
-      firebaseUid: user.uid,
+    const u = await this.usersRepository.findUnique({
+      where: { firebaseUid: user.uid },
+      include: {
+        interests: true,
+        location: true,
+      },
     });
 
     if (!u) {
@@ -126,7 +130,9 @@ export class AuthService {
     const email = decoded.email;
     const provider = decoded.firebase?.sign_in_provider;
 
-    let user = await this.usersRepository.findUnique({ firebaseUid });
+    let user = await this.usersRepository.findUnique({
+      where: { firebaseUid },
+    });
 
     if (!user) {
       const shouldAutoCreate =

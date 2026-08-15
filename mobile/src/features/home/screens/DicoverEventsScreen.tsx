@@ -1,7 +1,10 @@
 import Screen from "@/components/Screen";
-import { Dimensions, FlatList, StyleSheet, View } from "react-native";
-import { events } from "./HomeScreen";
+import { ActivityIndicator, Dimensions, FlatList, StyleSheet, View } from "react-native";
+import { RenderEmptyEvent } from "./HomeScreen";
 import RecommendedEventCard from "../components/RecommendedEventCard";
+import { useRecommendedEvent } from "../hooks/useRecommendedEvent";
+import { router } from "expo-router";
+import { Text } from "@/components/ui/text";
 
 const { width } = Dimensions.get("window");
 
@@ -13,6 +16,31 @@ const CARD_WIDTH =
 
 export default function DiscoverEventsScreen() {
 
+    const {
+        recommendedEvents,
+        isLoading: recIsLoading,
+        isFetching: recIsFetching,
+        isError: recIsError,
+        error: recError,
+        refetch: recRefetch,
+    } = useRecommendedEvent({ page: 1, limit: 10 });
+
+    if(recIsLoading) {
+        return (
+            <View
+                style={{
+                    paddingHorizontal: 30,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: 8,
+                    minHeight: 200
+                }}
+            >
+                <ActivityIndicator/>
+                <Text>Loading...</Text>
+            </View>
+        )
+    }
 
     return (
         <Screen
@@ -21,15 +49,29 @@ export default function DiscoverEventsScreen() {
             screenTitle="Discover events"
         >
             <FlatList
-                data={events}
+                data={recommendedEvents}
                 showsHorizontalScrollIndicator={false}
                 keyExtractor={(item) => item.id as string}
                 showsVerticalScrollIndicator={false}
                 decelerationRate="fast"
                 contentContainerStyle={styles.listContent}
                 renderItem={({ item }) => (
-                    <RecommendedEventCard item={item} cardWidth={"100%"}/>
+                    <RecommendedEventCard 
+                        item={item} 
+                        cardWidth={"100%"}
+                    />
                 )}
+                refreshing={recIsFetching}
+                onRefresh={recRefetch}
+                ListEmptyComponent={
+                    <RenderEmptyEvent
+                        onPress={()=>router.push('/home')}
+                        message={
+                            `There are no events.`
+                        }
+                        btnText={"Home"}
+                    />
+                }
             />
         </Screen>
     )

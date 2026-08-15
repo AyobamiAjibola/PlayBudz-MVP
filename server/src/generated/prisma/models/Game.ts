@@ -26,58 +26,100 @@ export type AggregateGame = {
 
 export type GameMinAggregateOutputType = {
   id: string | null
+  image: string | null
   title: string | null
   description: string | null
   sport: string | null
   creatorId: string | null
+  gameDateTime: Date | null
   createdAt: Date | null
+  players: string | null
+  skill_level: string | null
+  closed: boolean | null
+  cancelled: boolean | null
+  gameType: string | null
 }
 
 export type GameMaxAggregateOutputType = {
   id: string | null
+  image: string | null
   title: string | null
   description: string | null
   sport: string | null
   creatorId: string | null
+  gameDateTime: Date | null
   createdAt: Date | null
+  players: string | null
+  skill_level: string | null
+  closed: boolean | null
+  cancelled: boolean | null
+  gameType: string | null
 }
 
 export type GameCountAggregateOutputType = {
   id: number
+  image: number
   title: number
   description: number
   sport: number
   creatorId: number
+  gameDateTime: number
   createdAt: number
+  players: number
+  skill_level: number
+  closed: number
+  cancelled: number
+  gameType: number
   _all: number
 }
 
 
 export type GameMinAggregateInputType = {
   id?: true
+  image?: true
   title?: true
   description?: true
   sport?: true
   creatorId?: true
+  gameDateTime?: true
   createdAt?: true
+  players?: true
+  skill_level?: true
+  closed?: true
+  cancelled?: true
+  gameType?: true
 }
 
 export type GameMaxAggregateInputType = {
   id?: true
+  image?: true
   title?: true
   description?: true
   sport?: true
   creatorId?: true
+  gameDateTime?: true
   createdAt?: true
+  players?: true
+  skill_level?: true
+  closed?: true
+  cancelled?: true
+  gameType?: true
 }
 
 export type GameCountAggregateInputType = {
   id?: true
+  image?: true
   title?: true
   description?: true
   sport?: true
   creatorId?: true
+  gameDateTime?: true
   createdAt?: true
+  players?: true
+  skill_level?: true
+  closed?: true
+  cancelled?: true
+  gameType?: true
   _all?: true
 }
 
@@ -155,11 +197,18 @@ export type GameGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type GameGroupByOutputType = {
   id: string
+  image: string | null
   title: string
   description: string | null
   sport: string
   creatorId: string
+  gameDateTime: Date
   createdAt: Date
+  players: string
+  skill_level: string
+  closed: boolean
+  cancelled: boolean
+  gameType: string
   _count: GameCountAggregateOutputType | null
   _min: GameMinAggregateOutputType | null
   _max: GameMaxAggregateOutputType | null
@@ -185,24 +234,42 @@ export type GameWhereInput = {
   OR?: Prisma.GameWhereInput[]
   NOT?: Prisma.GameWhereInput | Prisma.GameWhereInput[]
   id?: Prisma.StringFilter<"Game"> | string
+  image?: Prisma.StringNullableFilter<"Game"> | string | null
   title?: Prisma.StringFilter<"Game"> | string
   description?: Prisma.StringNullableFilter<"Game"> | string | null
   sport?: Prisma.StringFilter<"Game"> | string
   creatorId?: Prisma.StringFilter<"Game"> | string
+  gameDateTime?: Prisma.DateTimeFilter<"Game"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"Game"> | Date | string
+  players?: Prisma.StringFilter<"Game"> | string
+  skill_level?: Prisma.StringFilter<"Game"> | string
+  closed?: Prisma.BoolFilter<"Game"> | boolean
+  cancelled?: Prisma.BoolFilter<"Game"> | boolean
+  gameType?: Prisma.StringFilter<"Game"> | string
   creator?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   participants?: Prisma.ParticipationListRelationFilter
+  location?: Prisma.XOR<Prisma.GameLocationNullableScalarRelationFilter, Prisma.GameLocationWhereInput> | null
+  savedBy?: Prisma.SavedGameListRelationFilter
 }
 
 export type GameOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  image?: Prisma.SortOrderInput | Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   sport?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
+  gameDateTime?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  players?: Prisma.SortOrder
+  skill_level?: Prisma.SortOrder
+  closed?: Prisma.SortOrder
+  cancelled?: Prisma.SortOrder
+  gameType?: Prisma.SortOrder
   creator?: Prisma.UserOrderByWithRelationInput
   participants?: Prisma.ParticipationOrderByRelationAggregateInput
+  location?: Prisma.GameLocationOrderByWithRelationInput
+  savedBy?: Prisma.SavedGameOrderByRelationAggregateInput
 }
 
 export type GameWhereUniqueInput = Prisma.AtLeast<{
@@ -210,22 +277,38 @@ export type GameWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.GameWhereInput | Prisma.GameWhereInput[]
   OR?: Prisma.GameWhereInput[]
   NOT?: Prisma.GameWhereInput | Prisma.GameWhereInput[]
+  image?: Prisma.StringNullableFilter<"Game"> | string | null
   title?: Prisma.StringFilter<"Game"> | string
   description?: Prisma.StringNullableFilter<"Game"> | string | null
   sport?: Prisma.StringFilter<"Game"> | string
   creatorId?: Prisma.StringFilter<"Game"> | string
+  gameDateTime?: Prisma.DateTimeFilter<"Game"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"Game"> | Date | string
+  players?: Prisma.StringFilter<"Game"> | string
+  skill_level?: Prisma.StringFilter<"Game"> | string
+  closed?: Prisma.BoolFilter<"Game"> | boolean
+  cancelled?: Prisma.BoolFilter<"Game"> | boolean
+  gameType?: Prisma.StringFilter<"Game"> | string
   creator?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   participants?: Prisma.ParticipationListRelationFilter
+  location?: Prisma.XOR<Prisma.GameLocationNullableScalarRelationFilter, Prisma.GameLocationWhereInput> | null
+  savedBy?: Prisma.SavedGameListRelationFilter
 }, "id">
 
 export type GameOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  image?: Prisma.SortOrderInput | Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   sport?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
+  gameDateTime?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  players?: Prisma.SortOrder
+  skill_level?: Prisma.SortOrder
+  closed?: Prisma.SortOrder
+  cancelled?: Prisma.SortOrder
+  gameType?: Prisma.SortOrder
   _count?: Prisma.GameCountOrderByAggregateInput
   _max?: Prisma.GameMaxOrderByAggregateInput
   _min?: Prisma.GameMinOrderByAggregateInput
@@ -236,77 +319,141 @@ export type GameScalarWhereWithAggregatesInput = {
   OR?: Prisma.GameScalarWhereWithAggregatesInput[]
   NOT?: Prisma.GameScalarWhereWithAggregatesInput | Prisma.GameScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Game"> | string
+  image?: Prisma.StringNullableWithAggregatesFilter<"Game"> | string | null
   title?: Prisma.StringWithAggregatesFilter<"Game"> | string
   description?: Prisma.StringNullableWithAggregatesFilter<"Game"> | string | null
   sport?: Prisma.StringWithAggregatesFilter<"Game"> | string
   creatorId?: Prisma.StringWithAggregatesFilter<"Game"> | string
+  gameDateTime?: Prisma.DateTimeWithAggregatesFilter<"Game"> | Date | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Game"> | Date | string
+  players?: Prisma.StringWithAggregatesFilter<"Game"> | string
+  skill_level?: Prisma.StringWithAggregatesFilter<"Game"> | string
+  closed?: Prisma.BoolWithAggregatesFilter<"Game"> | boolean
+  cancelled?: Prisma.BoolWithAggregatesFilter<"Game"> | boolean
+  gameType?: Prisma.StringWithAggregatesFilter<"Game"> | string
 }
 
 export type GameCreateInput = {
   id?: string
+  image?: string | null
   title: string
   description?: string | null
   sport: string
+  gameDateTime: Date | string
   createdAt?: Date | string
+  players: string
+  skill_level: string
+  closed?: boolean
+  cancelled?: boolean
+  gameType?: string
   creator: Prisma.UserCreateNestedOneWithoutGamesCreatedInput
   participants?: Prisma.ParticipationCreateNestedManyWithoutGameInput
+  location?: Prisma.GameLocationCreateNestedOneWithoutGameInput
+  savedBy?: Prisma.SavedGameCreateNestedManyWithoutGameInput
 }
 
 export type GameUncheckedCreateInput = {
   id?: string
+  image?: string | null
   title: string
   description?: string | null
   sport: string
   creatorId: string
+  gameDateTime: Date | string
   createdAt?: Date | string
+  players: string
+  skill_level: string
+  closed?: boolean
+  cancelled?: boolean
+  gameType?: string
   participants?: Prisma.ParticipationUncheckedCreateNestedManyWithoutGameInput
+  location?: Prisma.GameLocationUncheckedCreateNestedOneWithoutGameInput
+  savedBy?: Prisma.SavedGameUncheckedCreateNestedManyWithoutGameInput
 }
 
 export type GameUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sport?: Prisma.StringFieldUpdateOperationsInput | string
+  gameDateTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  players?: Prisma.StringFieldUpdateOperationsInput | string
+  skill_level?: Prisma.StringFieldUpdateOperationsInput | string
+  closed?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gameType?: Prisma.StringFieldUpdateOperationsInput | string
   creator?: Prisma.UserUpdateOneRequiredWithoutGamesCreatedNestedInput
   participants?: Prisma.ParticipationUpdateManyWithoutGameNestedInput
+  location?: Prisma.GameLocationUpdateOneWithoutGameNestedInput
+  savedBy?: Prisma.SavedGameUpdateManyWithoutGameNestedInput
 }
 
 export type GameUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sport?: Prisma.StringFieldUpdateOperationsInput | string
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
+  gameDateTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  players?: Prisma.StringFieldUpdateOperationsInput | string
+  skill_level?: Prisma.StringFieldUpdateOperationsInput | string
+  closed?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gameType?: Prisma.StringFieldUpdateOperationsInput | string
   participants?: Prisma.ParticipationUncheckedUpdateManyWithoutGameNestedInput
+  location?: Prisma.GameLocationUncheckedUpdateOneWithoutGameNestedInput
+  savedBy?: Prisma.SavedGameUncheckedUpdateManyWithoutGameNestedInput
 }
 
 export type GameCreateManyInput = {
   id?: string
+  image?: string | null
   title: string
   description?: string | null
   sport: string
   creatorId: string
+  gameDateTime: Date | string
   createdAt?: Date | string
+  players: string
+  skill_level: string
+  closed?: boolean
+  cancelled?: boolean
+  gameType?: string
 }
 
 export type GameUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sport?: Prisma.StringFieldUpdateOperationsInput | string
+  gameDateTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  players?: Prisma.StringFieldUpdateOperationsInput | string
+  skill_level?: Prisma.StringFieldUpdateOperationsInput | string
+  closed?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gameType?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type GameUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sport?: Prisma.StringFieldUpdateOperationsInput | string
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
+  gameDateTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  players?: Prisma.StringFieldUpdateOperationsInput | string
+  skill_level?: Prisma.StringFieldUpdateOperationsInput | string
+  closed?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gameType?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type GameListRelationFilter = {
@@ -321,29 +468,50 @@ export type GameOrderByRelationAggregateInput = {
 
 export type GameCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  image?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   sport?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
+  gameDateTime?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  players?: Prisma.SortOrder
+  skill_level?: Prisma.SortOrder
+  closed?: Prisma.SortOrder
+  cancelled?: Prisma.SortOrder
+  gameType?: Prisma.SortOrder
 }
 
 export type GameMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  image?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   sport?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
+  gameDateTime?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  players?: Prisma.SortOrder
+  skill_level?: Prisma.SortOrder
+  closed?: Prisma.SortOrder
+  cancelled?: Prisma.SortOrder
+  gameType?: Prisma.SortOrder
 }
 
 export type GameMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  image?: Prisma.SortOrder
   title?: Prisma.SortOrder
   description?: Prisma.SortOrder
   sport?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
+  gameDateTime?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
+  players?: Prisma.SortOrder
+  skill_level?: Prisma.SortOrder
+  closed?: Prisma.SortOrder
+  cancelled?: Prisma.SortOrder
+  gameType?: Prisma.SortOrder
 }
 
 export type GameScalarRelationFilter = {
@@ -393,6 +561,38 @@ export type GameUncheckedUpdateManyWithoutCreatorNestedInput = {
   deleteMany?: Prisma.GameScalarWhereInput | Prisma.GameScalarWhereInput[]
 }
 
+export type BoolFieldUpdateOperationsInput = {
+  set?: boolean
+}
+
+export type GameCreateNestedOneWithoutLocationInput = {
+  create?: Prisma.XOR<Prisma.GameCreateWithoutLocationInput, Prisma.GameUncheckedCreateWithoutLocationInput>
+  connectOrCreate?: Prisma.GameCreateOrConnectWithoutLocationInput
+  connect?: Prisma.GameWhereUniqueInput
+}
+
+export type GameUpdateOneRequiredWithoutLocationNestedInput = {
+  create?: Prisma.XOR<Prisma.GameCreateWithoutLocationInput, Prisma.GameUncheckedCreateWithoutLocationInput>
+  connectOrCreate?: Prisma.GameCreateOrConnectWithoutLocationInput
+  upsert?: Prisma.GameUpsertWithoutLocationInput
+  connect?: Prisma.GameWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.GameUpdateToOneWithWhereWithoutLocationInput, Prisma.GameUpdateWithoutLocationInput>, Prisma.GameUncheckedUpdateWithoutLocationInput>
+}
+
+export type GameCreateNestedOneWithoutSavedByInput = {
+  create?: Prisma.XOR<Prisma.GameCreateWithoutSavedByInput, Prisma.GameUncheckedCreateWithoutSavedByInput>
+  connectOrCreate?: Prisma.GameCreateOrConnectWithoutSavedByInput
+  connect?: Prisma.GameWhereUniqueInput
+}
+
+export type GameUpdateOneRequiredWithoutSavedByNestedInput = {
+  create?: Prisma.XOR<Prisma.GameCreateWithoutSavedByInput, Prisma.GameUncheckedCreateWithoutSavedByInput>
+  connectOrCreate?: Prisma.GameCreateOrConnectWithoutSavedByInput
+  upsert?: Prisma.GameUpsertWithoutSavedByInput
+  connect?: Prisma.GameWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.GameUpdateToOneWithWhereWithoutSavedByInput, Prisma.GameUpdateWithoutSavedByInput>, Prisma.GameUncheckedUpdateWithoutSavedByInput>
+}
+
 export type GameCreateNestedOneWithoutParticipantsInput = {
   create?: Prisma.XOR<Prisma.GameCreateWithoutParticipantsInput, Prisma.GameUncheckedCreateWithoutParticipantsInput>
   connectOrCreate?: Prisma.GameCreateOrConnectWithoutParticipantsInput
@@ -409,20 +609,38 @@ export type GameUpdateOneRequiredWithoutParticipantsNestedInput = {
 
 export type GameCreateWithoutCreatorInput = {
   id?: string
+  image?: string | null
   title: string
   description?: string | null
   sport: string
+  gameDateTime: Date | string
   createdAt?: Date | string
+  players: string
+  skill_level: string
+  closed?: boolean
+  cancelled?: boolean
+  gameType?: string
   participants?: Prisma.ParticipationCreateNestedManyWithoutGameInput
+  location?: Prisma.GameLocationCreateNestedOneWithoutGameInput
+  savedBy?: Prisma.SavedGameCreateNestedManyWithoutGameInput
 }
 
 export type GameUncheckedCreateWithoutCreatorInput = {
   id?: string
+  image?: string | null
   title: string
   description?: string | null
   sport: string
+  gameDateTime: Date | string
   createdAt?: Date | string
+  players: string
+  skill_level: string
+  closed?: boolean
+  cancelled?: boolean
+  gameType?: string
   participants?: Prisma.ParticipationUncheckedCreateNestedManyWithoutGameInput
+  location?: Prisma.GameLocationUncheckedCreateNestedOneWithoutGameInput
+  savedBy?: Prisma.SavedGameUncheckedCreateNestedManyWithoutGameInput
 }
 
 export type GameCreateOrConnectWithoutCreatorInput = {
@@ -456,29 +674,230 @@ export type GameScalarWhereInput = {
   OR?: Prisma.GameScalarWhereInput[]
   NOT?: Prisma.GameScalarWhereInput | Prisma.GameScalarWhereInput[]
   id?: Prisma.StringFilter<"Game"> | string
+  image?: Prisma.StringNullableFilter<"Game"> | string | null
   title?: Prisma.StringFilter<"Game"> | string
   description?: Prisma.StringNullableFilter<"Game"> | string | null
   sport?: Prisma.StringFilter<"Game"> | string
   creatorId?: Prisma.StringFilter<"Game"> | string
+  gameDateTime?: Prisma.DateTimeFilter<"Game"> | Date | string
   createdAt?: Prisma.DateTimeFilter<"Game"> | Date | string
+  players?: Prisma.StringFilter<"Game"> | string
+  skill_level?: Prisma.StringFilter<"Game"> | string
+  closed?: Prisma.BoolFilter<"Game"> | boolean
+  cancelled?: Prisma.BoolFilter<"Game"> | boolean
+  gameType?: Prisma.StringFilter<"Game"> | string
 }
 
-export type GameCreateWithoutParticipantsInput = {
+export type GameCreateWithoutLocationInput = {
   id?: string
+  image?: string | null
   title: string
   description?: string | null
   sport: string
+  gameDateTime: Date | string
   createdAt?: Date | string
+  players: string
+  skill_level: string
+  closed?: boolean
+  cancelled?: boolean
+  gameType?: string
   creator: Prisma.UserCreateNestedOneWithoutGamesCreatedInput
+  participants?: Prisma.ParticipationCreateNestedManyWithoutGameInput
+  savedBy?: Prisma.SavedGameCreateNestedManyWithoutGameInput
 }
 
-export type GameUncheckedCreateWithoutParticipantsInput = {
+export type GameUncheckedCreateWithoutLocationInput = {
   id?: string
+  image?: string | null
   title: string
   description?: string | null
   sport: string
   creatorId: string
+  gameDateTime: Date | string
   createdAt?: Date | string
+  players: string
+  skill_level: string
+  closed?: boolean
+  cancelled?: boolean
+  gameType?: string
+  participants?: Prisma.ParticipationUncheckedCreateNestedManyWithoutGameInput
+  savedBy?: Prisma.SavedGameUncheckedCreateNestedManyWithoutGameInput
+}
+
+export type GameCreateOrConnectWithoutLocationInput = {
+  where: Prisma.GameWhereUniqueInput
+  create: Prisma.XOR<Prisma.GameCreateWithoutLocationInput, Prisma.GameUncheckedCreateWithoutLocationInput>
+}
+
+export type GameUpsertWithoutLocationInput = {
+  update: Prisma.XOR<Prisma.GameUpdateWithoutLocationInput, Prisma.GameUncheckedUpdateWithoutLocationInput>
+  create: Prisma.XOR<Prisma.GameCreateWithoutLocationInput, Prisma.GameUncheckedCreateWithoutLocationInput>
+  where?: Prisma.GameWhereInput
+}
+
+export type GameUpdateToOneWithWhereWithoutLocationInput = {
+  where?: Prisma.GameWhereInput
+  data: Prisma.XOR<Prisma.GameUpdateWithoutLocationInput, Prisma.GameUncheckedUpdateWithoutLocationInput>
+}
+
+export type GameUpdateWithoutLocationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sport?: Prisma.StringFieldUpdateOperationsInput | string
+  gameDateTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  players?: Prisma.StringFieldUpdateOperationsInput | string
+  skill_level?: Prisma.StringFieldUpdateOperationsInput | string
+  closed?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gameType?: Prisma.StringFieldUpdateOperationsInput | string
+  creator?: Prisma.UserUpdateOneRequiredWithoutGamesCreatedNestedInput
+  participants?: Prisma.ParticipationUpdateManyWithoutGameNestedInput
+  savedBy?: Prisma.SavedGameUpdateManyWithoutGameNestedInput
+}
+
+export type GameUncheckedUpdateWithoutLocationInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sport?: Prisma.StringFieldUpdateOperationsInput | string
+  creatorId?: Prisma.StringFieldUpdateOperationsInput | string
+  gameDateTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  players?: Prisma.StringFieldUpdateOperationsInput | string
+  skill_level?: Prisma.StringFieldUpdateOperationsInput | string
+  closed?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gameType?: Prisma.StringFieldUpdateOperationsInput | string
+  participants?: Prisma.ParticipationUncheckedUpdateManyWithoutGameNestedInput
+  savedBy?: Prisma.SavedGameUncheckedUpdateManyWithoutGameNestedInput
+}
+
+export type GameCreateWithoutSavedByInput = {
+  id?: string
+  image?: string | null
+  title: string
+  description?: string | null
+  sport: string
+  gameDateTime: Date | string
+  createdAt?: Date | string
+  players: string
+  skill_level: string
+  closed?: boolean
+  cancelled?: boolean
+  gameType?: string
+  creator: Prisma.UserCreateNestedOneWithoutGamesCreatedInput
+  participants?: Prisma.ParticipationCreateNestedManyWithoutGameInput
+  location?: Prisma.GameLocationCreateNestedOneWithoutGameInput
+}
+
+export type GameUncheckedCreateWithoutSavedByInput = {
+  id?: string
+  image?: string | null
+  title: string
+  description?: string | null
+  sport: string
+  creatorId: string
+  gameDateTime: Date | string
+  createdAt?: Date | string
+  players: string
+  skill_level: string
+  closed?: boolean
+  cancelled?: boolean
+  gameType?: string
+  participants?: Prisma.ParticipationUncheckedCreateNestedManyWithoutGameInput
+  location?: Prisma.GameLocationUncheckedCreateNestedOneWithoutGameInput
+}
+
+export type GameCreateOrConnectWithoutSavedByInput = {
+  where: Prisma.GameWhereUniqueInput
+  create: Prisma.XOR<Prisma.GameCreateWithoutSavedByInput, Prisma.GameUncheckedCreateWithoutSavedByInput>
+}
+
+export type GameUpsertWithoutSavedByInput = {
+  update: Prisma.XOR<Prisma.GameUpdateWithoutSavedByInput, Prisma.GameUncheckedUpdateWithoutSavedByInput>
+  create: Prisma.XOR<Prisma.GameCreateWithoutSavedByInput, Prisma.GameUncheckedCreateWithoutSavedByInput>
+  where?: Prisma.GameWhereInput
+}
+
+export type GameUpdateToOneWithWhereWithoutSavedByInput = {
+  where?: Prisma.GameWhereInput
+  data: Prisma.XOR<Prisma.GameUpdateWithoutSavedByInput, Prisma.GameUncheckedUpdateWithoutSavedByInput>
+}
+
+export type GameUpdateWithoutSavedByInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sport?: Prisma.StringFieldUpdateOperationsInput | string
+  gameDateTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  players?: Prisma.StringFieldUpdateOperationsInput | string
+  skill_level?: Prisma.StringFieldUpdateOperationsInput | string
+  closed?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gameType?: Prisma.StringFieldUpdateOperationsInput | string
+  creator?: Prisma.UserUpdateOneRequiredWithoutGamesCreatedNestedInput
+  participants?: Prisma.ParticipationUpdateManyWithoutGameNestedInput
+  location?: Prisma.GameLocationUpdateOneWithoutGameNestedInput
+}
+
+export type GameUncheckedUpdateWithoutSavedByInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sport?: Prisma.StringFieldUpdateOperationsInput | string
+  creatorId?: Prisma.StringFieldUpdateOperationsInput | string
+  gameDateTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  players?: Prisma.StringFieldUpdateOperationsInput | string
+  skill_level?: Prisma.StringFieldUpdateOperationsInput | string
+  closed?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gameType?: Prisma.StringFieldUpdateOperationsInput | string
+  participants?: Prisma.ParticipationUncheckedUpdateManyWithoutGameNestedInput
+  location?: Prisma.GameLocationUncheckedUpdateOneWithoutGameNestedInput
+}
+
+export type GameCreateWithoutParticipantsInput = {
+  id?: string
+  image?: string | null
+  title: string
+  description?: string | null
+  sport: string
+  gameDateTime: Date | string
+  createdAt?: Date | string
+  players: string
+  skill_level: string
+  closed?: boolean
+  cancelled?: boolean
+  gameType?: string
+  creator: Prisma.UserCreateNestedOneWithoutGamesCreatedInput
+  location?: Prisma.GameLocationCreateNestedOneWithoutGameInput
+  savedBy?: Prisma.SavedGameCreateNestedManyWithoutGameInput
+}
+
+export type GameUncheckedCreateWithoutParticipantsInput = {
+  id?: string
+  image?: string | null
+  title: string
+  description?: string | null
+  sport: string
+  creatorId: string
+  gameDateTime: Date | string
+  createdAt?: Date | string
+  players: string
+  skill_level: string
+  closed?: boolean
+  cancelled?: boolean
+  gameType?: string
+  location?: Prisma.GameLocationUncheckedCreateNestedOneWithoutGameInput
+  savedBy?: Prisma.SavedGameUncheckedCreateNestedManyWithoutGameInput
 }
 
 export type GameCreateOrConnectWithoutParticipantsInput = {
@@ -499,54 +918,104 @@ export type GameUpdateToOneWithWhereWithoutParticipantsInput = {
 
 export type GameUpdateWithoutParticipantsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sport?: Prisma.StringFieldUpdateOperationsInput | string
+  gameDateTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  players?: Prisma.StringFieldUpdateOperationsInput | string
+  skill_level?: Prisma.StringFieldUpdateOperationsInput | string
+  closed?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gameType?: Prisma.StringFieldUpdateOperationsInput | string
   creator?: Prisma.UserUpdateOneRequiredWithoutGamesCreatedNestedInput
+  location?: Prisma.GameLocationUpdateOneWithoutGameNestedInput
+  savedBy?: Prisma.SavedGameUpdateManyWithoutGameNestedInput
 }
 
 export type GameUncheckedUpdateWithoutParticipantsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sport?: Prisma.StringFieldUpdateOperationsInput | string
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
+  gameDateTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  players?: Prisma.StringFieldUpdateOperationsInput | string
+  skill_level?: Prisma.StringFieldUpdateOperationsInput | string
+  closed?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gameType?: Prisma.StringFieldUpdateOperationsInput | string
+  location?: Prisma.GameLocationUncheckedUpdateOneWithoutGameNestedInput
+  savedBy?: Prisma.SavedGameUncheckedUpdateManyWithoutGameNestedInput
 }
 
 export type GameCreateManyCreatorInput = {
   id?: string
+  image?: string | null
   title: string
   description?: string | null
   sport: string
+  gameDateTime: Date | string
   createdAt?: Date | string
+  players: string
+  skill_level: string
+  closed?: boolean
+  cancelled?: boolean
+  gameType?: string
 }
 
 export type GameUpdateWithoutCreatorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sport?: Prisma.StringFieldUpdateOperationsInput | string
+  gameDateTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  players?: Prisma.StringFieldUpdateOperationsInput | string
+  skill_level?: Prisma.StringFieldUpdateOperationsInput | string
+  closed?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gameType?: Prisma.StringFieldUpdateOperationsInput | string
   participants?: Prisma.ParticipationUpdateManyWithoutGameNestedInput
+  location?: Prisma.GameLocationUpdateOneWithoutGameNestedInput
+  savedBy?: Prisma.SavedGameUpdateManyWithoutGameNestedInput
 }
 
 export type GameUncheckedUpdateWithoutCreatorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sport?: Prisma.StringFieldUpdateOperationsInput | string
+  gameDateTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  players?: Prisma.StringFieldUpdateOperationsInput | string
+  skill_level?: Prisma.StringFieldUpdateOperationsInput | string
+  closed?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gameType?: Prisma.StringFieldUpdateOperationsInput | string
   participants?: Prisma.ParticipationUncheckedUpdateManyWithoutGameNestedInput
+  location?: Prisma.GameLocationUncheckedUpdateOneWithoutGameNestedInput
+  savedBy?: Prisma.SavedGameUncheckedUpdateManyWithoutGameNestedInput
 }
 
 export type GameUncheckedUpdateManyWithoutCreatorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   title?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sport?: Prisma.StringFieldUpdateOperationsInput | string
+  gameDateTime?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  players?: Prisma.StringFieldUpdateOperationsInput | string
+  skill_level?: Prisma.StringFieldUpdateOperationsInput | string
+  closed?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  cancelled?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  gameType?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
@@ -556,10 +1025,12 @@ export type GameUncheckedUpdateManyWithoutCreatorInput = {
 
 export type GameCountOutputType = {
   participants: number
+  savedBy: number
 }
 
 export type GameCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   participants?: boolean | GameCountOutputTypeCountParticipantsArgs
+  savedBy?: boolean | GameCountOutputTypeCountSavedByArgs
 }
 
 /**
@@ -579,52 +1050,91 @@ export type GameCountOutputTypeCountParticipantsArgs<ExtArgs extends runtime.Typ
   where?: Prisma.ParticipationWhereInput
 }
 
+/**
+ * GameCountOutputType without action
+ */
+export type GameCountOutputTypeCountSavedByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SavedGameWhereInput
+}
+
 
 export type GameSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  image?: boolean
   title?: boolean
   description?: boolean
   sport?: boolean
   creatorId?: boolean
+  gameDateTime?: boolean
   createdAt?: boolean
+  players?: boolean
+  skill_level?: boolean
+  closed?: boolean
+  cancelled?: boolean
+  gameType?: boolean
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   participants?: boolean | Prisma.Game$participantsArgs<ExtArgs>
+  location?: boolean | Prisma.Game$locationArgs<ExtArgs>
+  savedBy?: boolean | Prisma.Game$savedByArgs<ExtArgs>
   _count?: boolean | Prisma.GameCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["game"]>
 
 export type GameSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  image?: boolean
   title?: boolean
   description?: boolean
   sport?: boolean
   creatorId?: boolean
+  gameDateTime?: boolean
   createdAt?: boolean
+  players?: boolean
+  skill_level?: boolean
+  closed?: boolean
+  cancelled?: boolean
+  gameType?: boolean
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["game"]>
 
 export type GameSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  image?: boolean
   title?: boolean
   description?: boolean
   sport?: boolean
   creatorId?: boolean
+  gameDateTime?: boolean
   createdAt?: boolean
+  players?: boolean
+  skill_level?: boolean
+  closed?: boolean
+  cancelled?: boolean
+  gameType?: boolean
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["game"]>
 
 export type GameSelectScalar = {
   id?: boolean
+  image?: boolean
   title?: boolean
   description?: boolean
   sport?: boolean
   creatorId?: boolean
+  gameDateTime?: boolean
   createdAt?: boolean
+  players?: boolean
+  skill_level?: boolean
+  closed?: boolean
+  cancelled?: boolean
+  gameType?: boolean
 }
 
-export type GameOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "sport" | "creatorId" | "createdAt", ExtArgs["result"]["game"]>
+export type GameOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "image" | "title" | "description" | "sport" | "creatorId" | "gameDateTime" | "createdAt" | "players" | "skill_level" | "closed" | "cancelled" | "gameType", ExtArgs["result"]["game"]>
 export type GameInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   creator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   participants?: boolean | Prisma.Game$participantsArgs<ExtArgs>
+  location?: boolean | Prisma.Game$locationArgs<ExtArgs>
+  savedBy?: boolean | Prisma.Game$savedByArgs<ExtArgs>
   _count?: boolean | Prisma.GameCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type GameIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -639,14 +1149,23 @@ export type $GamePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   objects: {
     creator: Prisma.$UserPayload<ExtArgs>
     participants: Prisma.$ParticipationPayload<ExtArgs>[]
+    location: Prisma.$GameLocationPayload<ExtArgs> | null
+    savedBy: Prisma.$SavedGamePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    image: string | null
     title: string
     description: string | null
     sport: string
     creatorId: string
+    gameDateTime: Date
     createdAt: Date
+    players: string
+    skill_level: string
+    closed: boolean
+    cancelled: boolean
+    gameType: string
   }, ExtArgs["result"]["game"]>
   composites: {}
 }
@@ -1043,6 +1562,8 @@ export interface Prisma__GameClient<T, Null = never, ExtArgs extends runtime.Typ
   readonly [Symbol.toStringTag]: "PrismaPromise"
   creator<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   participants<T extends Prisma.Game$participantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Game$participantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ParticipationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  location<T extends Prisma.Game$locationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Game$locationArgs<ExtArgs>>): Prisma.Prisma__GameLocationClient<runtime.Types.Result.GetResult<Prisma.$GameLocationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  savedBy<T extends Prisma.Game$savedByArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Game$savedByArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SavedGamePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1073,11 +1594,18 @@ export interface Prisma__GameClient<T, Null = never, ExtArgs extends runtime.Typ
  */
 export interface GameFieldRefs {
   readonly id: Prisma.FieldRef<"Game", 'String'>
+  readonly image: Prisma.FieldRef<"Game", 'String'>
   readonly title: Prisma.FieldRef<"Game", 'String'>
   readonly description: Prisma.FieldRef<"Game", 'String'>
   readonly sport: Prisma.FieldRef<"Game", 'String'>
   readonly creatorId: Prisma.FieldRef<"Game", 'String'>
+  readonly gameDateTime: Prisma.FieldRef<"Game", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"Game", 'DateTime'>
+  readonly players: Prisma.FieldRef<"Game", 'String'>
+  readonly skill_level: Prisma.FieldRef<"Game", 'String'>
+  readonly closed: Prisma.FieldRef<"Game", 'Boolean'>
+  readonly cancelled: Prisma.FieldRef<"Game", 'Boolean'>
+  readonly gameType: Prisma.FieldRef<"Game", 'String'>
 }
     
 
@@ -1500,6 +2028,49 @@ export type Game$participantsArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.ParticipationScalarFieldEnum | Prisma.ParticipationScalarFieldEnum[]
+}
+
+/**
+ * Game.location
+ */
+export type Game$locationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the GameLocation
+   */
+  select?: Prisma.GameLocationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the GameLocation
+   */
+  omit?: Prisma.GameLocationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.GameLocationInclude<ExtArgs> | null
+  where?: Prisma.GameLocationWhereInput
+}
+
+/**
+ * Game.savedBy
+ */
+export type Game$savedByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SavedGame
+   */
+  select?: Prisma.SavedGameSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SavedGame
+   */
+  omit?: Prisma.SavedGameOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SavedGameInclude<ExtArgs> | null
+  where?: Prisma.SavedGameWhereInput
+  orderBy?: Prisma.SavedGameOrderByWithRelationInput | Prisma.SavedGameOrderByWithRelationInput[]
+  cursor?: Prisma.SavedGameWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SavedGameScalarFieldEnum | Prisma.SavedGameScalarFieldEnum[]
 }
 
 /**

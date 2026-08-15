@@ -2,11 +2,11 @@ import {
   StyleSheet,
   View
 } from "react-native";
-import { EventType } from "../types/types";
+import { Game } from "../types/types";
 import RecommendedEventCard from "./RecommendedEventCard";
 
 type EventsProps = {
-    events: EventType[]
+    events: Game[]
 }
 
 export default function RecommendedEventSection({events}: EventsProps) {

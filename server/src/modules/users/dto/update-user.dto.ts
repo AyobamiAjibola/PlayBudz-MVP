@@ -21,17 +21,13 @@ export class UpdateUserDto {
   @IsString()
   interests?: string;
 
-  // @IsOptional()
-  // @IsString()
-  // image?: string;
-
   @IsOptional()
   @IsString()
   location?: string;
 
   @IsOptional()
   @IsBoolean()
-  notification?: boolean;
+  notificationEnabled?: boolean;
 
   @IsOptional()
   @IsString()

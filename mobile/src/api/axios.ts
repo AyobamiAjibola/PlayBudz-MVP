@@ -13,12 +13,11 @@ export const api = axios.create({
 api.interceptors.request.use(
   async (config) => {
     try {
-      // await auth.authStateReady();
       const user = auth.currentUser;
 
       if (user) {
         const token = await user.getIdToken();
-
+        // console.log(token, "token")
         config.headers.Authorization = `Bearer ${token}`;
       }
 
@@ -59,14 +58,3 @@ api.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-// api.interceptors.response.use(
-//   (response) => response,
-//   (error) => {
-//     const message =
-//       error.response?.data?.message ??
-//       error.response?.data?.error ??
-//       "Something went wrong.";
-
-//     return Promise.reject(new Error(message));
-//   }
-// );

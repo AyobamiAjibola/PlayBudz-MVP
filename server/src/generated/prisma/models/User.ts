@@ -33,9 +33,7 @@ export type UserMinAggregateOutputType = {
   dob: string | null
   gender: string | null
   biography: string | null
-  interests: string | null
   image: string | null
-  location: string | null
   notificationEnabled: boolean | null
   pushToken: string | null
   password: string | null
@@ -54,9 +52,7 @@ export type UserMaxAggregateOutputType = {
   dob: string | null
   gender: string | null
   biography: string | null
-  interests: string | null
   image: string | null
-  location: string | null
   notificationEnabled: boolean | null
   pushToken: string | null
   password: string | null
@@ -75,9 +71,7 @@ export type UserCountAggregateOutputType = {
   dob: number
   gender: number
   biography: number
-  interests: number
   image: number
-  location: number
   notificationEnabled: number
   pushToken: number
   password: number
@@ -98,9 +92,7 @@ export type UserMinAggregateInputType = {
   dob?: true
   gender?: true
   biography?: true
-  interests?: true
   image?: true
-  location?: true
   notificationEnabled?: true
   pushToken?: true
   password?: true
@@ -119,9 +111,7 @@ export type UserMaxAggregateInputType = {
   dob?: true
   gender?: true
   biography?: true
-  interests?: true
   image?: true
-  location?: true
   notificationEnabled?: true
   pushToken?: true
   password?: true
@@ -140,9 +130,7 @@ export type UserCountAggregateInputType = {
   dob?: true
   gender?: true
   biography?: true
-  interests?: true
   image?: true
-  location?: true
   notificationEnabled?: true
   pushToken?: true
   password?: true
@@ -234,9 +222,7 @@ export type UserGroupByOutputType = {
   dob: string | null
   gender: string | null
   biography: string | null
-  interests: string | null
   image: string | null
-  location: string | null
   notificationEnabled: boolean | null
   pushToken: string | null
   password: string | null
@@ -276,9 +262,7 @@ export type UserWhereInput = {
   dob?: Prisma.StringNullableFilter<"User"> | string | null
   gender?: Prisma.StringNullableFilter<"User"> | string | null
   biography?: Prisma.StringNullableFilter<"User"> | string | null
-  interests?: Prisma.StringNullableFilter<"User"> | string | null
   image?: Prisma.StringNullableFilter<"User"> | string | null
-  location?: Prisma.StringNullableFilter<"User"> | string | null
   notificationEnabled?: Prisma.BoolNullableFilter<"User"> | boolean | null
   pushToken?: Prisma.StringNullableFilter<"User"> | string | null
   password?: Prisma.StringNullableFilter<"User"> | string | null
@@ -286,8 +270,11 @@ export type UserWhereInput = {
   refreshToken?: Prisma.StringNullableFilter<"User"> | string | null
   provider?: Prisma.StringFilter<"User"> | string
   registrationComplete?: Prisma.BoolNullableFilter<"User"> | boolean | null
+  interests?: Prisma.UserInterestListRelationFilter
+  location?: Prisma.XOR<Prisma.UserLocationNullableScalarRelationFilter, Prisma.UserLocationWhereInput> | null
   gamesCreated?: Prisma.GameListRelationFilter
   participants?: Prisma.ParticipationListRelationFilter
+  savedGames?: Prisma.SavedGameListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -299,9 +286,7 @@ export type UserOrderByWithRelationInput = {
   dob?: Prisma.SortOrderInput | Prisma.SortOrder
   gender?: Prisma.SortOrderInput | Prisma.SortOrder
   biography?: Prisma.SortOrderInput | Prisma.SortOrder
-  interests?: Prisma.SortOrderInput | Prisma.SortOrder
   image?: Prisma.SortOrderInput | Prisma.SortOrder
-  location?: Prisma.SortOrderInput | Prisma.SortOrder
   notificationEnabled?: Prisma.SortOrderInput | Prisma.SortOrder
   pushToken?: Prisma.SortOrderInput | Prisma.SortOrder
   password?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -309,8 +294,11 @@ export type UserOrderByWithRelationInput = {
   refreshToken?: Prisma.SortOrderInput | Prisma.SortOrder
   provider?: Prisma.SortOrder
   registrationComplete?: Prisma.SortOrderInput | Prisma.SortOrder
+  interests?: Prisma.UserInterestOrderByRelationAggregateInput
+  location?: Prisma.UserLocationOrderByWithRelationInput
   gamesCreated?: Prisma.GameOrderByRelationAggregateInput
   participants?: Prisma.ParticipationOrderByRelationAggregateInput
+  savedGames?: Prisma.SavedGameOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -325,9 +313,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   dob?: Prisma.StringNullableFilter<"User"> | string | null
   gender?: Prisma.StringNullableFilter<"User"> | string | null
   biography?: Prisma.StringNullableFilter<"User"> | string | null
-  interests?: Prisma.StringNullableFilter<"User"> | string | null
   image?: Prisma.StringNullableFilter<"User"> | string | null
-  location?: Prisma.StringNullableFilter<"User"> | string | null
   notificationEnabled?: Prisma.BoolNullableFilter<"User"> | boolean | null
   pushToken?: Prisma.StringNullableFilter<"User"> | string | null
   password?: Prisma.StringNullableFilter<"User"> | string | null
@@ -335,8 +321,11 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   refreshToken?: Prisma.StringNullableFilter<"User"> | string | null
   provider?: Prisma.StringFilter<"User"> | string
   registrationComplete?: Prisma.BoolNullableFilter<"User"> | boolean | null
+  interests?: Prisma.UserInterestListRelationFilter
+  location?: Prisma.XOR<Prisma.UserLocationNullableScalarRelationFilter, Prisma.UserLocationWhereInput> | null
   gamesCreated?: Prisma.GameListRelationFilter
   participants?: Prisma.ParticipationListRelationFilter
+  savedGames?: Prisma.SavedGameListRelationFilter
 }, "id" | "email" | "firebaseUid">
 
 export type UserOrderByWithAggregationInput = {
@@ -348,9 +337,7 @@ export type UserOrderByWithAggregationInput = {
   dob?: Prisma.SortOrderInput | Prisma.SortOrder
   gender?: Prisma.SortOrderInput | Prisma.SortOrder
   biography?: Prisma.SortOrderInput | Prisma.SortOrder
-  interests?: Prisma.SortOrderInput | Prisma.SortOrder
   image?: Prisma.SortOrderInput | Prisma.SortOrder
-  location?: Prisma.SortOrderInput | Prisma.SortOrder
   notificationEnabled?: Prisma.SortOrderInput | Prisma.SortOrder
   pushToken?: Prisma.SortOrderInput | Prisma.SortOrder
   password?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -375,9 +362,7 @@ export type UserScalarWhereWithAggregatesInput = {
   dob?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   gender?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   biography?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  interests?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   image?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
-  location?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   notificationEnabled?: Prisma.BoolNullableWithAggregatesFilter<"User"> | boolean | null
   pushToken?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   password?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
@@ -396,9 +381,7 @@ export type UserCreateInput = {
   dob?: string | null
   gender?: string | null
   biography?: string | null
-  interests?: string | null
   image?: string | null
-  location?: string | null
   notificationEnabled?: boolean | null
   pushToken?: string | null
   password?: string | null
@@ -406,8 +389,11 @@ export type UserCreateInput = {
   refreshToken?: string | null
   provider: string
   registrationComplete?: boolean | null
+  interests?: Prisma.UserInterestCreateNestedManyWithoutUserInput
+  location?: Prisma.UserLocationCreateNestedOneWithoutUserInput
   gamesCreated?: Prisma.GameCreateNestedManyWithoutCreatorInput
   participants?: Prisma.ParticipationCreateNestedManyWithoutUserInput
+  savedGames?: Prisma.SavedGameCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -419,9 +405,7 @@ export type UserUncheckedCreateInput = {
   dob?: string | null
   gender?: string | null
   biography?: string | null
-  interests?: string | null
   image?: string | null
-  location?: string | null
   notificationEnabled?: boolean | null
   pushToken?: string | null
   password?: string | null
@@ -429,8 +413,11 @@ export type UserUncheckedCreateInput = {
   refreshToken?: string | null
   provider: string
   registrationComplete?: boolean | null
+  interests?: Prisma.UserInterestUncheckedCreateNestedManyWithoutUserInput
+  location?: Prisma.UserLocationUncheckedCreateNestedOneWithoutUserInput
   gamesCreated?: Prisma.GameUncheckedCreateNestedManyWithoutCreatorInput
   participants?: Prisma.ParticipationUncheckedCreateNestedManyWithoutUserInput
+  savedGames?: Prisma.SavedGameUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserUpdateInput = {
@@ -442,9 +429,7 @@ export type UserUpdateInput = {
   dob?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   biography?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  interests?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notificationEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -452,8 +437,11 @@ export type UserUpdateInput = {
   refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
   registrationComplete?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  interests?: Prisma.UserInterestUpdateManyWithoutUserNestedInput
+  location?: Prisma.UserLocationUpdateOneWithoutUserNestedInput
   gamesCreated?: Prisma.GameUpdateManyWithoutCreatorNestedInput
   participants?: Prisma.ParticipationUpdateManyWithoutUserNestedInput
+  savedGames?: Prisma.SavedGameUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -465,9 +453,7 @@ export type UserUncheckedUpdateInput = {
   dob?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   biography?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  interests?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notificationEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -475,8 +461,11 @@ export type UserUncheckedUpdateInput = {
   refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
   registrationComplete?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  interests?: Prisma.UserInterestUncheckedUpdateManyWithoutUserNestedInput
+  location?: Prisma.UserLocationUncheckedUpdateOneWithoutUserNestedInput
   gamesCreated?: Prisma.GameUncheckedUpdateManyWithoutCreatorNestedInput
   participants?: Prisma.ParticipationUncheckedUpdateManyWithoutUserNestedInput
+  savedGames?: Prisma.SavedGameUncheckedUpdateManyWithoutUserNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -488,9 +477,7 @@ export type UserCreateManyInput = {
   dob?: string | null
   gender?: string | null
   biography?: string | null
-  interests?: string | null
   image?: string | null
-  location?: string | null
   notificationEnabled?: boolean | null
   pushToken?: string | null
   password?: string | null
@@ -509,9 +496,7 @@ export type UserUpdateManyMutationInput = {
   dob?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   biography?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  interests?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notificationEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -530,9 +515,7 @@ export type UserUncheckedUpdateManyInput = {
   dob?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   biography?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  interests?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notificationEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -551,9 +534,7 @@ export type UserCountOrderByAggregateInput = {
   dob?: Prisma.SortOrder
   gender?: Prisma.SortOrder
   biography?: Prisma.SortOrder
-  interests?: Prisma.SortOrder
   image?: Prisma.SortOrder
-  location?: Prisma.SortOrder
   notificationEnabled?: Prisma.SortOrder
   pushToken?: Prisma.SortOrder
   password?: Prisma.SortOrder
@@ -572,9 +553,7 @@ export type UserMaxOrderByAggregateInput = {
   dob?: Prisma.SortOrder
   gender?: Prisma.SortOrder
   biography?: Prisma.SortOrder
-  interests?: Prisma.SortOrder
   image?: Prisma.SortOrder
-  location?: Prisma.SortOrder
   notificationEnabled?: Prisma.SortOrder
   pushToken?: Prisma.SortOrder
   password?: Prisma.SortOrder
@@ -593,9 +572,7 @@ export type UserMinOrderByAggregateInput = {
   dob?: Prisma.SortOrder
   gender?: Prisma.SortOrder
   biography?: Prisma.SortOrder
-  interests?: Prisma.SortOrder
   image?: Prisma.SortOrder
-  location?: Prisma.SortOrder
   notificationEnabled?: Prisma.SortOrder
   pushToken?: Prisma.SortOrder
   password?: Prisma.SortOrder
@@ -626,6 +603,34 @@ export type NullableBoolFieldUpdateOperationsInput = {
   set?: boolean | null
 }
 
+export type UserCreateNestedOneWithoutLocationInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLocationInput, Prisma.UserUncheckedCreateWithoutLocationInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLocationInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutLocationNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutLocationInput, Prisma.UserUncheckedCreateWithoutLocationInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutLocationInput
+  upsert?: Prisma.UserUpsertWithoutLocationInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutLocationInput, Prisma.UserUpdateWithoutLocationInput>, Prisma.UserUncheckedUpdateWithoutLocationInput>
+}
+
+export type UserCreateNestedOneWithoutInterestsInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutInterestsInput, Prisma.UserUncheckedCreateWithoutInterestsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutInterestsInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutInterestsNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutInterestsInput, Prisma.UserUncheckedCreateWithoutInterestsInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutInterestsInput
+  upsert?: Prisma.UserUpsertWithoutInterestsInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutInterestsInput, Prisma.UserUpdateWithoutInterestsInput>, Prisma.UserUncheckedUpdateWithoutInterestsInput>
+}
+
 export type UserCreateNestedOneWithoutGamesCreatedInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutGamesCreatedInput, Prisma.UserUncheckedCreateWithoutGamesCreatedInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutGamesCreatedInput
@@ -638,6 +643,20 @@ export type UserUpdateOneRequiredWithoutGamesCreatedNestedInput = {
   upsert?: Prisma.UserUpsertWithoutGamesCreatedInput
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutGamesCreatedInput, Prisma.UserUpdateWithoutGamesCreatedInput>, Prisma.UserUncheckedUpdateWithoutGamesCreatedInput>
+}
+
+export type UserCreateNestedOneWithoutSavedGamesInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSavedGamesInput, Prisma.UserUncheckedCreateWithoutSavedGamesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSavedGamesInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutSavedGamesNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSavedGamesInput, Prisma.UserUncheckedCreateWithoutSavedGamesInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSavedGamesInput
+  upsert?: Prisma.UserUpsertWithoutSavedGamesInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSavedGamesInput, Prisma.UserUpdateWithoutSavedGamesInput>, Prisma.UserUncheckedUpdateWithoutSavedGamesInput>
 }
 
 export type UserCreateNestedOneWithoutParticipantsInput = {
@@ -654,6 +673,222 @@ export type UserUpdateOneRequiredWithoutParticipantsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutParticipantsInput, Prisma.UserUpdateWithoutParticipantsInput>, Prisma.UserUncheckedUpdateWithoutParticipantsInput>
 }
 
+export type UserCreateWithoutLocationInput = {
+  email: string
+  id?: string
+  firebaseUid: string
+  createdAt?: Date | string
+  fullName?: string | null
+  dob?: string | null
+  gender?: string | null
+  biography?: string | null
+  image?: string | null
+  notificationEnabled?: boolean | null
+  pushToken?: string | null
+  password?: string | null
+  updatedAt?: Date | string
+  refreshToken?: string | null
+  provider: string
+  registrationComplete?: boolean | null
+  interests?: Prisma.UserInterestCreateNestedManyWithoutUserInput
+  gamesCreated?: Prisma.GameCreateNestedManyWithoutCreatorInput
+  participants?: Prisma.ParticipationCreateNestedManyWithoutUserInput
+  savedGames?: Prisma.SavedGameCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutLocationInput = {
+  email: string
+  id?: string
+  firebaseUid: string
+  createdAt?: Date | string
+  fullName?: string | null
+  dob?: string | null
+  gender?: string | null
+  biography?: string | null
+  image?: string | null
+  notificationEnabled?: boolean | null
+  pushToken?: string | null
+  password?: string | null
+  updatedAt?: Date | string
+  refreshToken?: string | null
+  provider: string
+  registrationComplete?: boolean | null
+  interests?: Prisma.UserInterestUncheckedCreateNestedManyWithoutUserInput
+  gamesCreated?: Prisma.GameUncheckedCreateNestedManyWithoutCreatorInput
+  participants?: Prisma.ParticipationUncheckedCreateNestedManyWithoutUserInput
+  savedGames?: Prisma.SavedGameUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutLocationInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutLocationInput, Prisma.UserUncheckedCreateWithoutLocationInput>
+}
+
+export type UserUpsertWithoutLocationInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutLocationInput, Prisma.UserUncheckedUpdateWithoutLocationInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutLocationInput, Prisma.UserUncheckedCreateWithoutLocationInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutLocationInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutLocationInput, Prisma.UserUncheckedUpdateWithoutLocationInput>
+}
+
+export type UserUpdateWithoutLocationInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firebaseUid?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dob?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  biography?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notificationEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  provider?: Prisma.StringFieldUpdateOperationsInput | string
+  registrationComplete?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  interests?: Prisma.UserInterestUpdateManyWithoutUserNestedInput
+  gamesCreated?: Prisma.GameUpdateManyWithoutCreatorNestedInput
+  participants?: Prisma.ParticipationUpdateManyWithoutUserNestedInput
+  savedGames?: Prisma.SavedGameUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutLocationInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firebaseUid?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dob?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  biography?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notificationEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  provider?: Prisma.StringFieldUpdateOperationsInput | string
+  registrationComplete?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  interests?: Prisma.UserInterestUncheckedUpdateManyWithoutUserNestedInput
+  gamesCreated?: Prisma.GameUncheckedUpdateManyWithoutCreatorNestedInput
+  participants?: Prisma.ParticipationUncheckedUpdateManyWithoutUserNestedInput
+  savedGames?: Prisma.SavedGameUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutInterestsInput = {
+  email: string
+  id?: string
+  firebaseUid: string
+  createdAt?: Date | string
+  fullName?: string | null
+  dob?: string | null
+  gender?: string | null
+  biography?: string | null
+  image?: string | null
+  notificationEnabled?: boolean | null
+  pushToken?: string | null
+  password?: string | null
+  updatedAt?: Date | string
+  refreshToken?: string | null
+  provider: string
+  registrationComplete?: boolean | null
+  location?: Prisma.UserLocationCreateNestedOneWithoutUserInput
+  gamesCreated?: Prisma.GameCreateNestedManyWithoutCreatorInput
+  participants?: Prisma.ParticipationCreateNestedManyWithoutUserInput
+  savedGames?: Prisma.SavedGameCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutInterestsInput = {
+  email: string
+  id?: string
+  firebaseUid: string
+  createdAt?: Date | string
+  fullName?: string | null
+  dob?: string | null
+  gender?: string | null
+  biography?: string | null
+  image?: string | null
+  notificationEnabled?: boolean | null
+  pushToken?: string | null
+  password?: string | null
+  updatedAt?: Date | string
+  refreshToken?: string | null
+  provider: string
+  registrationComplete?: boolean | null
+  location?: Prisma.UserLocationUncheckedCreateNestedOneWithoutUserInput
+  gamesCreated?: Prisma.GameUncheckedCreateNestedManyWithoutCreatorInput
+  participants?: Prisma.ParticipationUncheckedCreateNestedManyWithoutUserInput
+  savedGames?: Prisma.SavedGameUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutInterestsInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutInterestsInput, Prisma.UserUncheckedCreateWithoutInterestsInput>
+}
+
+export type UserUpsertWithoutInterestsInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutInterestsInput, Prisma.UserUncheckedUpdateWithoutInterestsInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutInterestsInput, Prisma.UserUncheckedCreateWithoutInterestsInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutInterestsInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutInterestsInput, Prisma.UserUncheckedUpdateWithoutInterestsInput>
+}
+
+export type UserUpdateWithoutInterestsInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firebaseUid?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dob?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  biography?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notificationEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  provider?: Prisma.StringFieldUpdateOperationsInput | string
+  registrationComplete?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  location?: Prisma.UserLocationUpdateOneWithoutUserNestedInput
+  gamesCreated?: Prisma.GameUpdateManyWithoutCreatorNestedInput
+  participants?: Prisma.ParticipationUpdateManyWithoutUserNestedInput
+  savedGames?: Prisma.SavedGameUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutInterestsInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firebaseUid?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dob?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  biography?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notificationEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  provider?: Prisma.StringFieldUpdateOperationsInput | string
+  registrationComplete?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  location?: Prisma.UserLocationUncheckedUpdateOneWithoutUserNestedInput
+  gamesCreated?: Prisma.GameUncheckedUpdateManyWithoutCreatorNestedInput
+  participants?: Prisma.ParticipationUncheckedUpdateManyWithoutUserNestedInput
+  savedGames?: Prisma.SavedGameUncheckedUpdateManyWithoutUserNestedInput
+}
+
 export type UserCreateWithoutGamesCreatedInput = {
   email: string
   id?: string
@@ -663,9 +898,7 @@ export type UserCreateWithoutGamesCreatedInput = {
   dob?: string | null
   gender?: string | null
   biography?: string | null
-  interests?: string | null
   image?: string | null
-  location?: string | null
   notificationEnabled?: boolean | null
   pushToken?: string | null
   password?: string | null
@@ -673,7 +906,10 @@ export type UserCreateWithoutGamesCreatedInput = {
   refreshToken?: string | null
   provider: string
   registrationComplete?: boolean | null
+  interests?: Prisma.UserInterestCreateNestedManyWithoutUserInput
+  location?: Prisma.UserLocationCreateNestedOneWithoutUserInput
   participants?: Prisma.ParticipationCreateNestedManyWithoutUserInput
+  savedGames?: Prisma.SavedGameCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutGamesCreatedInput = {
@@ -685,9 +921,7 @@ export type UserUncheckedCreateWithoutGamesCreatedInput = {
   dob?: string | null
   gender?: string | null
   biography?: string | null
-  interests?: string | null
   image?: string | null
-  location?: string | null
   notificationEnabled?: boolean | null
   pushToken?: string | null
   password?: string | null
@@ -695,7 +929,10 @@ export type UserUncheckedCreateWithoutGamesCreatedInput = {
   refreshToken?: string | null
   provider: string
   registrationComplete?: boolean | null
+  interests?: Prisma.UserInterestUncheckedCreateNestedManyWithoutUserInput
+  location?: Prisma.UserLocationUncheckedCreateNestedOneWithoutUserInput
   participants?: Prisma.ParticipationUncheckedCreateNestedManyWithoutUserInput
+  savedGames?: Prisma.SavedGameUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutGamesCreatedInput = {
@@ -723,9 +960,7 @@ export type UserUpdateWithoutGamesCreatedInput = {
   dob?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   biography?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  interests?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notificationEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -733,7 +968,10 @@ export type UserUpdateWithoutGamesCreatedInput = {
   refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
   registrationComplete?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  interests?: Prisma.UserInterestUpdateManyWithoutUserNestedInput
+  location?: Prisma.UserLocationUpdateOneWithoutUserNestedInput
   participants?: Prisma.ParticipationUpdateManyWithoutUserNestedInput
+  savedGames?: Prisma.SavedGameUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutGamesCreatedInput = {
@@ -745,9 +983,7 @@ export type UserUncheckedUpdateWithoutGamesCreatedInput = {
   dob?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   biography?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  interests?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notificationEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -755,6 +991,117 @@ export type UserUncheckedUpdateWithoutGamesCreatedInput = {
   refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
   registrationComplete?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  interests?: Prisma.UserInterestUncheckedUpdateManyWithoutUserNestedInput
+  location?: Prisma.UserLocationUncheckedUpdateOneWithoutUserNestedInput
+  participants?: Prisma.ParticipationUncheckedUpdateManyWithoutUserNestedInput
+  savedGames?: Prisma.SavedGameUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutSavedGamesInput = {
+  email: string
+  id?: string
+  firebaseUid: string
+  createdAt?: Date | string
+  fullName?: string | null
+  dob?: string | null
+  gender?: string | null
+  biography?: string | null
+  image?: string | null
+  notificationEnabled?: boolean | null
+  pushToken?: string | null
+  password?: string | null
+  updatedAt?: Date | string
+  refreshToken?: string | null
+  provider: string
+  registrationComplete?: boolean | null
+  interests?: Prisma.UserInterestCreateNestedManyWithoutUserInput
+  location?: Prisma.UserLocationCreateNestedOneWithoutUserInput
+  gamesCreated?: Prisma.GameCreateNestedManyWithoutCreatorInput
+  participants?: Prisma.ParticipationCreateNestedManyWithoutUserInput
+}
+
+export type UserUncheckedCreateWithoutSavedGamesInput = {
+  email: string
+  id?: string
+  firebaseUid: string
+  createdAt?: Date | string
+  fullName?: string | null
+  dob?: string | null
+  gender?: string | null
+  biography?: string | null
+  image?: string | null
+  notificationEnabled?: boolean | null
+  pushToken?: string | null
+  password?: string | null
+  updatedAt?: Date | string
+  refreshToken?: string | null
+  provider: string
+  registrationComplete?: boolean | null
+  interests?: Prisma.UserInterestUncheckedCreateNestedManyWithoutUserInput
+  location?: Prisma.UserLocationUncheckedCreateNestedOneWithoutUserInput
+  gamesCreated?: Prisma.GameUncheckedCreateNestedManyWithoutCreatorInput
+  participants?: Prisma.ParticipationUncheckedCreateNestedManyWithoutUserInput
+}
+
+export type UserCreateOrConnectWithoutSavedGamesInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSavedGamesInput, Prisma.UserUncheckedCreateWithoutSavedGamesInput>
+}
+
+export type UserUpsertWithoutSavedGamesInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSavedGamesInput, Prisma.UserUncheckedUpdateWithoutSavedGamesInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSavedGamesInput, Prisma.UserUncheckedCreateWithoutSavedGamesInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSavedGamesInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSavedGamesInput, Prisma.UserUncheckedUpdateWithoutSavedGamesInput>
+}
+
+export type UserUpdateWithoutSavedGamesInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firebaseUid?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dob?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  biography?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notificationEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  provider?: Prisma.StringFieldUpdateOperationsInput | string
+  registrationComplete?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  interests?: Prisma.UserInterestUpdateManyWithoutUserNestedInput
+  location?: Prisma.UserLocationUpdateOneWithoutUserNestedInput
+  gamesCreated?: Prisma.GameUpdateManyWithoutCreatorNestedInput
+  participants?: Prisma.ParticipationUpdateManyWithoutUserNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSavedGamesInput = {
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  firebaseUid?: Prisma.StringFieldUpdateOperationsInput | string
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  fullName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dob?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  biography?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notificationEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  provider?: Prisma.StringFieldUpdateOperationsInput | string
+  registrationComplete?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  interests?: Prisma.UserInterestUncheckedUpdateManyWithoutUserNestedInput
+  location?: Prisma.UserLocationUncheckedUpdateOneWithoutUserNestedInput
+  gamesCreated?: Prisma.GameUncheckedUpdateManyWithoutCreatorNestedInput
   participants?: Prisma.ParticipationUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -767,9 +1114,7 @@ export type UserCreateWithoutParticipantsInput = {
   dob?: string | null
   gender?: string | null
   biography?: string | null
-  interests?: string | null
   image?: string | null
-  location?: string | null
   notificationEnabled?: boolean | null
   pushToken?: string | null
   password?: string | null
@@ -777,7 +1122,10 @@ export type UserCreateWithoutParticipantsInput = {
   refreshToken?: string | null
   provider: string
   registrationComplete?: boolean | null
+  interests?: Prisma.UserInterestCreateNestedManyWithoutUserInput
+  location?: Prisma.UserLocationCreateNestedOneWithoutUserInput
   gamesCreated?: Prisma.GameCreateNestedManyWithoutCreatorInput
+  savedGames?: Prisma.SavedGameCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutParticipantsInput = {
@@ -789,9 +1137,7 @@ export type UserUncheckedCreateWithoutParticipantsInput = {
   dob?: string | null
   gender?: string | null
   biography?: string | null
-  interests?: string | null
   image?: string | null
-  location?: string | null
   notificationEnabled?: boolean | null
   pushToken?: string | null
   password?: string | null
@@ -799,7 +1145,10 @@ export type UserUncheckedCreateWithoutParticipantsInput = {
   refreshToken?: string | null
   provider: string
   registrationComplete?: boolean | null
+  interests?: Prisma.UserInterestUncheckedCreateNestedManyWithoutUserInput
+  location?: Prisma.UserLocationUncheckedCreateNestedOneWithoutUserInput
   gamesCreated?: Prisma.GameUncheckedCreateNestedManyWithoutCreatorInput
+  savedGames?: Prisma.SavedGameUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutParticipantsInput = {
@@ -827,9 +1176,7 @@ export type UserUpdateWithoutParticipantsInput = {
   dob?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   biography?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  interests?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notificationEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -837,7 +1184,10 @@ export type UserUpdateWithoutParticipantsInput = {
   refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
   registrationComplete?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  interests?: Prisma.UserInterestUpdateManyWithoutUserNestedInput
+  location?: Prisma.UserLocationUpdateOneWithoutUserNestedInput
   gamesCreated?: Prisma.GameUpdateManyWithoutCreatorNestedInput
+  savedGames?: Prisma.SavedGameUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutParticipantsInput = {
@@ -849,9 +1199,7 @@ export type UserUncheckedUpdateWithoutParticipantsInput = {
   dob?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   gender?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   biography?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  interests?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  location?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notificationEnabled?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   pushToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -859,7 +1207,10 @@ export type UserUncheckedUpdateWithoutParticipantsInput = {
   refreshToken?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   provider?: Prisma.StringFieldUpdateOperationsInput | string
   registrationComplete?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  interests?: Prisma.UserInterestUncheckedUpdateManyWithoutUserNestedInput
+  location?: Prisma.UserLocationUncheckedUpdateOneWithoutUserNestedInput
   gamesCreated?: Prisma.GameUncheckedUpdateManyWithoutCreatorNestedInput
+  savedGames?: Prisma.SavedGameUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -868,13 +1219,17 @@ export type UserUncheckedUpdateWithoutParticipantsInput = {
  */
 
 export type UserCountOutputType = {
+  interests: number
   gamesCreated: number
   participants: number
+  savedGames: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  interests?: boolean | UserCountOutputTypeCountInterestsArgs
   gamesCreated?: boolean | UserCountOutputTypeCountGamesCreatedArgs
   participants?: boolean | UserCountOutputTypeCountParticipantsArgs
+  savedGames?: boolean | UserCountOutputTypeCountSavedGamesArgs
 }
 
 /**
@@ -885,6 +1240,13 @@ export type UserCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensi
    * Select specific fields to fetch from the UserCountOutputType
    */
   select?: Prisma.UserCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountInterestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.UserInterestWhereInput
 }
 
 /**
@@ -901,6 +1263,13 @@ export type UserCountOutputTypeCountParticipantsArgs<ExtArgs extends runtime.Typ
   where?: Prisma.ParticipationWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountSavedGamesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SavedGameWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   email?: boolean
@@ -911,9 +1280,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   dob?: boolean
   gender?: boolean
   biography?: boolean
-  interests?: boolean
   image?: boolean
-  location?: boolean
   notificationEnabled?: boolean
   pushToken?: boolean
   password?: boolean
@@ -921,8 +1288,11 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   refreshToken?: boolean
   provider?: boolean
   registrationComplete?: boolean
+  interests?: boolean | Prisma.User$interestsArgs<ExtArgs>
+  location?: boolean | Prisma.User$locationArgs<ExtArgs>
   gamesCreated?: boolean | Prisma.User$gamesCreatedArgs<ExtArgs>
   participants?: boolean | Prisma.User$participantsArgs<ExtArgs>
+  savedGames?: boolean | Prisma.User$savedGamesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -935,9 +1305,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   dob?: boolean
   gender?: boolean
   biography?: boolean
-  interests?: boolean
   image?: boolean
-  location?: boolean
   notificationEnabled?: boolean
   pushToken?: boolean
   password?: boolean
@@ -956,9 +1324,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   dob?: boolean
   gender?: boolean
   biography?: boolean
-  interests?: boolean
   image?: boolean
-  location?: boolean
   notificationEnabled?: boolean
   pushToken?: boolean
   password?: boolean
@@ -977,9 +1343,7 @@ export type UserSelectScalar = {
   dob?: boolean
   gender?: boolean
   biography?: boolean
-  interests?: boolean
   image?: boolean
-  location?: boolean
   notificationEnabled?: boolean
   pushToken?: boolean
   password?: boolean
@@ -989,10 +1353,13 @@ export type UserSelectScalar = {
   registrationComplete?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"email" | "id" | "firebaseUid" | "createdAt" | "fullName" | "dob" | "gender" | "biography" | "interests" | "image" | "location" | "notificationEnabled" | "pushToken" | "password" | "updatedAt" | "refreshToken" | "provider" | "registrationComplete", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"email" | "id" | "firebaseUid" | "createdAt" | "fullName" | "dob" | "gender" | "biography" | "image" | "notificationEnabled" | "pushToken" | "password" | "updatedAt" | "refreshToken" | "provider" | "registrationComplete", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  interests?: boolean | Prisma.User$interestsArgs<ExtArgs>
+  location?: boolean | Prisma.User$locationArgs<ExtArgs>
   gamesCreated?: boolean | Prisma.User$gamesCreatedArgs<ExtArgs>
   participants?: boolean | Prisma.User$participantsArgs<ExtArgs>
+  savedGames?: boolean | Prisma.User$savedGamesArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -1001,8 +1368,11 @@ export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {
+    interests: Prisma.$UserInterestPayload<ExtArgs>[]
+    location: Prisma.$UserLocationPayload<ExtArgs> | null
     gamesCreated: Prisma.$GamePayload<ExtArgs>[]
     participants: Prisma.$ParticipationPayload<ExtArgs>[]
+    savedGames: Prisma.$SavedGamePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     email: string
@@ -1013,9 +1383,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     dob: string | null
     gender: string | null
     biography: string | null
-    interests: string | null
     image: string | null
-    location: string | null
     notificationEnabled: boolean | null
     pushToken: string | null
     password: string | null
@@ -1417,8 +1785,11 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  interests<T extends Prisma.User$interestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$interestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserInterestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  location<T extends Prisma.User$locationArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$locationArgs<ExtArgs>>): Prisma.Prisma__UserLocationClient<runtime.Types.Result.GetResult<Prisma.$UserLocationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   gamesCreated<T extends Prisma.User$gamesCreatedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$gamesCreatedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$GamePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   participants<T extends Prisma.User$participantsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$participantsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ParticipationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  savedGames<T extends Prisma.User$savedGamesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$savedGamesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SavedGamePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1456,9 +1827,7 @@ export interface UserFieldRefs {
   readonly dob: Prisma.FieldRef<"User", 'String'>
   readonly gender: Prisma.FieldRef<"User", 'String'>
   readonly biography: Prisma.FieldRef<"User", 'String'>
-  readonly interests: Prisma.FieldRef<"User", 'String'>
   readonly image: Prisma.FieldRef<"User", 'String'>
-  readonly location: Prisma.FieldRef<"User", 'String'>
   readonly notificationEnabled: Prisma.FieldRef<"User", 'Boolean'>
   readonly pushToken: Prisma.FieldRef<"User", 'String'>
   readonly password: Prisma.FieldRef<"User", 'String'>
@@ -1859,6 +2228,49 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
 }
 
 /**
+ * User.interests
+ */
+export type User$interestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserInterest
+   */
+  select?: Prisma.UserInterestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserInterest
+   */
+  omit?: Prisma.UserInterestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInterestInclude<ExtArgs> | null
+  where?: Prisma.UserInterestWhereInput
+  orderBy?: Prisma.UserInterestOrderByWithRelationInput | Prisma.UserInterestOrderByWithRelationInput[]
+  cursor?: Prisma.UserInterestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.UserInterestScalarFieldEnum | Prisma.UserInterestScalarFieldEnum[]
+}
+
+/**
+ * User.location
+ */
+export type User$locationArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the UserLocation
+   */
+  select?: Prisma.UserLocationSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the UserLocation
+   */
+  omit?: Prisma.UserLocationOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserLocationInclude<ExtArgs> | null
+  where?: Prisma.UserLocationWhereInput
+}
+
+/**
  * User.gamesCreated
  */
 export type User$gamesCreatedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1904,6 +2316,30 @@ export type User$participantsArgs<ExtArgs extends runtime.Types.Extensions.Inter
   take?: number
   skip?: number
   distinct?: Prisma.ParticipationScalarFieldEnum | Prisma.ParticipationScalarFieldEnum[]
+}
+
+/**
+ * User.savedGames
+ */
+export type User$savedGamesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SavedGame
+   */
+  select?: Prisma.SavedGameSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SavedGame
+   */
+  omit?: Prisma.SavedGameOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SavedGameInclude<ExtArgs> | null
+  where?: Prisma.SavedGameWhereInput
+  orderBy?: Prisma.SavedGameOrderByWithRelationInput | Prisma.SavedGameOrderByWithRelationInput[]
+  cursor?: Prisma.SavedGameWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SavedGameScalarFieldEnum | Prisma.SavedGameScalarFieldEnum[]
 }
 
 /**

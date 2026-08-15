@@ -2,19 +2,28 @@ import { Injectable } from '@nestjs/common';
 import { Prisma, User } from 'src/generated/prisma/browser';
 import { PrismaService } from 'src/prisma/prisma.service';
 
+type UserWithInterests = Prisma.UserGetPayload<{
+  include: {
+    interests: true;
+  };
+}>;
+
 @Injectable()
 export class UsersRepository {
   constructor(private readonly prisma: PrismaService) {}
 
-  findUnique(where: Prisma.UserWhereUniqueInput): Promise<User | null> {
-    return this.prisma.user.findUnique({
-      where,
-    });
+  findUnique<T extends Prisma.UserFindUniqueArgs>(
+    args: Prisma.SelectSubset<T, Prisma.UserFindUniqueArgs>,
+  ) {
+    return this.prisma.user.findUnique(args);
   }
 
   findOne(where: Prisma.UserWhereUniqueInput): Promise<User | null> {
     return this.prisma.user.findFirst({
       where,
+      include: {
+        interests: true,
+      },
     });
   }
 
@@ -24,7 +33,7 @@ export class UsersRepository {
     cursor?: Prisma.UserWhereUniqueInput;
     where?: Prisma.UserWhereInput;
     orderBy?: Prisma.UserOrderByWithRelationInput;
-  }): Promise<User[]> {
+  }): Promise<UserWithInterests[]> {
     const { skip, take, cursor, where, orderBy } = params;
     return this.prisma.user.findMany({
       skip,
@@ -32,6 +41,9 @@ export class UsersRepository {
       cursor,
       where,
       orderBy,
+      include: {
+        interests: true,
+      },
     });
   }
 

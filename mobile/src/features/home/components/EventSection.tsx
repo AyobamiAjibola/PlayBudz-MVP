@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import {
+  ActivityIndicator,
   Dimensions,
   FlatList,
   StyleSheet,
@@ -7,9 +8,12 @@ import {
   ViewToken,
 } from "react-native";
 import EventCard from "./EventCard";
-import { EventType } from "../types/types";
+import { Game } from "../types/types";
 import { Colors } from "@/constants/utils";
 import { PaginationDot } from "./paginationDot";
+import { Text } from "@/components/ui/text";
+import { QueryObserverResult, RefetchOptions } from "@tanstack/react-query";
+import RecommendedEventCard from "./RecommendedEventCard";
 
 const { width } = Dimensions.get("window");
 
@@ -17,10 +21,20 @@ const CARD_WIDTH = width * 0.85;
 const CARD_SPACING = 16;
 
 type EventsProps = {
-    events: EventType[]
+  events: Game[];
+  isLoading: boolean;
+  isFetching: boolean;
+  refetch: (options?: RefetchOptions | undefined)=>Promise<QueryObserverResult<NoInfer<Game[]>, Error>>
+  isError: boolean, 
+  error: Error | null,
+  homeScreen?: boolean
 }
 
-export default function EventSection({events}: EventsProps) {
+export default function EventSection({
+  events, isLoading, 
+  isFetching, refetch,
+  isError, error, homeScreen=true
+}: EventsProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const viewabilityConfig = useRef({
@@ -56,11 +70,50 @@ export default function EventSection({events}: EventsProps) {
     );
   };
 
+  if(isLoading) {
+    return (
+      <View
+        style={{
+          paddingHorizontal: 30,
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 8,
+          minHeight: 200
+        }}
+      >
+        <ActivityIndicator/>
+        <Text>Loading...</Text>
+      </View>
+    )
+  }
+
+  if (isError) {
+    return (
+      <View
+        style={{
+          paddingHorizontal: 30,
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 8,
+          minHeight: 200
+        }}
+      >
+        <Text>
+          {error instanceof Error
+            ? error.message
+            : "Something went wrong"}
+        </Text>
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <FlatList
         data={events}
         horizontal
+        // refreshing={isFetching}
+        // onRefresh={refetch}
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item.id as string}
         snapToInterval={CARD_WIDTH + CARD_SPACING}
@@ -69,35 +122,36 @@ export default function EventSection({events}: EventsProps) {
         onViewableItemsChanged={onViewableItemsChanged}
         viewabilityConfig={viewabilityConfig}
         renderItem={({ item }) => (
-            <EventCard item={item} cardWidth={CARD_WIDTH}/>
+          homeScreen 
+            ? <EventCard item={item} cardWidth={CARD_WIDTH}/>
+            : <RecommendedEventCard item={item} cardWidth={CARD_WIDTH}/>
         )}
       />
 
-      <View style={styles.pagination}>
-          {getVisibleDots().map((index, i) => {
-              const isActive = index === currentIndex;
+      {homeScreen && <View style={styles.pagination}>
+        {getVisibleDots().map((index, i) => {
+          const isActive = index === currentIndex;
 
-              const isSmall =
-                  (i === 0 && index > 0) ||
-                  (i === MAX_DOTS - 1 &&
-                      index < events.length - 1);
+          const isSmall =
+            (i === 0 && index > 0) ||
+            (i === MAX_DOTS - 1 &&
+                index < events.length - 1);
 
-              return (
-                  <PaginationDot
-                      key={index}
-                      isActive={isActive}
-                      isSmall={isSmall}
-                  />
-              );
-          })}
-      </View>
+          return (
+            <PaginationDot
+              key={index}
+              isActive={isActive}
+              isSmall={isSmall}
+            />
+          );
+        })}
+      </View>}
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    // paddingHorizontal: 16
   },
   listContent: {
     gap: CARD_SPACING,

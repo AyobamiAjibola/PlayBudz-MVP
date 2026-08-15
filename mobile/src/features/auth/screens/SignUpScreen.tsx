@@ -16,7 +16,7 @@ import { api } from "@/api/axios";
 import Toast from "react-native-toast-message";
 import { getPushToken } from "@/features/onboarding/services/notification.service";
 
-const googleIcon = require("@/assets/images/Google.svg");
+import GoogleIcon from "@/assets/images/Google.svg";
 
 export default function SignUpScreen() {
     const { signInWithGoogle } = useGoogleAuth();
@@ -91,7 +91,8 @@ export default function SignUpScreen() {
 
             Toast.show({
             type: "error",
-            text1:
+            text1: 'Error',
+            text2:
                 error instanceof Error
                 ? error.message
                 : "Unable to continue with Google",
@@ -130,13 +131,7 @@ export default function SignUpScreen() {
         },
         {
             text: "Continue with Google",
-            icon: <Image
-                    source={googleIcon}
-                    contentFit="cover"
-                    style={{
-                        width: 24, height: 24
-                    }}
-                />,
+            icon: <GoogleIcon width={24} height={24}/>,
             bgColor: "white",
             onPress: () => handleGoogleAuth(),
             border: Colors.borderColor,

@@ -22,7 +22,7 @@ export default function OtpScreen() {
     }>();
     const { minutes, seconds, isExpired, restart } = useTimer(5 * 60);
     const otpLength = 6;
-    const [otp, setOtp] = useState<string[]>(Array(otpLength).fill(""));
+    const [otp, setOtp] = useState<string>("");
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [loading, setLoading] = useState<boolean>(false);
     const refreshUser = useAuthStore((state) => state.refreshUser);
@@ -30,14 +30,13 @@ export default function OtpScreen() {
     const handleBtn = async () => {
         setLoading(true)
         try {
-            const otp_ =  otp.join("")
-            const verifyOtpResponse = await api.post("/auth/verify-otp", {email, otp: otp_});
+            const verifyOtpResponse = await api.post("/auth/verify-otp", {email, otp});
 
             if(!verifyOtpResponse.data.success) {
                 Toast.show({
                     type: "error",
-                    text1: verifyOtpResponse.data.message,
-                    text1Style:{fontFamily: Font.regular, fontSize: FontSize.sm}
+                    text1: 'Error',
+                    text2: verifyOtpResponse.data.message
                 });
                 return;
             }
@@ -58,8 +57,8 @@ export default function OtpScreen() {
         } catch (error) {
             Toast.show({
                 type: "error",
-                text1: (error as Error).message,
-                text1Style:{fontFamily: Font.regular, fontSize: FontSize.sm}
+                text1: 'Error',
+                text2: (error as Error).message
             });
         } finally {
             setLoading(false)
@@ -79,15 +78,15 @@ export default function OtpScreen() {
             console.log(error);
             Toast.show({
                 type: "error",
-                text1: "Try again, something went wrong.",
-                text1Style:{fontFamily: Font.regular, fontSize: FontSize.sm}
+                text1: 'Error',
+                text2: "Try again, something went wrong."
             });
         } finally {
             setIsLoading(false)
         }
     }
 
-    const validate = otp.join("").length !== otpLength;
+    const validate = otp.length !== otpLength;
 
     return (
         <Screen screenPaddingBottom={0}

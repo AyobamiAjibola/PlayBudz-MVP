@@ -1,5 +1,5 @@
 import { StyleSheet, TouchableOpacity, View } from "react-native";
-import { InterestType, PlayerType } from "../types/types";
+import { Interest, Player } from "../types/types";
 import { Image } from "expo-image";
 import { Text } from "@/components/ui/text";
 import { Colors, Font, FontSize } from "@/constants/utils";
@@ -7,18 +7,22 @@ import { Colors, Font, FontSize } from "@/constants/utils";
 const fallbackImage = require("@/assets/events/1.jpg")
 
 type IPropsPlayer = {
-    item: PlayerType,
+    item: Player,
     cardWidth: number
 }
 
 export default function PlayerCard({item, cardWidth}: IPropsPlayer) {
-    const sports = JSON.parse(item.interests)
-                    .filter((game: InterestType) => game.interest)
+    const sports = item.interests.filter((game: Interest) => game.interest)
+    const profileImg = `${process.env.EXPO_PUBLIC_SERVER}${item.image}`;
 
     return (
         <View style={[styles.container, {width: cardWidth}]}>
             <Image
-                source={item.photo ?? fallbackImage}
+                source={
+                    item.image
+                      ? { uri: profileImg }
+                      : fallbackImage
+                  }
                 alt="event image"
                 contentFit="cover"
                 style={{
@@ -29,7 +33,7 @@ export default function PlayerCard({item, cardWidth}: IPropsPlayer) {
                 }}
             />
             <Text style={{fontFamily: Font.semiBold, textAlign: "center"}}>
-                {item.fullname}
+                {item.fullName?.trim().split(/\s+/)[0] ?? "User"}
             </Text>
             <View
                 style={{
@@ -50,7 +54,7 @@ export default function PlayerCard({item, cardWidth}: IPropsPlayer) {
                     }}
                 >
                     {sports
-                        .map((sport: InterestType) =>
+                        .map((sport: Interest) =>
                             sport.interest.split(" ").slice(1).join(" ")
                         )
                         .join(" • ")}

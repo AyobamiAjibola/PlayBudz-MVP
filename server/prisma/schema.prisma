@@ -9,45 +9,106 @@ datasource db {
 }
 
 model User {
-  email        String          @unique
-  id           String          @id @default(uuid())
-  firebaseUid  String          @unique
-  createdAt    DateTime        @default(now())
-  fullName     String?
-  dob          String?
-  gender       String?
-  biography    String?
-  interests    String?
-  image        String?
-  location     String?
-  notificationEnabled Boolean?       @default(false)
-  pushToken    String?        
-  password     String?
-  updatedAt    DateTime        @updatedAt
-  refreshToken String?
-  gamesCreated Game[]          @relation("GameCreator")
-  participants Participation[]
-  provider     String
-  registrationComplete  Boolean?  @default(false)
+  email                 String          @unique
+  id                    String          @id @default(uuid())
+  firebaseUid           String          @unique
+  createdAt             DateTime        @default(now())
+  fullName              String?
+  dob                   String?
+  gender                String?
+  biography             String?
+  interests             UserInterest[]
+  image                 String?
+  location              UserLocation?
+  notificationEnabled   Boolean?       @default(false)
+  pushToken             String?        
+  password              String?
+  updatedAt             DateTime        @updatedAt
+  refreshToken          String?
+  gamesCreated          Game[]          @relation("GameCreator")
+  participants          Participation[]
+  provider              String
+  registrationComplete  Boolean?        @default(false)
+  savedGames            SavedGame[]
+}
+
+model UserLocation {
+  id        String  @id @default(uuid())
+  name      String
+  latitude  Float
+  longitude Float
+
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model UserInterest {
+  id                    String          @id @default(uuid())
+  interest              String
+  skill_level            String
+
+  userId                String
+  user   User @relation(fields: [userId], references: [id])
+
+  @@index([interest])
 }
 
 model Game {
-  id           String          @id @default(uuid())
-  title        String
-  description  String?
-  sport        String
-  creatorId    String
-  createdAt    DateTime        @default(now())
-  creator      User            @relation("GameCreator", fields: [creatorId], references: [id])
-  participants Participation[]
+  id                String          @id @default(uuid())
+  image             String?
+  title             String
+  description       String?
+  sport             String
+  creatorId         String
+  gameDateTime      DateTime
+  createdAt         DateTime        @default(now())
+  creator           User            @relation("GameCreator", fields: [creatorId], references: [id])
+  participants      Participation[]
+  location          GameLocation?       
+  savedBy           SavedGame[]
+  players           String
+  skill_level       String
+  closed            Boolean         @default(false)
+  cancelled         Boolean         @default(false)
+  gameType          String          @default("Outdoor")
+}
+
+model GameLocation {
+  id              String       @id @default(uuid())
+  name            String
+  latitude        Float
+  longitude       Float
+
+  gameId          String        @unique
+  game            Game          @relation(fields: [gameId], references: [id], onDelete: Cascade)
+}
+
+model SavedGame {
+  id                String      @id @default(uuid())
+  userId            String
+  gameId            String
+  createdAt         DateTime    @default(now())
+
+  user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  game              Game        @relation(fields: [gameId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, gameId])
+  @@index([userId])
+  @@index([gameId])
+}
+
+model SportTypes {
+  id                String      @id @default(uuid())
+  sport             String      @unique
+  createdAt         DateTime    @default(now())
 }
 
 model Participation {
-  id     String @id @default(uuid())
-  userId String
-  gameId String
-  game   Game   @relation(fields: [gameId], references: [id])
-  user   User   @relation(fields: [userId], references: [id])
+  id                String      @id @default(uuid())
+  userId            String
+  gameId            String
+  game              Game        @relation(fields: [gameId], references: [id])
+  user              User        @relation(fields: [userId], references: [id])
 
   @@unique([userId, gameId])
 }

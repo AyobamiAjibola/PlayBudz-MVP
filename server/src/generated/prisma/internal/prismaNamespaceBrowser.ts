@@ -52,7 +52,12 @@ export const AnyNull = runtime.AnyNull
 
 export const ModelName = {
   User: 'User',
+  UserLocation: 'UserLocation',
+  UserInterest: 'UserInterest',
   Game: 'Game',
+  GameLocation: 'GameLocation',
+  SavedGame: 'SavedGame',
+  SportTypes: 'SportTypes',
   Participation: 'Participation'
 } as const
 
@@ -81,9 +86,7 @@ export const UserScalarFieldEnum = {
   dob: 'dob',
   gender: 'gender',
   biography: 'biography',
-  interests: 'interests',
   image: 'image',
-  location: 'location',
   notificationEnabled: 'notificationEnabled',
   pushToken: 'pushToken',
   password: 'password',
@@ -96,16 +99,74 @@ export const UserScalarFieldEnum = {
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
 
 
+export const UserLocationScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  userId: 'userId'
+} as const
+
+export type UserLocationScalarFieldEnum = (typeof UserLocationScalarFieldEnum)[keyof typeof UserLocationScalarFieldEnum]
+
+
+export const UserInterestScalarFieldEnum = {
+  id: 'id',
+  interest: 'interest',
+  skill_level: 'skill_level',
+  userId: 'userId'
+} as const
+
+export type UserInterestScalarFieldEnum = (typeof UserInterestScalarFieldEnum)[keyof typeof UserInterestScalarFieldEnum]
+
+
 export const GameScalarFieldEnum = {
   id: 'id',
+  image: 'image',
   title: 'title',
   description: 'description',
   sport: 'sport',
   creatorId: 'creatorId',
-  createdAt: 'createdAt'
+  gameDateTime: 'gameDateTime',
+  createdAt: 'createdAt',
+  players: 'players',
+  skill_level: 'skill_level',
+  closed: 'closed',
+  cancelled: 'cancelled',
+  gameType: 'gameType'
 } as const
 
 export type GameScalarFieldEnum = (typeof GameScalarFieldEnum)[keyof typeof GameScalarFieldEnum]
+
+
+export const GameLocationScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  gameId: 'gameId'
+} as const
+
+export type GameLocationScalarFieldEnum = (typeof GameLocationScalarFieldEnum)[keyof typeof GameLocationScalarFieldEnum]
+
+
+export const SavedGameScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  gameId: 'gameId',
+  createdAt: 'createdAt'
+} as const
+
+export type SavedGameScalarFieldEnum = (typeof SavedGameScalarFieldEnum)[keyof typeof SavedGameScalarFieldEnum]
+
+
+export const SportTypesScalarFieldEnum = {
+  id: 'id',
+  sport: 'sport',
+  createdAt: 'createdAt'
+} as const
+
+export type SportTypesScalarFieldEnum = (typeof SportTypesScalarFieldEnum)[keyof typeof SportTypesScalarFieldEnum]
 
 
 export const ParticipationScalarFieldEnum = {

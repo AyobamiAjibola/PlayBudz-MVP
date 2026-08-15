@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     paddingBottom: 20,
-    gap: 12
+    gap: 6
   },
   title: {
     fontFamily: Font.bold, 

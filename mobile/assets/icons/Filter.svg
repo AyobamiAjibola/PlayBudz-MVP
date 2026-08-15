@@ -1,0 +1,26 @@
+<svg width="48" height="54" viewBox="0 0 48 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d_4414_5433)">
+<rect width="48" height="54" rx="12" fill="white" shape-rendering="crispEdges"/>
+<rect x="0.5" y="0.5" width="47" height="53" rx="11.5" stroke="#EBEBF0" shape-rendering="crispEdges"/>
+<path d="M31 37.75C30.59 37.75 30.25 37.41 30.25 37V26C30.25 25.59 30.59 25.25 31 25.25C31.41 25.25 31.75 25.59 31.75 26V37C31.75 37.41 31.41 37.75 31 37.75Z" fill="#424257"/>
+<path d="M31 22.75C30.59 22.75 30.25 22.41 30.25 22V17C30.25 16.59 30.59 16.25 31 16.25C31.41 16.25 31.75 16.59 31.75 17V22C31.75 22.41 31.41 22.75 31 22.75Z" fill="#424257"/>
+<path d="M24 37.75C23.59 37.75 23.25 37.41 23.25 37V32C23.25 31.59 23.59 31.25 24 31.25C24.41 31.25 24.75 31.59 24.75 32V37C24.75 37.41 24.41 37.75 24 37.75Z" fill="#424257"/>
+<path d="M24 28.75C23.59 28.75 23.25 28.41 23.25 28V17C23.25 16.59 23.59 16.25 24 16.25C24.41 16.25 24.75 16.59 24.75 17V28C24.75 28.41 24.41 28.75 24 28.75Z" fill="#424257"/>
+<path d="M17 37.75C16.59 37.75 16.25 37.41 16.25 37V26C16.25 25.59 16.59 25.25 17 25.25C17.41 25.25 17.75 25.59 17.75 26V37C17.75 37.41 17.41 37.75 17 37.75Z" fill="#424257"/>
+<path d="M17 22.75C16.59 22.75 16.25 22.41 16.25 22V17C16.25 16.59 16.59 16.25 17 16.25C17.41 16.25 17.75 16.59 17.75 17V22C17.75 22.41 17.41 22.75 17 22.75Z" fill="#424257"/>
+<path d="M19 26.75H15C14.59 26.75 14.25 26.41 14.25 26C14.25 25.59 14.59 25.25 15 25.25H19C19.41 25.25 19.75 25.59 19.75 26C19.75 26.41 19.41 26.75 19 26.75Z" fill="#424257"/>
+<path d="M33 26.75H29C28.59 26.75 28.25 26.41 28.25 26C28.25 25.59 28.59 25.25 29 25.25H33C33.41 25.25 33.75 25.59 33.75 26C33.75 26.41 33.41 26.75 33 26.75Z" fill="#424257"/>
+<path d="M26 28.75H22C21.59 28.75 21.25 28.41 21.25 28C21.25 27.59 21.59 27.25 22 27.25H26C26.41 27.25 26.75 27.59 26.75 28C26.75 28.41 26.41 28.75 26 28.75Z" fill="#424257"/>
+</g>
+<defs>
+<filter id="filter0_d_4414_5433" x="0" y="0" width="48" height="54" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_4414_5433"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_4414_5433" result="shape"/>
+</filter>
+</defs>
+</svg>
