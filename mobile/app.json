@@ -8,7 +8,7 @@
     "scheme": "playbudz",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "buildNumber": "8",
+      "buildNumber": "9",
       "googleServicesFile": "./GoogleService-Info.plist",
       "bundleIdentifier": "com.playbudz.app",
       "infoPlist": {
