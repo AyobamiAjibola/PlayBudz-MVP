@@ -13,6 +13,9 @@ import { Text } from "@/components/ui/text";
 import { AppButton } from "@/components/ui/button";
 import { Colors, FontSize } from "@/constants/utils";
 import { router } from "expo-router";
+import { api } from "@/api/axios";
+
+const sports = [{"label": "⚽ Soccer", "value": "⚽ Soccer"}, {"label": "🥌 Curling", "value": "🥌 Curling"}, {"label": "🏕 Camping", "value": "🏕 Camping"}, {"label": "⚾ Baseball", "value": "⚾ Baseball"}, {"label": "🛶 Canoeing", "value": "🛶 Canoeing"}, {"label": "🎾 Long tennis", "value": "🎾 Long tennis"}, {"label": "🏉 Rugby", "value": "🏉 Rugby"}, {"label": "🏸 Badminton", "value": "🏸 Badminton"}, {"label": "🏀 Basket ball", "value": "🏀 Basket ball"}, {"label": "🏐 Volley ball", "value": "🏐 Volley ball"}, {"label": "🏉 Canadian football", "value": "🏉 Canadian football"}, {"label": "🥍 Lacrosse", "value": "🥍 Lacrosse"}, {"label": "🏓 Table tennis (ping pong)", "value": "🏓 Table tennis (ping pong)"}, {"label": "🏊‍♀️ Swimming", "value": "🏊‍♀️ Swimming"}]
 
 const { height } = Dimensions.get("window");
 
@@ -73,9 +76,33 @@ function ImageColumn({
       </Animated.View>
     </View>
   );
-}
+};
+
+const createSport = async (sport: string) => {
+  const response = await api.post("/games/create-sport-type", {
+    sport,
+  });
+
+  return response.data;
+};
 
 export default function GetStarted() {
+
+  useEffect(() => {
+    const createSports = async () => {
+      try {
+        await Promise.all(
+          sports.map((sport) => createSport(sport.value))
+        );
+
+        console.log("All sports created successfully");
+      } catch (error) {
+        console.error("Failed to create sports:", error);
+      }
+    };
+
+    createSports();
+  }, []);
   return (
     <View className="flex-1 px-4 flex-col bg-white">
         <View style={{ height: "60%" }}>
