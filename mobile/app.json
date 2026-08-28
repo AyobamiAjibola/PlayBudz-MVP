@@ -8,7 +8,7 @@
     "scheme": "playbudz",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "buildNumber": "10",
+      "buildNumber": "11",
       "googleServicesFile": "./GoogleService-Info.plist",
       "bundleIdentifier": "com.playbudz.app",
       "infoPlist": {
@@ -55,6 +55,7 @@
         {
           "backgroundColor": "#880000",
           "imageWidth": 140,
+          "resizeMode": "contain",
           "image": "./assets/images/playbudz.png",
           "ios": {
             "backgroundColor": "#880000"

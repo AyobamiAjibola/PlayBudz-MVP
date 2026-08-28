@@ -83,7 +83,9 @@
     "lint": "expo lint",
     "start-ios": "npx expo run:ios --device",
     "upload-to-app-store-connect": "eas build --platform ios --profile production --auto-submit",
-    "open-xcode": "open ios/PlayBudz.xcworkspace"
+    "open-xcode": "open ios/PlayBudz.xcworkspace",
+    "sha": "cd android && /gradlew signingReport",
+    "aab": "cd android && ./gradlew bundleRelease"
   },
   "private": true
 }

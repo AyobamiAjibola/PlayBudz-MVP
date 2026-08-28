@@ -1,4 +1,3 @@
-import AppTabs from "@/components/app-tabs";
 import { useAuthStore } from "@/stores/auth.store";
 import { Redirect, Stack } from "expo-router";
 import { ActivityIndicator, View } from "react-native";

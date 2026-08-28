@@ -371,7 +371,7 @@ export default function SearchScreen() {
                         : ( <RenderPlayers/> )
                 }
 
-                {activeTab === "Event" && <TouchableOpacity
+                {activeTab === "Events" && <TouchableOpacity
                     onPress={()=>setListView(!listView)}
                     style={styles.floatingStyle}
                 >

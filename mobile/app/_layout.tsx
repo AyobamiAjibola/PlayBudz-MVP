@@ -8,14 +8,10 @@ import { AppProvider } from "@/providers/AppProvider";
 import { useAuthStore } from "@/stores/auth.store";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
-import {
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
+import { useEffect, useState } from "react";
 import { Font } from "@/constants/utils";
+import AnimatedSplash from "@/components/AnimatedSplash"
 
-const queryClient = new QueryClient();
 
 SplashScreen.preventAutoHideAsync();
 
@@ -121,7 +117,7 @@ function AppContent() {
   const isAuthLoading = useAuthStore(
     (state) => state.isLoading
   );
-
+  const [showAnimatedSplash, setShowAnimatedSplash] = useState(true);
   const [fontsLoaded, fontError] = useFonts({
     "RethinkSans": require("../assets/fonts/static/RethinkSans-Regular.ttf"),
     "RethinkSans-SemiBold": require("../assets/fonts/static/RethinkSans-SemiBold.ttf"),
@@ -150,6 +146,13 @@ function AppContent() {
   return (
     <>
       <RootNavigator />
+
+      {showAnimatedSplash && (
+        <AnimatedSplash
+          onFinish={() => setShowAnimatedSplash(false)}
+        />
+      )}
+
       <Toast config={toastConfig}/>
     </>
   );
@@ -157,14 +160,12 @@ function AppContent() {
 
 export default function RootLayout() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <SafeAreaProvider>
-        <AppProvider>
-          <AuthProvider>
-            <AppContent />
-          </AuthProvider>
-        </AppProvider>
-      </SafeAreaProvider>
-    </QueryClientProvider>
+    <SafeAreaProvider>
+      <AppProvider>
+        <AuthProvider>
+          <AppContent />
+        </AuthProvider>
+      </AppProvider>
+    </SafeAreaProvider>
   );
 }

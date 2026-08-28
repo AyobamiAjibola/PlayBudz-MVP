@@ -5,21 +5,6 @@ import { FirebaseError } from "firebase/app";
 import { User, signOut as firebaseSignOut } from "firebase/auth";
 import { create } from "zustand";
 
-type LocationType = {
-  id: string;
-  longitude: number;
-  latitude: number;
-  name: string;
-  userId: string;
-}
-
-type InterestType = {
-  id: string;
-  interest: string;
-  skill_level: string;
-  userId: string;
-}
-
 type ProfileType = {
   id: string;
   createdAt?: Date;
