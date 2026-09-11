@@ -7,8 +7,13 @@ import {
   Res,
   Req,
   UnauthorizedException,
-  Header,
+  CallHandler,
+  ExecutionContext,
+  Injectable,
+  NestInterceptor,
+  UseInterceptors,
 } from '@nestjs/common';
+import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
 import { LoginDto, LoginFirebaseDto } from './dto/sign-in-dto';
 import { FirebaseAuthGuard } from './guards/firebase-auth.guard';
@@ -19,7 +24,19 @@ import { JwtAuthGuard } from './guards/jwt-auth.guard';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
+@Injectable()
+export class NoCacheInterceptor implements NestInterceptor {
+  intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
+    const response = context.switchToHttp().getResponse<Response>();
+
+    response.setHeader('Cache-Control', 'no-store');
+
+    return next.handle();
+  }
+}
+
 @Controller('auth')
+@UseInterceptors(NoCacheInterceptor)
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
@@ -29,12 +46,6 @@ export class AuthController {
   }
 
   @Get('me-admin')
-  @Header(
-    'Cache-Control',
-    'no-store, no-cache, must-revalidate, proxy-revalidate',
-  )
-  @Header('Pragma', 'no-cache')
-  @Header('Expires', '0')
   @UseGuards(JwtAuthGuard)
   async admin_user(@CurrentUser() user: FirebaseUser) {
     return this.authService.adminProfile(user);
