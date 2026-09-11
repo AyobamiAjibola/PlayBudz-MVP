@@ -16,6 +16,8 @@ import type { FirebaseUser } from 'src/common/types/authenticated-user.type';
 import type { Response, Request } from 'express';
 import { JwtAuthGuard } from './guards/jwt-auth.guard';
 
+const isProduction = process.env.NODE_ENV === 'production';
+
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -41,15 +43,15 @@ export class AuthController {
 
     response.cookie('access_token', accessToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
+      secure: isProduction,
+      sameSite: isProduction ? 'none' : 'lax',
       maxAge: 15 * 60 * 1000,
     });
 
     response.cookie('refresh_token', refreshToken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
+      sameSite: isProduction ? 'none' : 'lax',
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
@@ -87,8 +89,8 @@ export class AuthController {
 
     res.cookie('access_token', accessToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
+      secure: isProduction,
+      sameSite: isProduction ? 'none' : 'lax',
       maxAge: 15 * 60 * 1000,
     });
 
