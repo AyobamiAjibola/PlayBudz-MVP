@@ -7,6 +7,7 @@ import {
   Res,
   Req,
   UnauthorizedException,
+  Header,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto, LoginFirebaseDto } from './dto/sign-in-dto';
@@ -28,6 +29,12 @@ export class AuthController {
   }
 
   @Get('me-admin')
+  @Header(
+    'Cache-Control',
+    'no-store, no-cache, must-revalidate, proxy-revalidate',
+  )
+  @Header('Pragma', 'no-cache')
+  @Header('Expires', '0')
   @UseGuards(JwtAuthGuard)
   async admin_user(@CurrentUser() user: FirebaseUser) {
     return this.authService.adminProfile(user);
