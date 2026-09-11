@@ -26,6 +26,7 @@ async function bootstrap() {
       'http://localhost:3001', // Next.js development
       'http://localhost:3000',
       'https://backend.playbudz.app', // Next.js production
+      'https://playbudz-admin.vercel.app',
     ],
     credentials: true,
   });
