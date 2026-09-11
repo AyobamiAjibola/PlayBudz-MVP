@@ -84,6 +84,7 @@
     "start-ios": "npx expo run:ios --device",
     "upload-to-app-store-connect": "eas build --platform ios --profile production --auto-submit",
     "open-xcode": "open ios/PlayBudz.xcworkspace",
+    "open-android-studio": "open -a 'Android Studio' android",
     "sha": "cd android && /gradlew signingReport",
     "aab": "cd android && ./gradlew bundleRelease"
   },

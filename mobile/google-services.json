@@ -14,6 +14,38 @@
       },
       "oauth_client": [
         {
+          "client_id": "775139503787-7r4tnbnuq470tqkqfv2vf8urvfpdde0e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.playbudz.app",
+            "certificate_hash": "6ba6944ad324e960101816cb8cf7346bc51ad51c"
+          }
+        },
+        {
+          "client_id": "775139503787-b8u7bjdvrl5vrqi28703jiuflrv0c48l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.playbudz.app",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "775139503787-g1691v55sbn3qgkp7btuh42t5309ut76.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.playbudz.app",
+            "certificate_hash": "665b7137177caeec81da7c18dc8db41468064c6b"
+          }
+        },
+        {
+          "client_id": "775139503787-jos3en9903ihf8pi8rr2acfkpbvmpusc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.playbudz.app",
+            "certificate_hash": "f25c366e92bc18b15994b6462a2c9dc76145dad9"
+          }
+        },
+        {
           "client_id": "775139503787-55m2joo68o1hhkilg3j3kinism944rss.apps.googleusercontent.com",
           "client_type": 3
         }

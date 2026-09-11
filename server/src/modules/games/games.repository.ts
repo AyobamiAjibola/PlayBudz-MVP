@@ -71,6 +71,44 @@ export class GamesRepository {
     });
   }
 
+  async findManyWithCount(params: {
+    skip?: number;
+    take?: number;
+    cursor?: Prisma.GameWhereUniqueInput;
+    where?: Prisma.GameWhereInput;
+    orderBy?: Prisma.GameOrderByWithRelationInput;
+  }) {
+    const { skip, take, cursor, where, orderBy } = params;
+
+    const [games, total] = await this.prisma.$transaction([
+      this.prisma.game.findMany({
+        skip,
+        take,
+        cursor,
+        where,
+        orderBy,
+        include: {
+          creator: true,
+          location: true,
+          participants: {
+            include: {
+              user: true,
+            },
+          },
+        },
+      }),
+
+      this.prisma.game.count({
+        where,
+      }),
+    ]);
+
+    return {
+      games,
+      total,
+    };
+  }
+
   findUnique<T extends Prisma.GameFindUniqueArgs>(
     args: Prisma.SelectSubset<T, Prisma.GameFindUniqueArgs>,
   ) {

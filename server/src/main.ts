@@ -22,7 +22,11 @@ async function bootstrap() {
   app.use(cookieParser());
 
   app.enableCors({
-    origin: process.env.CORS_ORIGIN?.split(',') || [],
+    origin: [
+      'http://localhost:3001', // Next.js development
+      'http://localhost:3000',
+      'https://backend.playbudz.app', // Next.js production
+    ],
     credentials: true,
   });
   app.setGlobalPrefix('api');

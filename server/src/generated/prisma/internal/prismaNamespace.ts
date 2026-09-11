@@ -384,6 +384,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
+  adminUser: 'adminUser',
   User: 'User',
   UserLocation: 'UserLocation',
   UserInterest: 'UserInterest',
@@ -407,10 +408,84 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "userLocation" | "userInterest" | "game" | "gameLocation" | "savedGame" | "sportTypes" | "participation"
+    modelProps: "adminUser" | "user" | "userLocation" | "userInterest" | "game" | "gameLocation" | "savedGame" | "sportTypes" | "participation"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
+    adminUser: {
+      payload: Prisma.$adminUserPayload<ExtArgs>
+      fields: Prisma.adminUserFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.adminUserFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminUserPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.adminUserFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminUserPayload>
+        }
+        findFirst: {
+          args: Prisma.adminUserFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminUserPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.adminUserFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminUserPayload>
+        }
+        findMany: {
+          args: Prisma.adminUserFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminUserPayload>[]
+        }
+        create: {
+          args: Prisma.adminUserCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminUserPayload>
+        }
+        createMany: {
+          args: Prisma.adminUserCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.adminUserCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminUserPayload>[]
+        }
+        delete: {
+          args: Prisma.adminUserDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminUserPayload>
+        }
+        update: {
+          args: Prisma.adminUserUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminUserPayload>
+        }
+        deleteMany: {
+          args: Prisma.adminUserDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.adminUserUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.adminUserUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminUserPayload>[]
+        }
+        upsert: {
+          args: Prisma.adminUserUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$adminUserPayload>
+        }
+        aggregate: {
+          args: Prisma.AdminUserAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAdminUser>
+        }
+        groupBy: {
+          args: Prisma.adminUserGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdminUserGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.adminUserCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AdminUserCountAggregateOutputType> | number
+        }
+      }
+    }
     User: {
       payload: Prisma.$UserPayload<ExtArgs>
       fields: Prisma.UserFieldRefs
@@ -1042,6 +1117,17 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const AdminUserScalarFieldEnum = {
+  email: 'email',
+  id: 'id',
+  password: 'password',
+  accessToken: 'accessToken',
+  refreshToken: 'refreshToken'
+} as const
+
+export type AdminUserScalarFieldEnum = (typeof AdminUserScalarFieldEnum)[keyof typeof AdminUserScalarFieldEnum]
+
+
 export const UserScalarFieldEnum = {
   email: 'email',
   id: 'id',
@@ -1345,6 +1431,7 @@ export type PrismaClientOptions = ({
   queryPlanCacheMaxSize?: number
 }
 export type GlobalOmitConfig = {
+  adminUser?: Prisma.adminUserOmit
   user?: Prisma.UserOmit
   userLocation?: Prisma.UserLocationOmit
   userInterest?: Prisma.UserInterestOmit

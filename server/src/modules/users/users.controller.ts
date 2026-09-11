@@ -16,7 +16,7 @@ import {
 import { InterestsType, UserLocation, UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-// import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import type { FirebaseUser } from 'src/common/types/authenticated-user.type';
 import { CurrentUser } from 'src/common/decorators/current-user.decorator';
 import { FirebaseAuthGuard } from '../auth/guards/firebase-auth.guard';
@@ -108,14 +108,15 @@ export class UsersController {
     });
   }
 
-  @UseGuards(FirebaseAuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get('players')
   async findAllUsers(
+    @CurrentUser() user: FirebaseUser,
     @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
     @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number,
     @Query('search') search?: string,
   ) {
-    return this.usersService.findAllUsers(page, limit, search);
+    return this.usersService.findAllUsers(user, page, limit, search);
   }
 
   @UseGuards(FirebaseAuthGuard)

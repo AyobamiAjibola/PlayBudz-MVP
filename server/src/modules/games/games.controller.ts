@@ -26,6 +26,7 @@ import { randomUUID } from 'crypto';
 import { extname } from 'path';
 import { diskStorage } from 'multer';
 import { parseJson } from 'src/config/json';
+import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 
 export interface GameLocation {
   name: string;
@@ -140,6 +141,28 @@ export class GamesController {
     @Query('status') status?: StatusFilter,
   ) {
     return this.gamesService.findGames(
+      page,
+      limit,
+      user,
+      sport,
+      search,
+      date,
+      status,
+    );
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get('all-games')
+  async findAllGames(
+    @CurrentUser() user: FirebaseUser,
+    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
+    @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number,
+    @Query('sport') sport?: string,
+    @Query('search') search?: string,
+    @Query('date') date?: string,
+    @Query('status') status?: StatusFilter,
+  ) {
+    return this.gamesService.findAllGames(
       page,
       limit,
       user,

@@ -1,13 +1,24 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersRepository } from '../users/users.repository';
 import { FirebaseService } from 'src/firebase/firebase.service';
-import { LoginFirebaseDto } from './dto/sign-in-dto';
+import { LoginDto, LoginFirebaseDto } from './dto/sign-in-dto';
 import { EmailService } from 'src/email/email.service';
 import { ApiResponse } from 'src/common/types/api-response.type';
 import { User } from 'src/generated/prisma/browser';
 import { RedisService } from 'src/redis/redis.service';
 import { FirebaseUser } from 'src/common/types/authenticated-user.type';
+import * as bcrypt from 'bcrypt';
+import { ConfigService } from '@nestjs/config';
+
+type TokenPayload = {
+  email: string;
+  sub: string;
+};
 
 @Injectable()
 export class AuthService {
@@ -17,54 +28,138 @@ export class AuthService {
     private readonly firebaseService: FirebaseService,
     private readonly emailService: EmailService,
     private readonly redisService: RedisService,
+    private readonly configService: ConfigService,
   ) {}
 
-  // async login(dto: LoginDto) {
-  //   const user = await this.usersRepository.findUnique({
-  //     email: dto.email,
-  //   });
+  async createAdmin(dto: LoginDto) {
+    const user = await this.usersRepository.findUniqueAdmin({
+      where: { email: dto.email },
+    });
 
-  //   if (!user) {
-  //     throw new UnauthorizedException('Invalid credentials');
-  //   }
+    if (user) {
+      throw new UnauthorizedException('User admin already exist');
+    }
 
-  //   const isPasswordValid = await bcrypt.compare(dto.password, user.password);
+    const hashedPassword = await bcrypt.hash(dto.password, 10);
 
-  //   if (!isPasswordValid) {
-  //     throw new UnauthorizedException('Invalid credentials');
-  //   }
+    await this.usersRepository.createAdmin({
+      ...dto,
+      password: hashedPassword,
+    });
 
-  //   const payload = {
-  //     sub: user.id,
-  //     email: user.email,
-  //   };
+    return {
+      message: 'Successful',
+    };
+  }
 
-  //   const accessToken = await this.jwtService.signAsync(payload, {
-  //     expiresIn: '15m',
-  //     secret: process.env.JWT_ACCESS_SECRET,
-  //   });
+  async adminProfile(
+    user: FirebaseUser,
+  ): Promise<ApiResponse<{ email: string; id: string }>> {
+    const u = await this.usersRepository.findUniqueAdmin({
+      where: { id: user.id },
+    });
 
-  //   const refreshToken = await this.jwtService.signAsync(payload, {
-  //     expiresIn: '7d',
-  //     secret: process.env.JWT_REFRESH_SECRET,
-  //   });
+    if (!u) {
+      throw new BadRequestException('User does not exist.');
+    }
 
-  //   const hashedRefreshToken = await bcrypt.hash(refreshToken, 10);
+    const userData = {
+      email: u.email,
+      id: u.id,
+    };
 
-  //   await this.usersRepository.update(
-  //     { id: user.id },
-  //     { refreshToken: hashedRefreshToken },
-  //   );
+    return {
+      success: true,
+      message: 'Successful.',
+      data: userData,
+    };
+  }
 
-  //   return {
-  //     success: true,
-  //     message: 'Login successful',
-  //     data: {
-  //       accessToken,
-  //       refreshToken,
-  //     },
-  //   };
-  // }
+  async loginAdmin(dto: LoginDto) {
+    try {
+      const user = await this.usersRepository.findUniqueAdmin({
+        where: { email: dto.email },
+      });
+
+      if (!user) {
+        throw new UnauthorizedException('Invalid credentials');
+      }
+
+      const isPasswordValid = await bcrypt.compare(dto.password, user.password);
+
+      if (!isPasswordValid) {
+        throw new UnauthorizedException('Invalid credentials');
+      }
+
+      const payload = {
+        sub: user.id,
+        email: user.email,
+      };
+
+      const accessToken = await this.jwtService.signAsync(payload, {
+        secret: this.configService.getOrThrow<string>('JWT_ACCESS_SECRET'),
+        expiresIn: '15m',
+      });
+
+      const refreshToken = await this.jwtService.signAsync(payload, {
+        secret: this.configService.getOrThrow<string>('JWT_REFRESH_SECRET'),
+        expiresIn: '7d',
+      });
+
+      const hashedRefreshToken = await bcrypt.hash(refreshToken, 10);
+
+      await this.usersRepository.updateAdmin(
+        { id: user.id },
+        { refreshToken: hashedRefreshToken },
+      );
+
+      return {
+        accessToken,
+        refreshToken,
+      };
+    } catch (error) {
+      console.error('LOGIN ERROR:', error);
+      throw error;
+    }
+  }
+
+  async refreshAccessToken(refreshToken: string) {
+    try {
+      const payload: TokenPayload = await this.jwtService.verifyAsync(
+        refreshToken,
+        {
+          secret: this.configService.get('JWT_REFRESH_SECRET'),
+        },
+      );
+
+      const userId = payload.sub;
+
+      const user = await this.usersRepository.findUniqueAdmin({
+        where: { id: userId },
+      });
+
+      if (!user) {
+        throw new UnauthorizedException();
+      }
+
+      const accessToken = await this.jwtService.signAsync(
+        {
+          sub: user.id,
+          email: user.email,
+        },
+        {
+          secret: this.configService.get('JWT_ACCESS_SECRET'),
+          expiresIn: '15m',
+        },
+      );
+
+      return {
+        accessToken,
+      };
+    } catch {
+      throw new UnauthorizedException('Invalid or expired refresh token');
+    }
+  }
 
   async sendOtp(dto: { email: string }): Promise<ApiResponse<string>> {
     const otp = Math.floor(100000 + Math.random() * 900000).toString();

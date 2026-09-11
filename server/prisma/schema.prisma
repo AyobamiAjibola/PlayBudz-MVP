@@ -8,6 +8,14 @@ datasource db {
   provider = "postgresql"
 }
 
+model adminUser {
+  email                 String          @unique
+  id                    String          @id @default(uuid())
+  password              String
+  accessToken           String?
+  refreshToken          String?
+}
+
 model User {
   email                 String          @unique
   id                    String          @id @default(uuid())

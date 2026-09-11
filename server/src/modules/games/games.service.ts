@@ -2,6 +2,7 @@ import {
   ForbiddenException,
   Injectable,
   NotFoundException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { AppLoggerService } from 'src/shared/logger/logger.service';
 import { UsersRepository } from '../users/users.repository';
@@ -426,6 +427,110 @@ export class GamesService {
       success: true,
       message: 'Successful',
       data: games,
+    };
+  }
+
+  async findAllGames(
+    page: number = 1,
+    limit: number = 10,
+    user: FirebaseUser,
+    sport?: string,
+    search?: string,
+    date?: string,
+    status?: StatusFilter,
+  ): Promise<ApiResponse<{ games: Game[]; count: number }>> {
+    const skip = (page - 1) * limit;
+    const u = await this.usersRepository.findUniqueAdmin({
+      where: { email: 'playbudzapp@gmail.com' },
+    });
+
+    if (!u) {
+      throw new UnauthorizedException('Not authorized');
+    }
+
+    const conditions: Prisma.GameWhereInput[] = [];
+
+    if (status === 'upcoming') {
+      conditions.push({
+        gameDateTime: {
+          gte: new Date(),
+        },
+      });
+    }
+
+    if (status === 'past') {
+      conditions.push({
+        gameDateTime: {
+          lt: new Date(),
+        },
+      });
+    }
+
+    if (date) {
+      const selectedDate = new Date(date);
+
+      const startOfDay = new Date(selectedDate);
+      startOfDay.setHours(0, 0, 0, 0);
+
+      const endOfDay = new Date(selectedDate);
+      endOfDay.setHours(23, 59, 59, 999);
+
+      conditions.push({
+        gameDateTime: {
+          gte: startOfDay,
+          lte: endOfDay,
+        },
+      });
+    }
+
+    if (sport) {
+      conditions.push({
+        sport,
+      });
+    }
+
+    if (search) {
+      conditions.push({
+        OR: [
+          {
+            title: {
+              contains: search,
+              mode: 'insensitive',
+            },
+          },
+          {
+            description: {
+              contains: search,
+              mode: 'insensitive',
+            },
+          },
+          {
+            sport: {
+              contains: search,
+              mode: 'insensitive',
+            },
+          },
+        ],
+      });
+    }
+
+    const where: Prisma.GameWhereInput = {
+      AND: conditions,
+    };
+
+    const { games, total } = await this.gameRepository.findManyWithCount({
+      skip,
+      take: limit,
+      where,
+      orderBy: {
+        createdAt: 'desc',
+      },
+    });
+
+    return {
+      success: true,
+      message: 'Successful',
+      data: { games: games, count: total },
     };
   }
 

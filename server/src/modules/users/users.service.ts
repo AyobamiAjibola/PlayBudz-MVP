@@ -2,6 +2,7 @@ import {
   BadRequestException,
   Injectable,
   NotFoundException,
+  UnauthorizedException,
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -244,11 +245,19 @@ export class UsersService {
   }
 
   async findAllUsers(
+    user: FirebaseUser,
     page: number = 1,
     limit: number = 10,
     search?: string,
-  ): Promise<ApiResponse<User[]>> {
+  ): Promise<ApiResponse<{ users: User[]; count: number }>> {
     const skip = (page - 1) * limit;
+    const u = await this.usersRepository.findUniqueAdmin({
+      where: { email: 'playbudzapp@gmail.com' },
+    });
+
+    if (!u) {
+      throw new UnauthorizedException('Not authorized');
+    }
 
     const where: Prisma.UserWhereInput = {};
 
@@ -269,7 +278,7 @@ export class UsersService {
       ];
     }
 
-    const users = await this.usersRepository.findMany({
+    const { users, total } = await this.usersRepository.findManyWithCount({
       skip,
       take: limit,
       where,
@@ -281,7 +290,7 @@ export class UsersService {
     return {
       success: true,
       message: 'Successful',
-      data: users,
+      data: { users: users, count: total },
     };
   }
 

@@ -7,6 +7,7 @@ export type AuthenticatedUser = {
 
 export type FirebaseUser = Request & {
   uid: string;
+  id?: string;
   email?: string;
   name?: string;
   picture?: string;
