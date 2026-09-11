@@ -68,7 +68,7 @@ export class AuthController {
 
     response.cookie('refresh_token', refreshToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: isProduction,
       sameSite: isProduction ? 'none' : 'lax',
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
@@ -81,8 +81,19 @@ export class AuthController {
 
   @Post('logout-admin')
   logout(@Res({ passthrough: true }) response: Response) {
-    response.clearCookie('access_token');
-    response.clearCookie('refresh_token');
+    response.clearCookie('access_token', {
+      httpOnly: true,
+      secure: isProduction,
+      sameSite: isProduction ? 'none' : 'lax',
+      path: '/',
+    });
+
+    response.clearCookie('refresh_token', {
+      httpOnly: true,
+      secure: isProduction,
+      sameSite: isProduction ? 'none' : 'lax',
+      path: '/',
+    });
 
     return {
       success: true,
