@@ -11,7 +11,7 @@ import {
   ExecutionContext,
   Injectable,
   NestInterceptor,
-  UseInterceptors,
+  // UseInterceptors,
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
@@ -36,7 +36,7 @@ export class NoCacheInterceptor implements NestInterceptor {
 }
 
 @Controller('auth')
-@UseInterceptors(NoCacheInterceptor)
+// @UseInterceptors(NoCacheInterceptor)
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
